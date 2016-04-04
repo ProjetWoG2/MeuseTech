@@ -1,0 +1,2 @@
+class ProjetsController < ArticlesController
+end

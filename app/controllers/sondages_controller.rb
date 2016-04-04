@@ -1,0 +1,2 @@
+class SondagesController < PublicationsController
+end

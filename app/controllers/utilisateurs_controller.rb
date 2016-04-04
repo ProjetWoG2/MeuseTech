@@ -1,0 +1,2 @@
+class UtilisateursController < ComptesController
+end

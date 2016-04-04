@@ -1,0 +1,2 @@
+class ActualitesController < ArticlesController
+end

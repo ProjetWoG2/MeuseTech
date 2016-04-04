@@ -1,0 +1,2 @@
+class ContributeursController < UtilisateursController
+end

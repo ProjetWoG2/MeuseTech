@@ -1,0 +1,2 @@
+class CommentairesController < InteractionsController
+end
