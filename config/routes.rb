@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :comptes
   root 'pages#index'
   get 'pourquoi' => 'pages#pourquoi'
+  get 'moderation' => 'pages#moderation'
   resources :projets
   resources :actualites
   resources :sondages
