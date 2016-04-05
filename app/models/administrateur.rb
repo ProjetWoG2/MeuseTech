@@ -1,0 +1,2 @@
+class Administrateur < Utilisateur
+end
