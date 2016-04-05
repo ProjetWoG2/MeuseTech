@@ -1,0 +1,71 @@
+
+<% if compte_signed_in? %>
+
+    <h1>Modération</h1>
+
+    <p>Affichage des tables de la bdd + actions possibles</p>
+
+<% if current_compte.get_statut == "SuperAdmin" %>
+
+        <h2>Affichage spécifique SuperAdmin</h2>
+        <p>Le SuperAdmin doit pouvoir :</p>
+        <ul></br>
+            <li>Accéder à la bdd regroupant les comptes/utilisateurs (admins+contribs) pour :</li>
+            <li>Changer les permissions (reviens à créer un admin supplémentaire ou le retirer)</li>
+            <li>Supprimer un compte utilisateur (admin ou contrib)</li>
+        </ul>
+
+
+<% elsif current_compte.get_statut == "Administrateur" %>
+
+        <h2>Affichage spécifique Administrateur</h2>
+        <p>L'administrateur doit pouvoir :</p>
+        <ul></br>
+            <li>Exporter toutes les bdd en .csv</li>
+            <li>Filtrer / rechercher dans les bdd</li>
+
+            </br>
+            <li>Accéder à la bdd regroupant les contributeurs pour :</li>
+            <li>Voir le profil d'un contributeur</li>
+            <li>Editer un contributeur</li>
+            <li>bannir un contributeur</li>
+            <li>supprimer un contributeur</li>
+            
+            </br>
+            <li>Accéder à la bdd regroupant les projets pour :</li>
+            <li>Voir un projet</li>
+            <li>Editer un projet</li>
+            <li>supprimer un projet</li>
+            
+            </br>
+            <li>Accéder à la bdd regroupant les actus pour :</li>
+            <li>Créer une actu</li>
+            <li>Editer une actu</li>
+            <li>Supprimer une actu</li>
+
+            </br>
+            <li>Accéder à la bdd regroupant les commentaires pour :</li>
+            <li>Editer un comm</li>
+            <li>Valider un comm</li>
+            <li>Supprimer un comm</li>
+
+            </br>
+            <li>Accéder à la bdd regroupant les sondages pour :</li>
+            <li>Créer un sondage</li>
+            <li>Editer un sondage</li>
+            <li>Supprimer un comm</li>
+            
+        </ul>
+
+    <% else %>
+        
+        <h2>Affichage spécifique Contributeur</h2>
+        <p>Le <%= current_compte.get_statut %> n'a pas accès à la partie modération</p>
+
+    <% end %>
+
+<% else %>
+
+    <p>Vous n'avez pas l'accès à la partie modération</p>
+
+<% end %>

@@ -1,2 +1,5 @@
 class ComptesController < ApplicationController
+    
+    
+  
 end
