@@ -1,0 +1,2 @@
+class Utilisateur < Compte
+end
