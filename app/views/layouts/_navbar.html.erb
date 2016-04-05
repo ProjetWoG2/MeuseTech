@@ -9,13 +9,16 @@
 <ul>
     <% if compte_signed_in? %>
 
-        <% if current_compte.statut_id == 1 || current_compte.statut_id == 2 %>
-            <li><a href="/moderation">Modération</a></li>
+        <% if current_compte.get_statut == "SuperAdmin" || current_compte.get_statut == "Administrateur" %>
+             <li><a href="/moderation">Modération</a></li>
         <% end %>
 
         <li><a href="/comptes/sign_out" data-method="delete" rel="nofollow" >Déconnexion</a></li>
 
     <% else %>
+        
         <li><a href="/comptes/sign_in " >Connexion</a></li>
+   
     <% end %>
 </ul>
+
