@@ -1,0 +1,3 @@
+class superAdmin < Compte
+  
+end
