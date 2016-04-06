@@ -2,29 +2,20 @@
 <html>
 <head>
   <title>MeuseTech</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <%= yield :stylesheet %>  
 </head>
-
-<header>
-    <%= render 'layouts/messages' %>
-	<%= render 'layouts/navbar' %>
-	<%= render 'layouts/sidebar' %>
-</header>
-
 
 <body>
 
 <%= yield %>
 
-
 <footer>
 	<%= render 'layouts/footer' %>
 </footer>
+
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </body>
 
-
-
-  
 </html>
