@@ -54,12 +54,17 @@ ActiveRecord::Schema.define(version: 20160405094145) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
     t.string   "nom"
     t.string   "prenom"
     t.string   "pseudo"
     t.integer  "statut_id"
   end
 
+  add_index "comptes", ["confirmation_token"], name: "index_comptes_on_confirmation_token", unique: true
   add_index "comptes", ["email"], name: "index_comptes_on_email", unique: true
   add_index "comptes", ["reset_password_token"], name: "index_comptes_on_reset_password_token", unique: true
 

@@ -25,7 +25,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'attribute-defaults', '~> 0.7.0'
 # Downgrading coffee script for windows development
 gem 'coffee-script-source', '1.8.0'
+
+
 gem 'devise'
+gem 'twitter-bootstrap-rails', '~> 3.2', '>= 3.2.2'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

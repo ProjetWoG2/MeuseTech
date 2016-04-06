@@ -31,12 +31,14 @@ if Statut.all.empty?
 end
 
 if Compte.all.empty?
-    Compte.create(
-    email: "superadmin@meusetech.com",
-    pseudo: "SuperAdmin",
-    nom: "Admin",
-    prenom: "Super",
-    statut_id:1,
-    password: "superadmin",
-    password_confirmation: "superadmin")
+   Compte.create(
+   email: "superadmin@meusetech.com",
+   pseudo: "SuperAdmin",
+   nom: "Admin",
+   prenom: "Super",
+   statut_id:1,
+   password: "superadmin",
+   password_confirmation: "superadmin",
+   confirmed_at: DateTime.now,
+   unconfirmed_email: "superadmin@meusetech.com")
 end
