@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="800"
+   height="600"
+   id="svg4586"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   viewBox="0 0 800 600"
+   sodipodi:docname="Logo MeuseTech 600x600 marron.svg">
+  <defs
+     id="defs4588" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.84852814"
+     inkscape:cx="273.03059"
+     inkscape:cy="215.47373"
+     inkscape:current-layer="layer1"
+     inkscape:document-units="px"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid4654" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata4591">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1"
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer">
+    <path
+       inkscape:connector-curvature="0"
+       id="path4658"
+       d="m 614.54201,189.63535 c -7.95775,-11.12585 -18.2214,-22.4778 -30.21186,-33.41548 l -6.80201,-6.20485 0,-49.23777 0,-49.237778 5.48318,2.82056 c 45.21538,23.259356 83.4918,56.150408 111.35116,95.684648 1.65893,2.35409 2.90973,4.36787 2.77955,4.47495 -0.58674,0.48265 -78.41866,39.87841 -78.78388,39.87745 -0.22603,0 -1.94329,-2.1432 -3.81614,-4.76173 z"
+       style="opacity:0.5;fill:#662c1e;fill-opacity:1;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none" />
+    <path
+       style="fill:#662c1e;fill-opacity:1;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none"
+       d="m 614.50627,187.69499 c -7.95775,-11.12585 -18.2214,-22.4778 -30.21186,-33.41548 l -6.80201,-6.20485 0,-49.237767 0,-49.237777 5.48318,2.82056 c 45.21538,23.25936 83.4918,56.150404 111.35116,95.684644 1.65893,2.35409 2.90973,4.36787 2.77955,4.47495 -0.58674,0.48265 -78.41866,39.87841 -78.78388,39.87745 -0.22603,0 -1.94329,-2.1432 -3.81614,-4.76173 z"
+       id="path4000"
+       inkscape:connector-curvature="0" />
+  </g>
+</svg>
