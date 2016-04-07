@@ -5,13 +5,12 @@ Rails.application.routes.draw do
   get 'pourquoi' => 'pages#pourquoi'
   get 'moderation' => 'pages#moderation'
 	get 'comptes/:id/destroy' => 'comptes#destroy'
-	patch 'comptes/:id/update' => 'comptes#update'
-
+	
   resources :projets
   resources :actualites
   resources :sondages
-	resources :comptes
-
+  resources :comptes
+	
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

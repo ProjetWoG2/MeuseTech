@@ -28,14 +28,14 @@
 								
 								<!-- A FAIRE : fonction update sur valider = écrase dans la bdd -->								
 								
-								<%= form_for compte do |f| %>
+								<%= form_for(:compte, :url => compte_path(compte), :method => 'PATCH') do |f| %>
 										
-								<%= f.select :get_statut, @labelstatuts %>
+								<%= f.select_tag 'statut_id', options_from_collection_for_select(@statuts, 'id', 'label', compte.statut.id) %>
 							
 								</td>
-								<td><%= submit 'Valider' %></td>
+								<td><%= f.submit 'Valider' %></td>
 								
-						<% end %>
+								<% end %>
 						
 						</tr>
 						<% end %>
