@@ -3,25 +3,25 @@ class ComptesController < ApplicationController
 	
 	def edit
 		@compte = Compte.find(params[:id])
-  end
+  	end
 	
 	def destroy
 		@compte = Compte.find(params[:id])
 		@compte.destroy
 		redirect_to moderation_path
-  end
+  	end
 	
-	 def update
+	def update
 		 @compte = Compte.find(params[:id])
 		 if @compte.update(compte_params)
 			redirect_to moderation_path
 		 else
-      render :edit
-    end
-  end
+      		render :edit
+    	end
+  	end
 	
 	def compte_params
-		params.require(:compte).permit(:nom, :statut)
-  end
+		params.permit(:statut_id)
+  	end
   
 end

@@ -10,11 +10,7 @@ class PagesController < ApplicationController
 	
 	def moderation
 		@comptes = Compte.order(id: :asc)	
-		@statuts = Statut.order(id: :asc)
-		@labelstatuts = []
-		@statuts.each do |statut|
-			@labelstatuts.push(statut.label)
-		end
+		@statuts = Statut.all
 			
 	end
 end
