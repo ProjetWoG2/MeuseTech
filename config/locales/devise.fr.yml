@@ -100,4 +100,4 @@ fr:
         back: "Retour"
     unlocks:
       new:
-        resend_unlock_instructions: "Renvoyez le mail pour déverrouiller mon compte"          
+        resend_unlock_instructions: "Renvoyez le mail pour déverrouiller mon compte"  

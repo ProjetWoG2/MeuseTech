@@ -1,0 +1,16 @@
+<h2>Editer le compte <%= @compte.email %></h2>
+
+
+<%= form_for(@compte, :url => yield(:url)) do |f| %>
+
+<div><%= f.label :nom %><br />
+	<%= f.text_field :nom %></div>
+
+	<div><%= f.label :prenom %><br />
+	<%= f.text_field :prenom %></div>
+
+<div><%= f.submit "Editer"%></div>
+<% end %>
+
+
+<a href="/moderation">Retour Espace Modération</a>
