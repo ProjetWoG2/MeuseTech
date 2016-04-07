@@ -1,22 +1,50 @@
-
 <% if compte_signed_in? %>
 
-    <h1>Modération</h1>
-
-    <p>Affichage des tables de la bdd + actions possibles</p>
-
-<% if current_compte.get_statut == "SuperAdmin" %>
-
-        <h2>Affichage spécifique SuperAdmin</h2>
-        <p>Le SuperAdmin doit pouvoir :</p>
-        <ul></br>
-            <li>Accéder à la bdd regroupant les comptes/utilisateurs (admins+contribs) pour :</li>
-            <li>Changer les permissions (reviens à créer un admin supplémentaire ou le retirer)</li>
-            <li>Supprimer un compte utilisateur (admin ou contrib)</li>
-        </ul>
+    <h1>Espace Modération <%= current_compte.get_statut %></h1>
 
 
-<% elsif current_compte.get_statut == "Administrateur" %>
+		<% if current_compte.get_statut == "SuperAdmin" %>
+
+			<table class="table">
+				<thead class="thead-inverse">
+					<tr>
+						<th>#</th>
+						<th>Nom</th>
+						<th>Prénom</th>
+						<th>Email</th>
+						<th>Rôle</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @comptes.each do |compte| %>
+						<% if compte.get_statut != "SuperAdmin" %>
+						<tr>
+							<th scope="row"><%= compte.id %></th>
+							<td><%= compte.nom %></td>
+							<td><%= compte.prenom %></td>
+							<td><%= compte.email %></td>
+							<td>
+								
+								<!-- A FAIRE : fonction update sur valider = écrase dans la bdd -->								
+								
+								<%= form_for compte do |f| %>
+										
+								<%= f.select :get_statut, @labelstatuts %>
+							
+								</td>
+								<td><%= submit 'Valider' %></td>
+								
+						<% end %>
+						
+						</tr>
+						<% end %>
+					<% end %>
+				</tbody>
+			</table>
+
+
+		<% elsif current_compte.get_statut == "Administrateur" %>
 
         <h2>Affichage spécifique Administrateur</h2>
         <p>L'administrateur doit pouvoir :</p>
@@ -69,3 +97,5 @@
     <p>Vous n'avez pas l'accès à la partie modération</p>
 
 <% end %>
+
+<a href="/">Retour Accueil</a>
