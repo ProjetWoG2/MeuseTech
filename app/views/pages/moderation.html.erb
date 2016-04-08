@@ -30,10 +30,11 @@
 								
 								<%= form_for(:compte, :url => compte_path(compte), :method => 'PATCH') do |f| %>
 										
-								<%= f.select_tag 'statut_id', options_from_collection_for_select(@statuts, 'id', 'label', compte.statut.id) %>
+									<%= f.select_tag 'statut_id', options_from_collection_for_select(@statuts, 'id', 'label', compte.statut.id) %>
 							
-								</td>
-								<td><%= f.submit 'Valider' %></td>
+							</td>
+							<td><%= f.submit 'Valider' %> | <a href="/comptes/<%= compte.id %>" data-method="delete">Supprimer</a></td>
+
 								
 								<% end %>
 						

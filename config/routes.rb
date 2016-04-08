@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   root 'pages#index'
   get 'pourquoi' => 'pages#pourquoi'
   get 'moderation' => 'pages#moderation'
-	get 'comptes/:id/destroy' => 'comptes#destroy'
 	
   resources :projets
   resources :actualites
