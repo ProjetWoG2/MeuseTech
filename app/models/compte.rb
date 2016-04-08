@@ -6,8 +6,4 @@ class Compte < ActiveRecord::Base
   attr_default :statut_id, 3
   belongs_to :statut
     
-  def get_statut
-    return self.statut.label
-  end
-    
 end

@@ -6,11 +6,6 @@ class PagesController < ApplicationController
   end
     
   def pourquoi
-  end
-	
-	def moderation
-		@comptes = Compte.order(id: :asc)	
-		@statuts = Statut.all.drop(1)
-			
-	end
+  end	
+  
 end
