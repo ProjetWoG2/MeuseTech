@@ -10,7 +10,7 @@ class PagesController < ApplicationController
 	
 	def moderation
 		@comptes = Compte.order(id: :asc)	
-		@statuts = Statut.all
+		@statuts = Statut.all.drop(1)
 			
 	end
 end
