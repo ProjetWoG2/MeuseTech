@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
 	
 	
 	def current_superadmin
-		current_compte if current_compte.get_statut == 'SuperAdmin'
+		current_compte if current_compte.statut.label == 'SuperAdmin'
   end
 	
 	def authenticate_superadmin!

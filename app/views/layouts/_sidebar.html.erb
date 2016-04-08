@@ -22,13 +22,13 @@
 							<a href="/comptes/edit">Mon Profil</a>
 					</li>
 
-					<% if current_compte.get_statut != "Contributeur" %>
+					<% if current_compte.statut.label != "Contributeur" %>
 						<li>
 								<a href="/moderation">Modération</a>
 						</li>
 					<% end %>
 				  
-					<% if current_compte.get_statut != "SuperAdmin" %>
+					<% if current_compte.statut.label != "SuperAdmin" %>
 						
 						<li>
 								<a href="#">Mes Projets</a>
