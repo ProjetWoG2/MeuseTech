@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-    devise_for :comptes, path: 'comptes', skip: [:sessions],
+  devise_for :comptes, path: 'comptes', skip: [:sessions],
            controllers: {
                sessions: 'comptes/sessions'
            }
