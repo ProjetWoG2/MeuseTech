@@ -162,6 +162,8 @@
         -webkit-box-shadow: inset 0 0 0 2px #fff;
         overflow: hidden;
     }
+
+
     .btn-success:hover, .btn-success:focus, .btn-success.focus, .btn-success:active, .btn-success.active, .open > .dropdown-toggle.btn-success {
         color: #fff;
         background-color: #449d44;
@@ -235,6 +237,101 @@
     }
     .accordion input{
     	border-radius:0;
+    }
+
+    .accordion-login {
+        z-index: 801;
+        position: fixed;
+        top: .5%;
+        left: 48px;
+        padding: 0;
+        margin: 0;
+        font-size: 100%;
+    }
+
+    .accordion-login ul{
+        background: #222;
+        height: 45px;
+        padding-top:13px;
+        padding-left:2px;
+        padding-right:2px;
+    }
+
+    .accordion-login ul li {
+        list-style: none outside none;
+        display: inline-block;
+        background: #222;
+        padding: 0;
+        margin: -2px;
+    }
+    
+    .btn-login {
+        background: #222;
+        font-family: Arial;
+        color: #ffffff;
+        font-size: 16px;
+        padding: 10px 10px 10px 10px;
+        text-decoration: none;
+        -webkit-transition: all ease 0.3s;
+        -moz-transition: all ease 0.3s;
+        -ms-transition: all ease 0.3s;
+        -o-transition: all ease 0.3s;
+        transition: all ease 0.3s;
+        border: 1px solid #222;
+    }
+
+    .btn-login:hover {
+        background: #3cb0fd;
+        color: #ffffff;
+        text-decoration: none;
+        border: 1px solid #3cb0fd;
+    }
+
+    #connexion {
+        cursor:pointer;
+    }
+
+    #champsconnexion {
+        z-index: 801;
+        position: fixed;
+        top:.5%;
+        left:48px;
+        background: #222; 
+        height: 45px;
+        padding-top:0px;
+        padding-left:5px;
+        padding-right:10px;
+        display:none;
+    }
+
+    #champsconnexion label{
+        color:white;
+    }
+
+    .champ {
+        margin-right:10px;    
+    }
+
+    .btn-connecter {
+        height:40px;
+        margin-top:2px;
+        background: #222;
+        font-family: Arial;
+        color: #ffffff;
+        font-size: 16px;
+        text-decoration: none;
+        -webkit-transition: all ease 0.3s;
+        -moz-transition: all ease 0.3s;
+        -ms-transition: all ease 0.3s;
+        -o-transition: all ease 0.3s;
+        transition: all ease 0.3s;
+        border: 1px solid #222;
+    }
+    .btn-connecter:hover {
+        background: #3cb0fd;
+        color: #ffffff;
+        text-decoration: none;
+        border: 1px solid #3cb0fd;
     }
 
     .panel-heading,
@@ -325,6 +422,8 @@
         padding: 0;
         margin: 0;
     }
+
+    
     .nav>li>a {
         position: relative;
         display: block;

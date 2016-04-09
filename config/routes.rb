@@ -1,7 +1,16 @@
 Rails.application.routes.draw do
   
-  devise_for :comptes
-  root 'pages#index'
+    devise_for :comptes, path: 'comptes', skip: [:sessions],
+           controllers: {
+               sessions: 'comptes/sessions'
+           }
+
+    as :compte do
+        root 'pages#index', as: :new_compte_session
+        post 'comptes/sign_in' => 'comptes/sessions#create', as: :compte_session
+        delete 'comptes/sign_out' => 'comptes/sessions#destroy', as: :destroy_compte_session
+    end
+    
   get 'pourquoi' => 'pages#pourquoi'
 	
   resources :projets
