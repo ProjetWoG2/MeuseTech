@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160405094145) do
+ActiveRecord::Schema.define(version: 20160408211606) do
 
   create_table "actions", force: :cascade do |t|
     t.string "label"
@@ -102,6 +102,50 @@ ActiveRecord::Schema.define(version: 20160405094145) do
     t.integer "utilisateur_id"
     t.date    "online_date"
     t.text    "titre"
+  end
+
+  create_table "questionable_answers", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "assignment_id"
+    t.integer  "option_id"
+    t.string   "message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "questionable_answers", ["assignment_id"], name: "index_questionable_answers_on_assignment_id"
+  add_index "questionable_answers", ["option_id"], name: "index_questionable_answers_on_option_id"
+  add_index "questionable_answers", ["user_id"], name: "index_questionable_answers_on_user_id"
+
+  create_table "questionable_assignments", force: :cascade do |t|
+    t.integer  "question_id"
+    t.integer  "subject_id"
+    t.string   "subject_type"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "questionable_assignments", ["subject_type", "subject_id", "position"], name: "index_questionable_assignments_on_subject_and_position"
+
+  create_table "questionable_options", force: :cascade do |t|
+    t.integer  "question_id"
+    t.string   "title"
+    t.string   "note"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "questionable_options", ["question_id", "position"], name: "index_questionable_options_on_question_id_and_position"
+
+  create_table "questionable_questions", force: :cascade do |t|
+    t.string   "category"
+    t.string   "title"
+    t.string   "note"
+    t.string   "input_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "sondages", force: :cascade do |t|

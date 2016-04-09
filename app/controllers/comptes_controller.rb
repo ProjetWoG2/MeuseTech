@@ -6,9 +6,8 @@ class ComptesController < ApplicationController
   	end
 	
 	def destroy
-		@compte = Compte.find(params[:id])
-		@compte.destroy
-		redirect_to index_path
+        current_compte.destroy  
+        redirect_to 'pages#index'
   	end
 	
 	def update
@@ -32,7 +31,7 @@ class ComptesController < ApplicationController
   				render :listecomptes
   			end
   		else 
-  			redirect_to root_path
+            redirect_to root_path
   		end
   	end
 

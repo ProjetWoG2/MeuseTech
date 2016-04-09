@@ -10,17 +10,6 @@
     <li><a href="/pourquoi">Pourquoi ce site?</a></li>
 </ul>-->
 
-<ul>
-    <% if compte_signed_in? %>
 
-      	<li><a href="/comptes/sign_out" data-method="delete" rel="nofollow" >Déconnexion</a></li>
-
-    <% else %>
-        
-        <li><a href="/comptes/sign_in" >Connexion</a></li>
-				<li><a href="/comptes/sign_up" >S'inscrire</a></li>
-   
-    <% end %>
-</ul>
 
 
