@@ -6,13 +6,13 @@
 <div><%= f.label :prenom %><br />
 	<%= f.text_field :prenom %></div>
 	
-	<div><%= f.label :nom %><br />
-		<%= f.text_field :nom %></div>
+<div><%= f.label :nom %><br />
+	<%= f.text_field :nom %></div>
 
 <div><%= f.label :pseudo %><br />
 	<%= f.text_field :pseudo %></div>
 
-  <div><%= f.label :email %><br />
+<div><%= f.label :email %><br />
   <%= f.email_field :email %></div>
 
 <div><%= f.label :password, "Mot de passe" %><br />
@@ -21,7 +21,7 @@
 <div><%= f.label :password_confirmation, "Confirmation du mot de passe" %><br />
   <%= f.password_field :password_confirmation %></div>
 
-  <div><%= f.submit t('.sign_up', :default => "Sign up") %></div>
-<% end %>
+<div><%= f.submit t('.sign_up', :default => "Sign up") %></div>
+  <% end %>
 
 <%= render "devise/shared/links" %>

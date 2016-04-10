@@ -3,7 +3,7 @@ class CreateInteractions < ActiveRecord::Migration
     create_table :interactions do |t|
       t.string :type
       t.integer :article_id
-      t.integer :utilisateur_id
+      t.integer :user_id
     end
   end
 end

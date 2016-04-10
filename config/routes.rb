@@ -1,23 +1,22 @@
 Rails.application.routes.draw do
   
-  devise_for :comptes, path: 'comptes', skip: [:sessions],
+  devise_for :users, path: 'users', skip: [:sessions],
            controllers: {
-               sessions: 'comptes/sessions'
+               sessions: 'users/sessions'               
            }
 
-    as :compte do
-        root 'pages#index', as: :new_compte_session
-        post 'comptes/sign_in' => 'comptes/sessions#create', as: :compte_session
-        delete 'comptes/sign_out' => 'comptes/sessions#destroy', as: :destroy_compte_session
+    as :user do
+        root 'pages#index', as: :new_user_session
+        post 'users/sign_in' => 'users/sessions#create', as: :user_session
+        delete 'users/sign_out' => 'users/sessions#destroy', as: :destroy_user_session
+        get 'users/' => 'users#index', as: :users
+        get 'users/:id' => 'users#show', as: :user
+        patch 'users/:id' => 'users#update', as: :change_user_role
+        delete 'users/:id' => 'users#destroy', as: :destroy_user
     end
     
-  get 'pourquoi' => 'pages#pourquoi'
-	
-  resources :projets
-  resources :actualites
-  resources :sondages
-  resources :comptes
-	
+  get 'pourquoi' => 'pages#pourquoi'	
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

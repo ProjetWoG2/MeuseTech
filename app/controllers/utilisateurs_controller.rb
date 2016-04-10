@@ -1,2 +1,0 @@
-class UtilisateursController < ComptesController
-end

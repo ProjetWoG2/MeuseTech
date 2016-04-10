@@ -1,3 +1,0 @@
-class superAdmin < Compte
-  
-end

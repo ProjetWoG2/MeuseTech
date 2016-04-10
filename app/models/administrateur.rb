@@ -1,2 +1,0 @@
-class Administrateur < Utilisateur
-end
