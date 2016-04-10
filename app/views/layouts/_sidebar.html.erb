@@ -6,7 +6,7 @@
 </a>
 
 
-<% if compte_signed_in? %>
+<% if user_signed_in? %>
 
 		<a id="menu-toggle" href="" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
 
@@ -16,19 +16,19 @@
 			<ul class="sidebar-nav">
 					<a id="menu-close" href="" class="btn btn-danger pull-right hidden-md hidden-lg toggle"><i class="fa fa-times"></i></a>
 					<li class="sidebar-brand">
-						<p><%= current_compte.pseudo %></p>
+						<p><%= current_user.pseudo %></p>
 					</li>
 					<li>
-							<a href="/comptes/edit">Mon Profil</a>
+							<a href="/users/edit">Mon Profil</a>
 					</li>
 
-					<% if current_compte.statut.label != "Contributeur" %>
+					<% if current_user.role.label != "Contributeur" %>
 						<li>
-								<a href="/comptes">Modération</a>
+								<a href="/users">Modération</a>
 						</li>
 					<% end %>
 				  
-					<% if current_compte.statut.label != "SuperAdmin" %>
+					<% if current_user.role.label != "SuperAdmin" %>
 						
 						<li>
 								<a href="#">Mes Projets</a>
@@ -51,14 +51,14 @@
 <div class="accordion-login">
             
             <ul>
-                <% if compte_signed_in? %>
+                <% if user_signed_in? %>
 
-      	             <li><a class="btn-login" role="button" href="/comptes/sign_out" data-method="delete" rel="nofollow" >Déconnexion</a></li>
+      	             <li><a class="btn-login" role="button" href="/users/sign_out" data-method="delete" rel="nofollow" >Déconnexion</a></li>
 
                 <% else %>
         
                     <li><span class="btn-login" role="button" id="connexion">Connexion</span></li>
-				    <li><a  class="btn-login" role="button" href="/comptes/sign_up" >S'inscrire</a></li>
+				    <li><a  class="btn-login" role="button" href="/users/sign_up" >S'inscrire</a></li>
                     
    
                 <% end %>
@@ -76,7 +76,7 @@
                         <%= f.check_box :remember_me %> <%= f.label "Rester connecté" %>
                     <%= link_to t(".forgot_your_password", :default => "Mot de passe oublié?"), new_password_path(resource_name) %>
                     <%= f.submit t('.sign_in', :default => "Se connecter"), :class => 'btn-connecter' %>
-                    <a  class="btn-login" role="button" href="/comptes/sign_up" >S'inscrire</a>
+                    <a  class="btn-login" role="button" href="/users/sign_up" >S'inscrire</a>
                 
                 </div>
         <% end %>

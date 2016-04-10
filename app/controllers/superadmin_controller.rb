@@ -1,2 +1,0 @@
-class SuperadminController < ComptesController
-end

@@ -1,2 +1,0 @@
-class Utilisateur < Compte
-end

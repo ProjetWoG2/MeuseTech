@@ -7,14 +7,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 if Action.all.empty?
-  ["Bannir", "Supprimer", "Editer", "Ajouter"].each do |action|
+  ["Bannir => Contributeur", "Supprimer => Admin", "Editer => Admin", "Supprimer => Contributeur", "Editer => Contributeur", "ChangerRole => Contributeur->Admin"].each do |action|
     Action.create(label: action)
-  end
-end
-
-if Cible.all.empty?
-  ["Actions", "Articles", "Articles_Media", "Attachements", "Cibles", "Commentaires", "Comptes", "Interactions", "Media", "Permissions", "Projets", "Publications", "Sondages", "Statuts", "Utilisateurs"].each do |cible|
-    Cible.create(nom_table: cible)
   end
 end
 
@@ -24,21 +18,24 @@ if Attachement.all.empty?
   end
 end
 
-if Statut.all.empty?
-  ["SuperAdmin", "Administrateur", "Contributeur"].each do |statut|
-    Statut.create(label: statut)
+if Role.all.empty?
+  ["SuperAdmin", "Admin", "Contributeur"].each do |statut|
+    Role.create(label: statut)
   end
 end
 
-if Compte.all.empty?
-   Compte.create(
-   email: "superadmin@meusetech.com",
-   pseudo: "SuperAdmin",
-   nom: "Admin",
-   prenom: "Super",
-   statut_id:1,
-   password: "superadmin",
-   password_confirmation: "superadmin",
-   confirmed_at: DateTime.now,
-   unconfirmed_email: "superadmin@meusetech.com")
+
+if User.all.empty?
+    User.create(
+      role_id: "1",
+      email: "superadmin@meusetech.com",
+      password: "superadmin",
+      password_confirmation: "superadmin",
+      confirmed_at: DateTime.now,
+      unconfirmed_email: "superadmin@meusetech.com",
+      pseudo: "SuperAdmin",
+      nom: "Admin",
+      prenom: "Super"
+    )
 end
+
