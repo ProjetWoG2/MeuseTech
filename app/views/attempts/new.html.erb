@@ -1,0 +1,14 @@
+<div class="container">
+  <% if @survey.nil? %>
+    <p>
+      Ce sondage n'est plus disponible.
+    </p>
+  <% elsif @survey.avaliable_for_participant?(@participant) %>
+    <%= render 'form' %>
+  <% else %>
+    <p>
+      Vous avez déjà répondu à ce sondage.
+    </p>
+    <a href="/sondages">Retour aux sondages</a>
+  <% end -%>
+</div>

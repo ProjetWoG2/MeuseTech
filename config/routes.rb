@@ -15,6 +15,19 @@ Rails.application.routes.draw do
         delete 'users/:id' => 'users#destroy', as: :destroy_user
     end
     
+  root :to => 'pages#index'
+  
+  scope(:path_names => { :new => "nouveau", :edit => "editer" }) do
+        resources :surveys, :path => "sondages"
+  end
+  
+  resources 'attempts', :path => "participations"
+  resources 'users', only: [:create]
+
+
+  delete 'attempts/:survey_id/:user_id' => 'attempts#delete_user_attempts', as: :delete_user_attempts    
+    
+    
   get 'pourquoi' => 'pages#pourquoi'	
 
   # The priority is based upon order of creation: first created -> highest priority.
