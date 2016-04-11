@@ -6,4 +6,5 @@ class User < ActiveRecord::Base
   has_one :profile
   belongs_to :role 
   attr_default :role_id, 3 
+  has_many :surveys
 end
