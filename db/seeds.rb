@@ -6,24 +6,11 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-if Action.all.empty?
-  ["Bannir => Contributeur", "Supprimer => Admin", "Editer => Admin", "Supprimer => Contributeur", "Editer => Contributeur", "ChangerRole => Contributeur->Admin"].each do |action|
-    Action.create(label: action)
-  end
-end
-
 if Attachement.all.empty?
   ["Domicile", "Travail", "Loisirs"].each do |attachement|
     Attachement.create(label: attachement)
   end
 end
-
-if Role.all.empty?
-  ["SuperAdmin", "Admin", "Contributeur"].each do |statut|
-    Role.create(label: statut)
-  end
-end
-
 
 if User.all.empty?
     User.create(

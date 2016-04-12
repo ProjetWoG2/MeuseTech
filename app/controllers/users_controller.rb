@@ -1,41 +1,29 @@
 class UsersController < ApplicationController	
+
+  before_action :login_required, except: [ :index, :show ]
+  before_action :role_required, except: [ :index, :show ]
+
+  before_action :exists , only: [ :edit, :destroy, :update, :show]
+  before_action :owner_required, only: [ :edit, :update, :destroy]
 	
 	def edit
-		if User.exists?(params[:id])      
-      @user = User.find(params[:id])    
-      render :edit
-    else
-      flash[:alert] ="L'utilisateur n'existe pas."
-      redirect_to :back
-    end 
+		render :edit    
   end
 	
 	def destroy
-    if User.exists?(params[:id])      
-      @user = User.find(params[:id])    
-      #action d'effacement de l'utilisateur
-      @user.destroy        
-      flash[:notice] ="L'utilisateur a été effacé."   
-      redirect_to action: "index"
-    else
-      flash[:alert] ="L'utilisateur n'existe pas."
-      redirect_to :back
-    end    
+    #action d'effacement de l'utilisateur
+    @user.destroy        
+    flash[:notice] ="L'utilisateur a été effacé."   
+    redirect_to action: "index"    
   end
 	
 	def update
-	  if User.exists?(params[:id])      
-      @user = User.find(params[:id])
-      if @user.update(compte_params)  
-        flash[:notice] ="L'utilisateur a été mis à jour."
-        redirect_to action: "index"
-      else
-        flash[:alert] ="L'utilisateur n'a pas été mis à jour."
-        redirect_to action: "index"
-      end
+	  if @user.update(compte_params)  
+      flash[:notice] ="L'utilisateur a été mis à jour."
+      redirect_to action: "index"
     else
-      flash[:alert] ="L'utilisateur n'existe pas."
-      redirect_to :back
+      flash[:alert] ="L'utilisateur n'a pas été mis à jour."
+      redirect_to action: "index"
     end
   end
 	
@@ -46,17 +34,21 @@ class UsersController < ApplicationController
   end
 
   def show
-    if User.exists?(params[:id])      
-      @user = User.find(params[:id])    
-      render :show
-    else
-      flash[:alert] ="L'utilisateur n'existe pas."
-      redirect_to action: "index"
-    end
+    render :show    
   end
+
+  private
 
   def compte_params
     params.permit(:role_id)
+  end
+
+  def exist
+    if User.exists?(params[:id])
+      @user = User.find(params[:id])    
+    else
+      flash[:alert] ="L'utilisateur n'existe pas."      
     end
+  end
 
 end

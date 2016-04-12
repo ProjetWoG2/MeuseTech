@@ -1,0 +1,22 @@
+!!!
+%html
+  %head
+    %title TheRoleTestcase
+    = stylesheet_link_tag    :the_role_management_panel
+    = javascript_include_tag :the_role_management_panel
+    = stylesheet_link_tag "http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css"
+    = stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+    = javascript_include_tag "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+
+    = csrf_meta_tags
+  %body
+    .container
+      .row
+        .col-md-3.manage_panel
+          = yield :role_sidebar
+        .col-md-9.main_content
+          = render partial: 'the_notification/flash', locals: { format: :json }
+          = yield
+          = yield :role_main
+
+      

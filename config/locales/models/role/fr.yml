@@ -1,0 +1,6 @@
+fr :
+  views:
+    role:
+      rule_on: autoriser
+      rule_off: refuser
+      destroy_rule: supprimer

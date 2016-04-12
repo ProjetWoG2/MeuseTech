@@ -30,6 +30,12 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'twitter-bootstrap-rails', '~> 3.2', '>= 3.2.2'
 
+# gestion des rôles
+gem 'the_role', '~> 3.0.0'
+
+# gestion des sondages
+gem 'survey', '~> 0.1'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

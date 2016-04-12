@@ -1,0 +1,37 @@
+/*flash*/
+/* line 3, G:/Projets/MeuseTech/app/assets/stylesheets/custom.scss */
+.alert {
+  width: 30%;
+}
+
+/* line 8, G:/Projets/MeuseTech/app/assets/stylesheets/custom.scss */
+.alert-error {
+  background-color: #f2dede;
+  border-color: #eed3d7;
+  color: #b94a48;
+  text-align: left;
+}
+
+/* line 15, G:/Projets/MeuseTech/app/assets/stylesheets/custom.scss */
+.alert-alert {
+  background-color: #f2dede;
+  border-color: #eed3d7;
+  color: #b94a48;
+  text-align: left;
+}
+
+/* line 22, G:/Projets/MeuseTech/app/assets/stylesheets/custom.scss */
+.alert-success {
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  color: #468847;
+  text-align: left;
+}
+
+/* line 29, G:/Projets/MeuseTech/app/assets/stylesheets/custom.scss */
+.alert-notice {
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  color: #468847;
+  text-align: left;
+}

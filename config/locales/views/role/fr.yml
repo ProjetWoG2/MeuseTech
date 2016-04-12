@@ -1,0 +1,49 @@
+fr :  
+  the_role_gui:
+    role_created:             Rôle créé
+    role_updated:             Role mis à jour
+    role_deleted:             Role effacé
+    section_created:          Section créée
+    section_not_created:      Section non créée
+    section_rule_created:     "Règle de section créée"
+    section_rule_not_created: "Règle de section non créée"
+    section_rule_on:          "La règle de section est disponible"
+    section_rule_off:         "La règle de section est indisponible"
+    state_not_changed:        "La règle de section n'a pas changé"
+    section_deleted:          Section effacée
+    section_not_deleted:      Section non effacée
+    section_rule_deleted:     "Règle de section effacée"
+    section_rule_not_deleted: "Règle de section non effacée"
+    imported_roles:           "Rôles importés: %{roles_list}"
+
+    roles:
+      new:
+        create: Créer un nouveau rôle
+        name: Nom du rôle (underscored latin string)
+        title: Titre du rôle (text)
+        description: Description du rôle (text)
+        based_on_role: "Le nouveau rôle sera basé sur:"
+      role:
+        role_name: Nom du rôle
+        title:     Titre
+        role_description: Description du rôle
+        delete_section: Effacer la section
+        section_delete_confirm: 'Voulez-vous effacer la section?'
+        rule_delete_confirm: 'Voulez-vous effacer la règle?'
+        enable: Autoriser
+        disable: refuser
+        delete_rule: Effacer la règle
+        new_section_placeholder: Nouveau nom de section
+        create_section: Créer une nouvelle section
+        new_rule_placeholder: Nouveau nom de règle
+        create_rule: Créer une nouvelle règle
+        role_export: "Exporter le rôle"
+      sidebar:
+        roles_list: Liste des rôles
+        new_role: Créer un nouveau rôle
+        delete_role_confirm: "Etes-vous surs? Cela est irréversible!"
+
+        roles_export: "Export des rôles"
+        roles_import: "Import des rôles"
+        roles_import_confirm: 'Cela changera votre politique de règles. Etes-vous sûrs?'
+

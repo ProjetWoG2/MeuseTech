@@ -1,0 +1,39 @@
+/* line 1, G:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/the_notification-0.5.1/app/assets/stylesheets/the_notification.css.scss */
+.flash_msgs {
+  padding: 10px 10px 0px 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+/* line 7, G:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/the_notification-0.5.1/app/assets/stylesheets/the_notification.css.scss */
+.flash_msgs.alert-info {
+  border: 3px solid #3A87AD;
+  color: #3A87AD;
+}
+/* line 11, G:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/the_notification-0.5.1/app/assets/stylesheets/the_notification.css.scss */
+.flash_msgs.alert-info p {
+  font-size: 14px;
+  line-height: 130%;
+}
+
+/* line 18, G:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/the_notification-0.5.1/app/assets/stylesheets/the_notification.css.scss */
+.error_explanation.alert-danger {
+  border: 3px solid #B94A48;
+  color: #B94A48;
+  padding: 10px 10px 0px 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+/* line 27, G:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/the_notification-0.5.1/app/assets/stylesheets/the_notification.css.scss */
+.error_explanation.alert-danger ul {
+  margin-left: 15px;
+  padding-bottom: 0.1px;
+  list-style: disc inside none;
+}
+/* line 32, G:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/the_notification-0.5.1/app/assets/stylesheets/the_notification.css.scss */
+.error_explanation.alert-danger li {
+  font-size: 14px;
+  line-height: 130%;
+  margin-bottom: 15px;
+}

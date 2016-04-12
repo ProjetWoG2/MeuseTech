@@ -1,3 +1,3 @@
 class Role < ActiveRecord::Base
-    has_many :user	
+  include TheRole::Api::Role
 end

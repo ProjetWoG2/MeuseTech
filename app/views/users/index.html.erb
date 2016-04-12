@@ -1,5 +1,11 @@
 <h1>Espace Modération SuperAdministrateur </h1>
 
+<% if current_user %>
+	<% if current_user.admin? %>
+		<%= link_to 'TheRole Manage Panel', admin_roles_path %>
+	<% end %>
+<% end %>
+
 <table class="table">
 	<thead class="thead-inverse">
 		<tr>
@@ -8,7 +14,6 @@
 			<th>Prénom</th>
 			<th>Email</th>
 			<th>Rôle actuel</th>
-			<th>Changer Rôle</th>
 			<th>Actions</th>
 		</tr>
 	</thead>
@@ -20,18 +25,8 @@
 			<td><%= user.nom %></td>
 			<td><%= user.prenom %></td>
 			<td><%= user.email %></td>
-			<td><%= user.role.label %></td>
-			<td>
-				<%= form_for(:user, :url => user_path(user), :method => 'PATCH') do |f| %>
-							
-				<%= f.select_tag 'role_id', options_from_collection_for_select(@roles, 'id', 'label', user.role_id) %>
-				
-			</td>
-			<td>
-				<%= f.submit 'Valider' %> | <a href="/users/<%= user.id %>" data-method="delete">Supprimer</a>
-			</td>
-
-				<% end %>			
+			<td><%= user.role.name %></td>
+			<td><a href="/users/<%= user.id %>" data-method="delete">Supprimer</a></td>
 		</tr>
 			
 		<% end %>
