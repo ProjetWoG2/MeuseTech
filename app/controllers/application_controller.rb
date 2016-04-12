@@ -1,24 +1,13 @@
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
+	include TheRole::Controller
+
 	protect_from_forgery with: :exception
 	before_action :configure_permitted_parameters, if: :devise_controller?
 	
-	def render_403
-    render :status => :forbidden, :text => "Forbidden fruit"
-  end
-	
-	
-	def current_superadmin
-		current_compte if current_compte.statut.label == 'SuperAdmin'
-  end
-	
-	def authenticate_superadmin!
-		authenticate_compte!
-		render_403 unless current_superadmin
-  end
-	
-	
+
+
 	
   
 	protected

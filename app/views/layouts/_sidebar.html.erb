@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
 <!-- Navigation -->
 <a id="to-top" class="btn btn-lg btn-dark" href="#top">
     <span class="sr-only">Toggle to Top Navigation</span>
@@ -22,27 +22,24 @@
 							<a href="/users/edit">Mon Profil</a>
 					</li>
 
-					<% if current_user.role.label != "Contributeur" %>
-						<li>
-								<a href="/users">Modération</a>
-						</li>
-					<% end %>
-				  
-					<% if current_user.role.label != "SuperAdmin" %>
-						
-						<li>
-								<a href="#">Mes Projets</a>
-						</li>				
+					<li>
+							<a href="/users">Modération</a>
+					</li>
 				
-						<li>
-								<a href="#">Projets Suivis</a>
-						</li>
+				  
+						
+					<li>
+							<a href="#">Mes Projets</a>
+					</li>				
+				
+					<li>
+							<a href="#">Projets Suivis</a>
+					</li>
 					
-						<li>
-								<a href="#">Notifications</a>
-						</li>
-					<% end %>
-					
+					<li>
+							<a href="#">Notifications</a>
+					</li>
+									
 			</ul>
 		</nav>
 <% end %>

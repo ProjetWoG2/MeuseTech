@@ -9,7 +9,20 @@ Rails.application.config.assets.version = '1.0'
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
-Rails.application.config.assets.precompile += %w( *.scss )
-Rails.application.config.assets.precompile += %w( *.css )
 
-Rails.application.config.assets.precompile += %w( *.js )
+Rails.application.config.assets.precompile += %w( application.scss )
+Rails.application.config.assets.precompile += %w( messages.css )
+Rails.application.config.assets.precompile += %w( navbar.css )
+Rails.application.config.assets.precompile += %w( sidebar.css )
+Rails.application.config.assets.precompile += %w( navbartop.css )
+Rails.application.config.assets.precompile += %w( the_role_management_panel.css.scss )
+
+
+Rails.application.config.assets.precompile += %w( application.js )
+Rails.application.config.assets.precompile += %w( messages.js )
+Rails.application.config.assets.precompile += %w( nav_bar.js )
+Rails.application.config.assets.precompile += %w( side_bar.js )
+Rails.application.config.assets.precompile += %w( bootstrap.js.coffee )
+Rails.application.config.assets.precompile += %w( the_role_editinplace.js.coffee )
+Rails.application.config.assets.precompile += %w( the_role_management_panel.js )
+Rails.application.config.assets.precompile += %w( the_role_management_panel_initializer.js.coffee )

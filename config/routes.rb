@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+  root :to => 'pages#index'
   
   devise_for :users, path: 'users', skip: [:sessions],
            controllers: {
@@ -14,9 +16,11 @@ Rails.application.routes.draw do
         patch 'users/:id' => 'users#update', as: :change_user_role
         delete 'users/:id' => 'users#destroy', as: :destroy_user
     end
-    
-  root :to => 'pages#index'
-  
+
+
+  TheRoleManagementPanel::Routes.mixin(self)
+
+      
   scope(:path_names => { :new => "nouveau", :edit => "editer" }) do
         resources :surveys, :path => "sondages"
   end
@@ -26,8 +30,7 @@ Rails.application.routes.draw do
 
 
   delete 'attempts/:survey_id/:user_id' => 'attempts#delete_user_attempts', as: :delete_user_attempts    
-    
-    
+
   get 'pourquoi' => 'pages#pourquoi'	
 
   # The priority is based upon order of creation: first created -> highest priority.

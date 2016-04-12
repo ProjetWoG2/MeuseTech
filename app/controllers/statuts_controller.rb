@@ -1,3 +1,0 @@
-class StatutsController < ApplicationController
-	
-end
