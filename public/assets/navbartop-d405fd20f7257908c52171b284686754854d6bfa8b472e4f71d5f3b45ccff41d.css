@@ -1,0 +1,50 @@
+/* line 1, G:/Projets/MeuseTech/app/assets/stylesheets/navbartop.scss */
+#svg2 {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* line 7, G:/Projets/MeuseTech/app/assets/stylesheets/navbartop.scss */
+.divnavbartop #marron {
+  fill: #662c1e;
+  fill-opacity: 1;
+}
+
+/* line 12, G:/Projets/MeuseTech/app/assets/stylesheets/navbartop.scss */
+.divnavbartop #marron:hover {
+  fill-opacity: 0.75;
+}
+
+/* line 16, G:/Projets/MeuseTech/app/assets/stylesheets/navbartop.scss */
+.divnavbartop #bleu {
+  fill: #0173bc;
+  fill-opacity: 1;
+}
+
+/* line 21, G:/Projets/MeuseTech/app/assets/stylesheets/navbartop.scss */
+.divnavbartop #bleu:hover {
+  fill-opacity: 0.75;
+}
+
+/* line 25, G:/Projets/MeuseTech/app/assets/stylesheets/navbartop.scss */
+.divnavbartop #orange {
+  fill: #ec8e2c;
+  fill-opacity: 1;
+}
+
+/* line 30, G:/Projets/MeuseTech/app/assets/stylesheets/navbartop.scss */
+.divnavbartop #orange:hover {
+  fill-opacity: 0.75;
+}
+
+/* line 34, G:/Projets/MeuseTech/app/assets/stylesheets/navbartop.scss */
+.divnavbartop #vert {
+  fill: #33b160;
+  fill-opacity: 1;
+}
+
+/* line 39, G:/Projets/MeuseTech/app/assets/stylesheets/navbartop.scss */
+.divnavbartop #vert:hover {
+  fill-opacity: 0.75;
+}
