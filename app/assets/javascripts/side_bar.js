@@ -10,4 +10,6 @@ function afficherChamps() {
     }
 }
  
-connexion.addEventListener("click", afficherChamps, false);
+if (connexion) {
+    connexion.addEventListener("click", afficherChamps, false);
+}
