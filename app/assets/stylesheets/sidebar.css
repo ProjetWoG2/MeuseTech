@@ -676,7 +676,7 @@
         color: #000000;
     }
     .form-control {
-        background-color: #c9302c !important;
+        background-color: #81DAF5 !important;
         background-image: none;
         border: none;
         border-radius: 0;
@@ -697,13 +697,13 @@
     }
     .form-control:hover {
         border-color: rgba(255,  00,  00,  0.75);
-        background-color: #990000 !important;
+        background-color: #CEECF5 !important;
         background-image: none;
         color: #inherit !important;
         color: #fff;
-        -webkit-box-shadow: 0 0 10px rgba(255,  00,  00,  0.8);
-        -moz-box-shadow: 0 0 10px rgba(255,  00,  00,  0.8);
-        box-shadow: 0 0 10px rgba(255,  00,  00,  0.8);
+        -webkit-box-shadow: 0 0 10px rgba(46,  204,  250,  0.8);
+        -moz-box-shadow: 0 0 10px rgba(46,  204,  250,  0.8);
+        box-shadow: 0 0 10px rgba(46,  204,  250,  0.8);
     }
     .form-control:focus {
         border-color: rgba(22,  22,  22,  .75);
