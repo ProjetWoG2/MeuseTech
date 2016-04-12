@@ -15,7 +15,11 @@
 	
 	<header>
 		<%= render 'layouts/messages' %>
-		<%= render 'layouts/navbar' %>
+		<% if request.fullpath== '/' %>
+			<%= render 'layouts/navbar' %>
+		<% else %>
+			<%= render 'layouts/navbartop' %>
+		<% end %>
 		<%= render 'layouts/sidebar' %>
 	</header>
 
