@@ -30,7 +30,10 @@
 		<%= render 'layouts/footer' %>
 	</footer>
 
-	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag "https://code.jquery.com/jquery-2.2.3.min.js" %>
+	<%= javascript_include_tag "pages" %>
+	
+	<%= yield :script %> 
 	
 </body>
 

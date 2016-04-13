@@ -8,78 +8,73 @@
 
 <% if user_signed_in? %>
 
-		<a id="menu-toggle" href="" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
+<a id="menu-toggle" href="" class="btn btn-dark btn-lg toggle">
+	<i class="fa fa-bars"></i>
+</a>
 
+	<!-- Sidebar droite -->
+<nav id="sidebar-wrapper">
+	<ul class="sidebar-nav">
+		<a id="menu-close" href="" class="btn btn-danger pull-right hidden-md hidden-lg toggle">
+			<i class="fa fa-times"></i>
+		</a>
+		<li class="sidebar-brand">
+			<p><%= current_user.pseudo %></p>
+		</li>
+		<li>
+			<a href="/users/edit">Mon Profil</a>
+		</li>
+		<li>
+			<a href="/users">Modération</a>
+		</li>
+		<li>
+			<a href="#">Mes Projets</a>
+		</li>				
+		<li>
+			<a href="#">Projets Suivis</a>
+		</li>
+		<li>
+			<a href="#">Notifications</a>
+		</li>
+	</ul>
+</nav>
 
-		<!-- Sidebar droite -->
-		<nav id="sidebar-wrapper">
-			<ul class="sidebar-nav">
-					<a id="menu-close" href="" class="btn btn-danger pull-right hidden-md hidden-lg toggle"><i class="fa fa-times"></i></a>
-					<li class="sidebar-brand">
-						<p><%= current_user.pseudo %></p>
-					</li>
-					<li>
-							<a href="/users/edit">Mon Profil</a>
-					</li>
-
-					<li>
-							<a href="/users">Modération</a>
-					</li>
-					
-					<li>
-							<a href="#">Mes Projets</a>
-					</li>				
-				
-					<li>
-							<a href="#">Projets Suivis</a>
-					</li>
-					
-					<li>
-							<a href="#">Notifications</a>
-					</li>
-									
-			</ul>
-		</nav>
 <% end %>
 
 
 <div class="accordion-login">
             
-            <ul>
-                <% if user_signed_in? %>
+    <ul>
+<% if user_signed_in? %>
 
-      	             <li><a class="btn-login" role="button" href="/users/sign_out" data-method="delete" rel="nofollow" >Déconnexion</a></li>
+	    <li><a class="btn-login" role="button" href="/users/sign_out" data-method="delete" rel="nofollow" >Déconnexion</a></li>
 
-                <% else %>
+<% else %>
         
-                    <li><span class="btn-login" role="button" id="connexion">Connexion</span></li>
-				    <li><a  class="btn-login" role="button" href="/users/sign_up" >S'inscrire</a></li>
+        <li><span class="btn-login" id="connexion">Connexion</span></li>
+	    <li><a class="btn-login" role="button" href="/users/sign_up" >S'inscrire</a></li>
                     
    
-                <% end %>
-            </ul>
+<% end %>
+    </ul>
 </div>
 
-    <div id="champsconnexion">
-        <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-            
-                <div>
-                        <%= f.label :email %>
-                        <%= f.email_field :email, :class => 'champ' %>  
-                        <%= f.label "Mot de passe" %>  
-                        <%= f.password_field :password, :class => 'champ' %>
-                        <%= f.check_box :remember_me %> <%= f.label "Rester connecté" %>
-                    <%= link_to t(".forgot_your_password", :default => "Mot de passe oublié?"), new_password_path(resource_name) %>
-                    <%= f.submit t('.sign_in', :default => "Se connecter"), :class => 'btn-connecter' %>
-                    <a  class="btn-login" role="button" href="/users/sign_up" >S'inscrire</a>
-                
-                </div>
-        <% end %>
+<div id="champsconnexion">
+	<div>
+		<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>            
+	    
+	        <%= f.label :email %>
+	        <%= f.email_field :email, :class => 'champ' %>  
+	        <%= f.label "Mot de passe" %>  
+	        <%= f.password_field :password, :class => 'champ' %>
+	        <%= f.check_box :remember_me %> <%= f.label "Rester connecté" %>
+		    <%= link_to t(".forgot_your_password", :default => "Mot de passe oublié?"), new_password_path(resource_name) %>
+	    	<%= f.submit t('.sign_in', :default => "Se connecter"), :class => 'btn-connecter' %>
+	    	<a class="btn-login" role="button" href="/users/sign_up" >S'inscrire</a>
+		<% end %>
+	</div>	
 
-    </div>
-
-
-
+</div>
 
 <!-- sidebar réseaux sociaux -->
 <aside id="accordion" class="social text-vertical-center">
@@ -101,4 +96,5 @@
 <div class="container">
 
 </div>
-<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+
+
