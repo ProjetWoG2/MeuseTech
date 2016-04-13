@@ -8,14 +8,19 @@
 	<%= stylesheet_link_tag 'navbar' %>
 	<%= stylesheet_link_tag 'navbartop' %>
 	<%= stylesheet_link_tag 'sidebar' %>
-	<%= yield :stylesheet %>  
+	<%= yield :stylesheet %>
+     
 </head>
 
 <body>
 	
 	<header>
 		<%= render 'layouts/messages' %>
-		<%= render 'layouts/navbar' %>
+		<% if request.fullpath== '/' %>
+			<%= render 'layouts/navbar' %>
+		<% else %>
+			<%= render 'layouts/navbartop' %>
+		<% end %>
 		<%= render 'layouts/sidebar' %>
 	</header>
 

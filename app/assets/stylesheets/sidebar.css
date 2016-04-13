@@ -114,10 +114,10 @@
         box-shadow: none;
     }
     #menu-toggle {
-        z-index: 801;
+        z-index: 802;
         position: fixed;
         top: 0;
-        right: 15px;
+        right: 0;
     }
     #sidebar-wrapper.active {
         right: 250px;
@@ -129,7 +129,7 @@
         transition: all 0.4s ease 0s;
     }
     .toggle {
-        margin: 5px 5px 0 0;
+        margin: 0px 0px 0 0;
     }
     #to-top {
         position: fixed;
@@ -242,8 +242,9 @@
     .accordion-login {
         z-index: 801;
         position: fixed;
-        top: .5%;
+        top: 0%;
         left: 48px;
+        width: 100%;
         padding: 0;
         margin: 0;
         font-size: 100%;
@@ -271,20 +272,20 @@
         color: #ffffff;
         font-size: 16px;
         padding: 10px 10px 10px 10px;
+        margin-left: 4px;
         text-decoration: none;
         -webkit-transition: all ease 0.3s;
         -moz-transition: all ease 0.3s;
         -ms-transition: all ease 0.3s;
         -o-transition: all ease 0.3s;
         transition: all ease 0.3s;
-        border: 1px solid #222;
     }
 
     .btn-login:hover {
-        background: #3cb0fd;
+        background: #ec8e2c;
         color: #ffffff;
         text-decoration: none;
-        border: 1px solid #3cb0fd;
+        border: 1px solid #ec8e2c;
     }
 
     #connexion {
@@ -294,7 +295,7 @@
     #champsconnexion {
         z-index: 801;
         position: fixed;
-        top:.5%;
+        top:0%;
         left:48px;
         background: #222; 
         height: 45px;
@@ -325,13 +326,13 @@
         -ms-transition: all ease 0.3s;
         -o-transition: all ease 0.3s;
         transition: all ease 0.3s;
-        border: 1px solid #222;
+        border: 0px;
     }
     .btn-connecter:hover {
-        background: #3cb0fd;
+        background: #ec8e2c;
         color: #ffffff;
         text-decoration: none;
-        border: 1px solid #3cb0fd;
+        border: 1px solid #ec8e2c;
     }
 
     .panel-heading,
@@ -407,7 +408,7 @@
     .social {
         z-index: 801;
         position: fixed;
-        top: .5%;
+        top: 0%;
         left: 0;
         padding: 0;
         margin: 0;
@@ -420,6 +421,7 @@
         display: block;
         background: #222;
         padding: 0;
+        padding-bottom: 4px;
         margin: 0;
     }
 
@@ -676,7 +678,7 @@
         color: #000000;
     }
     .form-control {
-        background-color: #c9302c !important;
+        background-color: #81DAF5 !important;
         background-image: none;
         border: none;
         border-radius: 0;
@@ -697,13 +699,13 @@
     }
     .form-control:hover {
         border-color: rgba(255,  00,  00,  0.75);
-        background-color: #990000 !important;
+        background-color: #CEECF5 !important;
         background-image: none;
         color: #inherit !important;
         color: #fff;
-        -webkit-box-shadow: 0 0 10px rgba(255,  00,  00,  0.8);
-        -moz-box-shadow: 0 0 10px rgba(255,  00,  00,  0.8);
-        box-shadow: 0 0 10px rgba(255,  00,  00,  0.8);
+        -webkit-box-shadow: 0 0 10px rgba(46,  204,  250,  0.8);
+        -moz-box-shadow: 0 0 10px rgba(46,  204,  250,  0.8);
+        box-shadow: 0 0 10px rgba(46,  204,  250,  0.8);
     }
     .form-control:focus {
         border-color: rgba(22,  22,  22,  .75);

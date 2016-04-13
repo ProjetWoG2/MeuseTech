@@ -7,15 +7,15 @@ Rails.application.routes.draw do
                sessions: 'users/sessions'               
            }
 
-    as :user do
-        root 'pages#index', as: :new_user_session
-        post 'users/sign_in' => 'users/sessions#create', as: :user_session
-        delete 'users/sign_out' => 'users/sessions#destroy', as: :destroy_user_session
-        get 'users/' => 'users#index', as: :users
-        get 'users/:id' => 'users#show', as: :user
-        patch 'users/:id' => 'users#update', as: :change_user_role
-        delete 'users/:id' => 'users#destroy', as: :destroy_user
-    end
+  as :user do
+    root 'pages#index', as: :new_user_session
+    post 'users/sign_in' => 'users/sessions#create', as: :user_session
+    delete 'users/sign_out' => 'users/sessions#destroy', as: :destroy_user_session
+    get 'users/' => 'users#index', as: :users
+    get 'users/:id' => 'users#show', as: :user
+    patch 'users/:id' => 'users#update', as: :change_user_role
+    delete 'users/:id' => 'users#destroy', as: :destroy_user
+  end
 
 
   TheRoleManagementPanel::Routes.mixin(self)
@@ -25,6 +25,7 @@ Rails.application.routes.draw do
         resources :surveys, :path => "sondages"
   end
   
+  resources 'actualites'
   resources 'attempts', :path => "participations"
   resources 'users', only: [:create]
 
