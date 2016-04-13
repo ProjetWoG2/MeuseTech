@@ -1,10 +1,12 @@
-<h2>Voir le compte <%= @user.email %></h2>
+<% if user_signed_in? %>
+	<h2>Voir le compte <%= @user.email %></h2>
 
 
-<div><label><%= @user.nom %></label></div>
+	<div><label><%= @user.nom %></label></div>
 
-<div><label><%= @user.prenom %></label></div>
+	<div><label><%= @user.prenom %></label></div>
 
-<div><label><%= @user.pseudo %></label></div>
+	<div><label><%= @user.pseudo %></label></div>
+<% end %>
 
 <a href="/users">Retour Espace Modération</a>

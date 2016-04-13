@@ -43,7 +43,7 @@ class UsersController < ApplicationController
     params.permit(:role_id)
   end
 
-  def exist
+  def exists
     if User.exists?(params[:id])
       @user = User.find(params[:id])    
     else
