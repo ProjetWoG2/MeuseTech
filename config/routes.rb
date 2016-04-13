@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   as :user do
     root 'pages#index', as: :new_user_session
     post 'users/sign_in' => 'users/sessions#create', as: :user_session
-    delete 'users/sign_out' => 'users/sessions#destroy', as: :destroy_user_session
+    get 'users/sign_out' => 'users/sessions#destroy', as: :destroy_user_session
     get 'users/' => 'users#index', as: :users
     get 'users/:id' => 'users#show', as: :user
     patch 'users/:id' => 'users#update', as: :change_user_role
