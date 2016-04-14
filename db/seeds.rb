@@ -20,9 +20,55 @@ if User.all.empty?
       password_confirmation: "superadmin",
       confirmed_at: DateTime.now,
       unconfirmed_email: "superadmin@meusetech.com",
-      pseudo: "SuperAdmin",
-      nom: "Admin",
-      prenom: "Super"
+      pseudo: "Dieu",
+      nom: "Norris",
+      prenom: "Chuck"
     )
+
+    User.create(
+      role_id: "2",
+      email: "lorn@meusetech.com",
+      password: "meusetech",
+      password_confirmation: "meusetech",
+      confirmed_at: DateTime.now,
+      unconfirmed_email: "lorn@meusetech.com",
+      pseudo: "Lorn",
+      nom: "Caillas",
+      prenom: "Lorraine"
+    )
+
+    User.create(
+      role_id: "3",
+      email: "contributeur@meusetech.com",
+      password: "meusetech",
+      password_confirmation: "meusetech",
+      confirmed_at: DateTime.now,
+      unconfirmed_email: "contributeur@meusetech.com",
+      pseudo: "Le Contrib'",
+      nom: "Aire",
+      prenom: "Axel"
+    )
+
+    User.create(
+      role_id: "3",
+      email: "auteur@meusetech.com",
+      password: "meusetech",
+      password_confirmation: "meusetech",
+      confirmed_at: DateTime.now,
+      unconfirmed_email: "auteur@meusetech.com",
+      pseudo: "L'auteur''",
+      nom: "Auboisdormant",
+      prenom: "Abel"
+    )
+end
+
+if Role.all.empty? 
+  Role.create(
+    name: "admin",
+    title: "Role for admin",
+    description: "this user can do anything",
+    the_role: "{\"system\":{\"administrator\":true}}",
+    created_at: DateTime.now
+    ) 
 end
 

@@ -1,11 +1,32 @@
 <div class="container">
+    <% if (current_user && current_user.moderator?(:actualites)) %>
+        <a href="../actualites/new">Créer une actualité</a>
+    <% end %>
 
     <h1><%= @actualite.title %></h1>
+    <p>créé le <%= @actualite.created_at.to_date %> par <%= User.find(@actualite.user_id).pseudo %></p>
 
+    <%= raw @actualite.content %>
 
-    <%= @actualite.content %>
-
-
-    <p>créé le <%= @actualite.created_at %> par <%= @actualite.user_id %></p>
+    <h3>Les dernières actualités</h3>
+    
+    <table class="table">
+	   <thead class="thead-inverse">
+		  <tr>
+			<th>Titre</th>
+			<th>Auteur</th>
+			<th>Date de création</th>
+		  </tr>
+	   </thead>
+	   <tbody>
+          <% @actualites.each do |actualite| %>
+		      <tr>
+                  <td><%= link_to actualite.title, actualite_path(actualite.id)%></td>
+                <td><%= User.find(actualite.user_id).pseudo %></td>
+                <td><%= actualite.created_at.to_date %></td>	
+		      </tr>
+		  <% end %>
+	   </tbody>
+    </table>
     
 </div>
