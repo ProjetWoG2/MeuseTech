@@ -29,4 +29,3 @@ Rails.application.config.assets.precompile += %w( the_role_editinplace.js.coffee
 Rails.application.config.assets.precompile += %w( the_role_management_panel.js )
 Rails.application.config.assets.precompile += %w( the_role_management_panel_initializer.js.coffee )
 Rails.application.config.assets.precompile += %w( pages.js )
-Rails.application.config.assets.precompile += %w( frolala_editor.min.js )
