@@ -10,7 +10,7 @@ class ActualitesController < ApplicationController
   end
     
   def create
-      @actualite = Actualite.new(actualite_params)
+    @actualite = Actualite.new(actualite_params)
     @actualite.save
     redirect_to @actualite
   end
