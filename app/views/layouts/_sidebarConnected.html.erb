@@ -17,7 +17,7 @@
 		<li>
 			<a href="/users/edit">Mon Profil</a>
 		</li>
-	<% if current_user.has_role?(:users, :changer_role) %>
+	<% if current_user.moderator?(:contributeurs) %>
 		<li>
 			<a href="/users">Liste des Utilisateurs</a>
 		</li>
