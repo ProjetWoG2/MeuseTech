@@ -610,6 +610,9 @@
     	padding: 0;
     	margin: 0;
     }
+    .nav > li > a:first-child {
+        margin-top: 4px;
+    }
     .nav > li > a:focus, .nav > li > a:hover {
     	text-decoration: none;
     	background-color: #222;
