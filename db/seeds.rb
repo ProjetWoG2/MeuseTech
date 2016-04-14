@@ -20,9 +20,59 @@ if User.all.empty?
       password_confirmation: "superadmin",
       confirmed_at: DateTime.now,
       unconfirmed_email: "superadmin@meusetech.com",
-      pseudo: "SuperAdmin",
-      nom: "Admin",
-      prenom: "Super"
+      pseudo: "Dieu",
+      nom: "Norris",
+      prenom: "Chuck"
+    )
+
+    User.create(
+      role_id: "2",
+      email: "lorn@meusetech.com",
+      password: "meusetech",
+      password_confirmation: "meusetech",
+      confirmed_at: DateTime.now,
+      unconfirmed_email: "lorn@meusetech.com",
+      pseudo: "Lorn",
+      nom: "Caillas",
+      prenom: "Lorraine"
+    )
+
+    User.create(
+      role_id: "3",
+      email: "contributeur@meusetech.com",
+      password: "meusetech",
+      password_confirmation: "meusetech",
+      confirmed_at: DateTime.now,
+      unconfirmed_email: "contributeur@meusetech.com",
+      pseudo: "Le Contrib'",
+      nom: "Aire",
+      prenom: "Axel"
+    )
+end
+
+if Role.all.empty? 
+  Role.create(
+    name: "admin",
+    title: "Role for admin",
+    description: "this user can do anything",
+    the_role: "{\"system\":{\"administrator\":true}}",
+    created_at: DateTime.now
+    )
+
+  Role.create(
+    name: "animateur",
+    title: "Role for animateur",
+    description: "les animateurs ne peuvent pas s\'autogérer",
+    the_role: "{\"moderator\":{\"contributeurs\":true}}",
+    created_at: DateTime.now
+    )
+
+  Role.create(
+    name: "contributeur",
+    title: "Role for contributeur",
+    description: "Un contributeur est un utilisateur authentifié qui peut proposer un projet et participer à un sondage",
+    the_role: "",
+    created_at: DateTime.now
     )
 end
 
