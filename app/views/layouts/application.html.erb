@@ -3,12 +3,18 @@
 <head>
   <title>MeuseTech</title>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>	
-	<%= stylesheet_link_tag 'messages' %>
-	<%= stylesheet_link_tag 'navbar' %>
-	<%= stylesheet_link_tag 'navbartop' %>
-	<%= stylesheet_link_tag 'sidebar' %>
-	<%= yield :stylesheet %>
+  <%= csrf_meta_tags %>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <%= stylesheet_link_tag 'messages' %>
+  <% if request.fullpath== '/' %>
+  	<%= stylesheet_link_tag 'navbar' %>
+  <% else %>
+  	<%= stylesheet_link_tag 'navbartop' %>
+  <% end %>
+  <%= stylesheet_link_tag 'navbartop' %>
+  <%= stylesheet_link_tag 'sidebar' %>
+	
+  <%= yield :stylesheet %>
      
 </head>
 
@@ -21,7 +27,8 @@
 		<% else %>
 			<%= render 'layouts/navbartop' %>
 		<% end %>
-		<%= render 'layouts/sidebar' %>
+		<%= render 'layouts/sidebarConnected' %>
+		<%= render 'layouts/sidebarConnexion' %>
 	</header>
 
 	<%= yield %>
@@ -33,6 +40,16 @@
 	<%= javascript_include_tag "https://code.jquery.com/jquery-2.2.3.min.js" %>
 	<%= javascript_include_tag "pages" %>
 	
+	<%= javascript_include_tag 'messages' %>
+	<% if request.fullpath== '/' %>
+  	  <%= javascript_include_tag 'navbar' %>
+  	<% else %>
+  	  <%= javascript_include_tag 'navbartop' %>
+    <% end %>
+    <%= javascript_include_tag 'sidebar' %>
+	
+	<%= javascript_include_tag "https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js" %>
+
 	<%= yield :script %> 
 	
 </body>
