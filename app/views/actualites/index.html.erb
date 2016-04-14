@@ -1,2 +1,5 @@
 <h1>Actualités</h1>
-<a href="actualites/new">Créer une actualité</a>
+
+<% if current_user %>
+    <a href="actualites/new">Créer une actualité</a>
+<% end %>

@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   delete 'attempts/:survey_id/:user_id' => 'attempts#delete_user_attempts', as: :delete_user_attempts    
 
   get 'pourquoi' => 'pages#pourquoi'	
-
+  get 'derniere-actualite' => 'actualites#last_actu', as: :last_actu
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
