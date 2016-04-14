@@ -11,20 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160411094845) do
+ActiveRecord::Schema.define(version: 20160414132513) do
 
   create_table "actions", force: :cascade do |t|
     t.string "label"
   end
 
-  create_table "articles", force: :cascade do |t|
-    t.text    "contenu"
-    t.integer "publication_id"
-  end
-
-  create_table "articles_media", id: false, force: :cascade do |t|
-    t.integer "medium_id",  null: false
-    t.integer "article_id", null: false
+  create_table "actualites", force: :cascade do |t|
+    t.string   "title"
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
   end
 
   create_table "attachements", force: :cascade do |t|
@@ -41,11 +39,6 @@ ActiveRecord::Schema.define(version: 20160411094845) do
     t.string  "type"
     t.integer "article_id"
     t.integer "user_id"
-  end
-
-  create_table "media", force: :cascade do |t|
-    t.string "type"
-    t.string "chemin"
   end
 
   create_table "permissions", force: :cascade do |t|
@@ -65,24 +58,6 @@ ActiveRecord::Schema.define(version: 20160411094845) do
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id"
 
-  create_table "projets", force: :cascade do |t|
-    t.string  "localisation"
-    t.string  "theme"
-    t.date    "date_lancement"
-    t.text    "besoins"
-    t.integer "article_id"
-    t.string  "territoire"
-    t.string  "etat_avancement"
-    t.string  "lien_url"
-  end
-
-  create_table "publications", force: :cascade do |t|
-    t.boolean "online"
-    t.integer "user_id"
-    t.date    "online_date"
-    t.text    "titre"
-  end
-
   create_table "roles", force: :cascade do |t|
     t.string   "name",        null: false
     t.string   "title",       null: false
@@ -90,11 +65,6 @@ ActiveRecord::Schema.define(version: 20160411094845) do
     t.text     "the_role",    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "sondages", force: :cascade do |t|
-    t.integer  "publication_id"
-    t.datetime "date_fin"
   end
 
   create_table "survey_answers", force: :cascade do |t|
