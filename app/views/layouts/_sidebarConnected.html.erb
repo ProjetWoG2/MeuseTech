@@ -1,0 +1,37 @@
+
+<% if user_signed_in? %>
+
+<a id="menu-toggle" href="" class="btn btn-dark btn-lg toggle">
+	<i class="fa fa-bars"></i>
+</a>
+
+	<!-- Sidebar droite -->
+<nav id="sidebar-wrapper">
+	<ul class="sidebar-nav">
+		<a id="menu-close" href="" class="btn btn-danger pull-right hidden-md hidden-lg toggle">
+			<i class="fa fa-times"></i>
+		</a>
+		<li class="sidebar-brand">
+			<p><%= current_user.pseudo %></p>
+		</li>
+		<li>
+			<a href="/users/edit">Mon Profil</a>
+		</li>
+	<% if current_user.has_role?(:users, :changer_role) %>
+		<li>
+			<a href="/users">Liste des Utilisateurs</a>
+		</li>
+	<% end %>
+		<li>
+			<a href="#">Mes Projets</a>
+		</li>				
+		<li>
+			<a href="#">Projets Suivis</a>
+		</li>
+		<li>
+			<a href="#">Notifications</a>
+		</li>
+	</ul>
+</nav>
+
+<% end %>

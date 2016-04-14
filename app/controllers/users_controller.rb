@@ -27,8 +27,8 @@ class UsersController < ApplicationController
   end
 	
   def index
-    @users = User.all
-    @roles = Role.all
+    @users = User.all.drop(1)
+    @roles = Role.all.drop(1)
     render :index
   end
 

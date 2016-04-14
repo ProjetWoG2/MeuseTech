@@ -1,0 +1,52 @@
+<!-- Navigation -->
+<a id="to-top" class="btn btn-lg btn-dark" href="#top">
+    <span class="sr-only">Toggle to Top Navigation</span>
+    <i class="fa fa-chevron-up"></i>
+</a>
+
+<!-- sidebar réseaux sociaux -->
+<aside id="accordion" class="social text-vertical-center">
+    <div class="accordion-social">
+        <a class="btn btn-dark btn-lg accordion-toggle" title="Follow Us" role="tab" id="social-collapse" data-toggle="collapse" data-parent="#accordion" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"></a>
+        
+        <ul class="panel-collapse collapse in nav nav-stacked" role="tabpanel" aria-labelledby="social-collapse" id="collapseOne">
+            <li><a href="https://www.facebook.com/paysverdun/?fref=ts" target="_blank"><i class="fa fa-lg fa-facebook"></i></a></li>
+            <li><a href="https://twitter.com/PaysdeVerdun" target="_blank"><i class="fa fa-lg fa-twitter"></i></a></li>            
+        </ul>
+    </div>
+
+</aside>
+
+<div class="accordion-login">
+            
+    <ul>
+<% if user_signed_in? %>
+
+	    <li><a class="btn-login" role="button" href="/users/sign_out" data-method="delete" rel="nofollow" >Déconnexion</a></li>
+
+<% else %>
+        
+        <li><span class="btn-login" id="connexion">Connexion</span></li>
+	    <li><a class="btn-login" role="button" href="/users/sign_up" >S'inscrire</a></li>
+                    
+   
+<% end %>
+    </ul>
+</div>
+
+<div id="champsconnexion">
+	<div>
+		<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>            
+	    
+	        <%= f.label :email %>
+	        <%= f.email_field :email, :class => 'champ' %>  
+	        <%= f.label "Mot de passe" %>  
+	        <%= f.password_field :password, :class => 'champ' %>
+	        <%= f.check_box :remember_me %> <%= f.label "Rester connecté" %>
+		    <%= link_to t(".forgot_your_password", :default => "Mot de passe oublié?"), new_password_path(resource_name) %>
+	    	<%= f.submit t('.sign_in', :default => "Se connecter"), :class => 'btn-connecter' %>
+	    	<a class="btn-login" role="button" href="/users/sign_up" >S'inscrire</a>
+		<% end %>
+	</div>
+</div>
+
