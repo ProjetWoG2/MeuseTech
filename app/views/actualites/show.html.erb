@@ -1,5 +1,5 @@
 <div class="container">
-    <% if current_user %>
+    <% if (current_user && current_user.moderator?(:actualites)) %>
         <a href="../actualites/new">Créer une actualité</a>
     <% end %>
 

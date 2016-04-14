@@ -48,6 +48,18 @@ if User.all.empty?
       nom: "Aire",
       prenom: "Axel"
     )
+
+    User.create(
+      role_id: "3",
+      email: "auteur@meusetech.com",
+      password: "meusetech",
+      password_confirmation: "meusetech",
+      confirmed_at: DateTime.now,
+      unconfirmed_email: "auteur@meusetech.com",
+      pseudo: "L'auteur''",
+      nom: "Auboisdormant",
+      prenom: "Abel"
+    )
 end
 
 if Role.all.empty? 
