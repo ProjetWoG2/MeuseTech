@@ -1,3 +1,7 @@
+<% content_for :script do %>
+    <%= javascript_include_tag  "application" %>
+<% end %>
+
 <div class="container">
     <% if (current_user && current_user.moderator?(:actualites)) %>
         <a href="../actualites/new">Créer une actualité</a>
@@ -16,6 +20,9 @@
 			<th>Titre</th>
 			<th>Auteur</th>
 			<th>Date de création</th>
+            <% if (current_user && current_user.moderator?(:actualites)) %>
+                <th>Actions</th>
+            <% end %>
 		  </tr>
 	   </thead>
 	   <tbody>
@@ -23,7 +30,10 @@
 		      <tr>
                   <td><%= link_to actualite.title, actualite_path(actualite.id)%></td>
                 <td><%= User.find(actualite.user_id).pseudo %></td>
-                <td><%= actualite.created_at.to_date %></td>	
+                <td><%= actualite.created_at.to_date %></td>
+                  <% if (current_user && current_user.moderator?(:actualites)) %>
+                  <th><%= link_to "Supprimer", actualite_path(actualite.id), :method => :delete %> | <%= link_to "Editer", edit_actualite_path(actualite.id)%></th>
+                  <% end %>
 		      </tr>
 		  <% end %>
 	   </tbody>
