@@ -22,11 +22,12 @@
 			<td><%= user.nom %></td>
 			<td><%= user.prenom %></td>
 			<td><%= user.email %></td>
-			<td>
-				<%= user.role.name %>
-			<% if (current_user.admin? || (user.role.name == "contributeur" && current_user.moderator?(:contributeurs)) || current_user.id == user.id) %>
-				<a href="/users/<%= user.id %>" data-method="delete">Supprimer</a>
-			<% end %>
+            <td><% if user.role %>
+				  <%= user.role.name %>
+			        <% if (current_user.admin? || (user.role.name == "contributeur" && current_user.moderator?(:contributeurs)) || current_user.id == user.id) %>
+				        <a href="/users/<%= user.id %>" data-method="delete">Supprimer</a>
+			         <% end %>
+                <% end %>
 			</td>		
 		</tr>
 			
