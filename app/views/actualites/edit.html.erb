@@ -1,0 +1,39 @@
+<% content_for :stylesheet do %>
+    <%= stylesheet_link_tag  "editeur" %>
+<% end %>
+
+<% content_for :script do %>
+    <%= javascript_include_tag  "editeur" %>
+<% end %>
+
+<div class="container">
+    <h1>Editer l'actualité <%= @actualite.title %></h1>
+
+    <div>
+        <%= form_for @actualite, :url =>{:action => "update", :id =>@actualite} do |f| %>
+            <p>
+                <%= f.label "Titre de l'actualité" %><br>
+                <%= f.text_field :title %>
+            </p>
+            <p>
+                <%= f.label "Contenu" %><br>
+                <%= f.text_area :content, id: 'edit' %>
+            </p>
+            <p>
+                <%= f.submit 'Editer' %>
+            </p>
+        <% end %>
+    </div>
+</div>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+<!-- Include Code Mirror. -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/mode/xml/xml.min.js"></script>
+
+<script>
+  $(function() {
+      $('#edit').froalaEditor()
+  });
+</script>

@@ -21,6 +21,21 @@ class ActualitesController < ApplicationController
     end
   end
     
+  def edit
+   @actualite = Actualite.find(params[:id])
+  end
+    
+  def update
+   @actualite = Actualite.find(params[:id])
+	
+   if @actualite.update(actualite_params)
+       redirect_to last_actu_path, :notice => "Actualité mise à jour."
+   else
+      redirect_to last_actu_path, :notice => "L'actualité n'a pas été mise à jour."
+   end
+   
+  end
+    
   def last_actu
     if Actualite.last
       @actualite = Actualite.last.id
@@ -29,6 +44,12 @@ class ActualitesController < ApplicationController
       redirect_to actualites_path
     end
   end    
+    
+  def destroy
+      @actualite = Actualite.find(params[:id])
+      @actualite.destroy!
+      redirect_to last_actu_path, :notice => "Actualité supprimée."
+  end
     
     
   private

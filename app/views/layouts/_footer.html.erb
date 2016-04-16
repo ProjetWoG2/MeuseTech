@@ -1,3 +1,91 @@
 <hr>
+<!--footer start-->
+    <footer class="footer">
+	    <div class="container">
+	        <div class="row">
+	          <!--Infos-->
+		        <div class="col-lg-3 col-sm-3 address wow fadeInUp" data-wow-duration="2s" data-wow-delay=".1s">
+		            <h1>contact info</h1>
+		            <address>
+		                <p><i class="fa fa-home pr-10"></i> Pays de Verdun </p>
+		                <p><i class="fa fa-globe pr-10"></i> ZA les Marronniers 55100 Charny sur Meuse </p>
+		                <p><i class="fa fa-phone pr-10"></i> Tél: 03 29 83 44 01 </p>
+		                <p><i class="fa fa-envelope pr-10"></i> Email : <a href="javascript:;">contact@meusetech.fr</a></p>
+		            </address>
+		        </div>
+	          
+	          	<!--Intégration facebook-->
+		        <div class="col-lg-3 col-sm-3 wow fadeInUp" data-wow-duration="2s" data-wow-delay=".3s">
+		            <h1>Fils d'actualités Facebook</h1>
+			            <div id="fb-root"></div>
+							<script>(function(d, s, id) {
+							  var js, fjs = d.getElementsByTagName(s)[0];
+							  if (d.getElementById(id)) return;
+							  js = d.createElement(s); js.id = id;
+							  js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.6";
+							  fjs.parentNode.insertBefore(js, fjs);
+							}(document, 'script', 'facebook-jssdk'));</script>
+						<div class="fb-page" data-href="https://www.facebook.com/paysverdun/?fref=ts" data-tabs="timeline" data-height="400" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false">
+							<div class="fb-xfbml-parse-ignore">
+								<blockquote cite="https://www.facebook.com/paysverdun/?fref=ts">
+									<a href="https://www.facebook.com/paysverdun/?fref=ts">Pays de Verdun</a>
+								</blockquote>
+							</div>
+						</div>
+		        </div>
+	          
+		        <!--Intégration twitter-->
+		        <div class="col-lg-3 col-sm-3 wow fadeInUp" data-wow-duration="2s" data-wow-delay=".3s">
+		            <h1>Fils d'actualités Twitter</h1>
+		                <a class="twitter-timeline" href="https://twitter.com/PaysdeVerdun" data-widget-id="720985662883815425">Tweets de @PaysdeVerdun</a>
+					    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+		        </div>
+	          
+		        <!--Newsletter-->
+		        <div class="col-lg-3 col-sm-3">
+		            <div class="text-footer wow fadeInUp" data-wow-duration="2s" data-wow-delay=".7s">
+		                <h1>Inscrivez-vous à la newsletter</h1>
+		                <p>
+		                	<input class="placeholdernewsletter" type="text" placeholder="exemple@email.com" />
+		                	<button>S'inscrire</button>
+		                </p>
+		            </div>
+		        </div>
+	        </div>
+	    </div>
+    </footer>
+    <!-- footer end -->
+    
+    <!--small footer start -->
+    <footer class="footer-small">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-sm-6 pull-right">
+                    <ul class="social-link-footer list-unstyled">
+                        <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".1s">
+							<%= image_tag "logoleader.png" %></li>
+						<li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".1s">
+							<%= image_tag "logopays.png" %></li>
+						<li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".1s">
+							<%= image_tag "logoregion.png" %></li>
+						<li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".1s">
+							<%= image_tag "logoeurope.png" %></li>
+                        <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".1s">
+							<%= image_tag "logowebogreen.png" %></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <div class="copyright">
+                    	<p>Réalisé par les apprenants de la promo #1 de WebOgreen, école de codeurs en Meuse. </p>
+                    </div>
+                </div>
+            </div>
+            <div class"row">
+				<div class="mentions">
+            		<p>Mentions légales (lien) Partenaires (lien)</p>
+            	</div>
+            </div>
+        </div>
+    </footer>
+    <!--small footer end-->
 
-<%= image_tag("imagefooter.jpg", class: "maclasse") %>

@@ -25,6 +25,10 @@ Rails.application.routes.draw do
   resources 'users', only: [:create]
 
   get 'pourquoi' => 'pages#pourquoi'	
+  delete 'actualites/:id' => 'actualites#destroy', as: :destroy_actualite
+  patch 'actualites/update'
+  get 'actualites/edit'
+  get 'actualites/update'
   get 'derniere-actualite' => 'actualites#last_actu', as: :last_actu
 
   mount Rapidfire::Engine => "/sondages"
