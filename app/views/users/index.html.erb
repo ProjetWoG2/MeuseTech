@@ -3,8 +3,8 @@
 <% if current_user %>
 	<% if current_user.admin?  %>
 		<%= link_to 'TheRole Manage Panel', admin_roles_path %>
+	
 	<% end %>
-<% end %>
 
 <table class="table">
 	<thead class="thead-inverse">
@@ -33,3 +33,5 @@
 		<% end %>
 	</tbody>
 </table>
+
+<% end %>

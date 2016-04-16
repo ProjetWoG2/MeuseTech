@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h1>Résultats du sondage</h1><hr>
+  </div>
+</div>
+<div class="row">
+  <% @question_group_results.each do |result| %>
+    <div class="col-xs-12 col-md-4">
+      <h4><%= result.question.question_text %></h4>
+    </div>
+
+    <div class="col-xs-12 col-md-8">
+      <% result.results.each do |option, count| %>
+        <div class="row">
+          <div class="col-xs-6">
+          <h4><%= option %></h4>
+          </div>
+          <div class="col-xs-6">
+          <h4><%= count %></h4>
+          </div>          
+        </div>
+      <% end %>
+    </div>    
+  <% end %>
+</div>

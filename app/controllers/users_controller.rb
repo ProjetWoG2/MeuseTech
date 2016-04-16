@@ -1,7 +1,7 @@
 class UsersController < ApplicationController	
 
   before_action :login_required, except: [ :index, :show ]
-  before_action :role_required, except: [ :index, :show ]
+  before_action :role_required, only: [ :destroy, :update, :index, :show ]
 
   before_action :owner_required, only: [ :edit, :update, :destroy]
 	

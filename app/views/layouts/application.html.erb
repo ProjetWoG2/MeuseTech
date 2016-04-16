@@ -31,7 +31,9 @@
 		<%= render 'layouts/sidebarConnexion' %>
 	</header>
 
-	<%= yield %>
+	<div class="container">
+		<%= yield %>
+	</div>
 
 	<footer>
 		<%= render 'layouts/footer' %>
@@ -47,6 +49,8 @@
     <%= javascript_include_tag 'sidebar' %>
 	
 	<%= javascript_include_tag "https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js" %>
+
+	<%= javascript_include_tag "application" %>
 
 	<%= yield :script %> 
 	

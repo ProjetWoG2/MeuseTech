@@ -19,21 +19,17 @@ Rails.application.routes.draw do
 
 
   TheRoleManagementPanel::Routes.mixin(self)
-
-      
-  scope(:path_names => { :new => "nouveau", :edit => "editer" }) do
-        resources :surveys, :path => "sondages"
-  end
-  
+   
   resources 'actualites'
-  resources 'attempts', :path => "participations"
+
   resources 'users', only: [:create]
-
-
-  delete 'attempts/:survey_id/:user_id' => 'attempts#delete_user_attempts', as: :delete_user_attempts    
 
   get 'pourquoi' => 'pages#pourquoi'	
   get 'derniere-actualite' => 'actualites#last_actu', as: :last_actu
+
+  mount Rapidfire::Engine => "/sondages"
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
