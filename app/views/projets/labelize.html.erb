@@ -1,0 +1,24 @@
+<div class="container">
+
+    <% if user_signed_in? && current_user.moderator?(:projets) %>
+
+        <h1>Ajouter le label au projet : <%= @projet.titre %></h1>
+
+
+        <%= form_for @projet, :url =>{:action => "update", :id =>@projet} do |f| %>
+
+
+              <p>
+                  <%= f.label :labellise, "Souhaitez-vous labélliser ce projet?" %><br>
+                  <%= f.select :labellise, options_for_select([["Oui", true], ["Non", false]]) %>
+              </p>
+
+              <p>
+                <%= f.submit "Enregistrer" %>
+              </p>
+        <% end %>
+    <% else %>
+          <p>Vous n'avez pas la permission de labélliser un projet.</p>
+    <% end %>
+    
+</div>

@@ -1,0 +1,73 @@
+<div class="container">
+
+    <% if user_signed_in? && (current_user == User.find(@projet.user_id) || current_user.moderator?(:projets)) %>
+
+        <h1>Editer le projet <%= @projet.titre %></h1>
+
+
+        <%= form_for @projet, :url =>{:action => "update", :id =>@projet} do |f| %>
+          <p>
+            <%= f.label :titre, "Titre de votre projet" %><br>
+            <%= f.text_field :titre %>
+          </p>
+
+          <p>
+            <%= f.label :categorie_id, "Quel est la thèmatique dominante de votre projet ?" %><br>
+            <%= f.select :categorie_id, options_for_select(@categories) %>
+          </p>
+
+          <p>
+            <%= f.label :commune, "Où est localisé votre projet ? (commune)" %><br>
+            <%= f.text_field :commune %>
+          </p>
+
+          <p>
+            <%= f.label :demarrage, "Date de démarrage du projet" %><br>
+            <%= f.date_select :demarrage %>
+          </p>
+
+          <p>
+              <%= f.label :localisation, "Quel est le territoire impacté par votre projet?" %><br>
+              <%= f.text_field :localisation %>
+          </p>
+
+          <p>
+            <%= f.label :statut, "État d'avancement : quelles étapes ont été réalisées ?" %><br>
+              <%= fields_for :statut do |statut_fields| %>
+                <% ["réflexion", "définition", "analyse du marché", "recherche de partenaire", "montage financier", "mise en oeuvre"].each do |etape| %>
+                    <%= statut_fields.check_box etape %>
+                    <%= statut_fields.label etape %>
+                <% end %>
+              <% end %>
+          </p>
+
+          <p>
+              <%= f.label :description, "Décrire brièvement votre projet" %><br>
+              <%= f.text_area :description, maxlength: 1500, :placeholder => "Limite de 1500 caractères" %>
+          </p>
+
+          <p>
+              <%= f.label :besoin, "Quels sont vos besoins ?" %><br>
+              <%= f.text_area :besoin, maxlength: 500, :placeholder => "Limite de 500 caractères" %>
+          </p>
+
+          <p>
+              <%= f.label :image, "Une image qui illustre votre projet" %><br>
+              <%= f.file_field :image %>
+          </p>
+
+          <p>
+              <%= f.label :urlsite, "Un lien où il est possible d'en apprendre plus sur votre projet" %><br>
+              <%= f.text_field :urlsite, placeholder: "http://monprojet.com" %>
+          </p>
+
+
+          <p>
+            <%= f.submit "Enregistrer mon projet" %>
+          </p>
+        <% end %>
+    <% else %>
+        <p>Vous n'avez pas la permission d'éditer ce projet.</p>
+    <% end %>
+    
+</div>

@@ -12,7 +12,6 @@ class ActualitesController < ApplicationController
     
   def create
     @actualite = Actualite.new(actualite_params)
-
     @actualite.user_id = current_user.id
     if @actualite.save
       redirect_to @actualite
