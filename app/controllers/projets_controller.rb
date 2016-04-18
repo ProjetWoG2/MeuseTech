@@ -19,6 +19,11 @@ class ProjetsController < ApplicationController
     @projet.user_id = current_user.id
     @projet.labellise = false
     if @projet.save
+      User.all.each do |user|
+          if user.role_id == 2
+            AdminMailer.nouveau_projet(user, @projet).deliver_now
+          end
+      end
       redirect_to @projet
     else
       render :new

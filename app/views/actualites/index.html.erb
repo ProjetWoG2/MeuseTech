@@ -1,7 +1,10 @@
-<h1>Actualités</h1>
+<div class="container">
+    <h1>Actualités</h1>
 
 
-<% if (user_singed_in? && current_user.moderator?(:actualites)) %>
-    <a href="actualites/new">Créer une actualité</a>
-<% end %>
+    <% if (user_signed_in? && current_user.moderator?(:actualites)) %>
+        <a href="actualites/new">Créer une actualité</a>
+    <% end %>
 
+    <p>Il n'existe aucune actualité pour le moment.</p>
+</div>
