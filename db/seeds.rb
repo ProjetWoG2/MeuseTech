@@ -72,3 +72,8 @@ if Role.all.empty?
     ) 
 end
 
+if Thematique.all.empty?
+    ['Agriculture', 'Développement durable', 'Économie', 'Emploi/Formation', 'Habitat', 'Services à la population', 'Tourisme/Culture', 'Numérique', 'Santé', 'Autre'].each do |thematique|
+        Thematique.create(categorie: thematique)
+  end
+end

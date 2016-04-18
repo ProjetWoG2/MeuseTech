@@ -1,7 +1,7 @@
 <h1>Actualités</h1>
 
 
-<% if (current_user && current_user.moderator?(:actualites)) %>
+<% if (user_singed_in? && current_user.moderator?(:actualites)) %>
     <a href="actualites/new">Créer une actualité</a>
 <% end %>
 

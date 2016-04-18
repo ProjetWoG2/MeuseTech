@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160414132513) do
+ActiveRecord::Schema.define(version: 20160418115058) do
 
   create_table "actions", force: :cascade do |t|
     t.string "label"
@@ -57,6 +57,23 @@ ActiveRecord::Schema.define(version: 20160414132513) do
   end
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id"
+
+  create_table "projets", force: :cascade do |t|
+    t.string   "titre"
+    t.integer  "categorie_id"
+    t.string   "commune"
+    t.date     "demarrage"
+    t.string   "localisation"
+    t.string   "statut"
+    t.text     "description"
+    t.text     "besoin"
+    t.string   "image"
+    t.string   "urlsite"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "user_id"
+    t.boolean  "labellise"
+  end
 
   create_table "roles", force: :cascade do |t|
     t.string   "name",        null: false
@@ -109,6 +126,10 @@ ActiveRecord::Schema.define(version: 20160414132513) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "survey_type"
+  end
+
+  create_table "thematiques", force: :cascade do |t|
+    t.string "categorie"
   end
 
   create_table "users", force: :cascade do |t|

@@ -1,0 +1,25 @@
+<div class="container">
+
+    <h1><%= @projet.titre %></h1>
+
+    <p><%= @projet.image %></p>
+
+    <p><%= @projet.description%></p>
+    
+    <p>Thème : <%= Thematique.find(@projet.categorie_id).categorie %></p>
+
+    <p>Date de création : <%= @projet.demarrage %></p>
+
+    <p>Commune : <%= @projet.commune %></p>
+
+    <p>Territoire impacté : <%= @projet.localisation %></p>
+
+    <p>Etat d'avancement : <%= @projet.statut %></p>
+
+    <p>Les besoins : <%= @projet.besoin %></p>
+
+    <p>Le site web : <%= @projet.urlsite %></p>
+
+    <p>Fiche projet créée le <%= @projet.created_at.to_date %> par <%= User.find(@projet.user_id).pseudo %></p>
+    
+</div>

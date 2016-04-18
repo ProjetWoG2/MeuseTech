@@ -7,11 +7,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <%= stylesheet_link_tag 'messages' %>
   <%= stylesheet_link_tag 'footer' %>
-  <% if request.fullpath== '/' %>
-  	<%= stylesheet_link_tag 'navbar' %>
-  <% else %>
-  	<%= stylesheet_link_tag 'navbartop' %>
-  <% end %>
+  <%= stylesheet_link_tag 'navbar' %>
   <%= stylesheet_link_tag 'navbartop' %>
   <%= stylesheet_link_tag 'sidebar' %>
 	
@@ -37,20 +33,22 @@
 	<footer>
 		<%= render 'layouts/footer' %>
 	</footer>
-
-	<%= javascript_include_tag "https://code.jquery.com/jquery-2.2.3.min.js" %>
-	<%= javascript_include_tag "pages" %>
+    
+    <!-- Appel de jquery, jquery_uls et bootstrap -->
+    <%= javascript_include_tag "application" %>
 	
+    <!-- Appel du js lié à la sidebar et au topscroll -->
+    <%= javascript_include_tag "pages" %>
+	
+    <!-- Appel du js lié aux alertes -->
 	<%= javascript_include_tag 'messages' %>
-	<% if request.fullpath== '/' %>
-  	  <%= javascript_include_tag 'navbar' %>
-    <% end %>
+    
+    <!-- Appel du js lié à la sidebar // champs de connexion -->
     <%= javascript_include_tag 'sidebar' %>
-	
-	<%= javascript_include_tag "https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js" %>
-    <%= javascript_include_tag  "application" %>
-
-	<%= yield :script %> 
+	   
+    <%= yield :script %> 
+    
+    <%= javascript_include_tag "https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js" %>
 	
 </body>
 

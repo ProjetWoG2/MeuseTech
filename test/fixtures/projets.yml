@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  titre: MyString
+  categorie_id: 1
+  commune: MyString
+  demarrage: 2016-04-18
+  localisation: MyString
+  statut: MyString
+  description: MyText
+  besoin: MyText
+  image: MyString
+  urlsite: MyString
+
+two:
+  titre: MyString
+  categorie_id: 1
+  commune: MyString
+  demarrage: 2016-04-18
+  localisation: MyString
+  statut: MyString
+  description: MyText
+  besoin: MyText
+  image: MyString
+  urlsite: MyString
