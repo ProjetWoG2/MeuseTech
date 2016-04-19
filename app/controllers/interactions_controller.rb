@@ -1,2 +1,0 @@
-class InteractionsController < ApplicationController
-end

@@ -1,6 +1,6 @@
 <div class="container">
 
-    <h1>Projets</h1>
+    <h1>Je dépose un projet</h1>
     <% if user_signed_in? %>
         <a href="projets/new">Déposer un projet</a>
     <% end %>
@@ -29,9 +29,11 @@
                   <td><%= projet.localisation %></td>
                   <td><%= projet.statut %></td>
                   <% if user_signed_in? && ((current_user == User.find(projet.user_id)) || current_user.moderator?(:projets)) %>
-                  <th><%= link_to "Supprimer", projet_path(projet.id), :method => :delete %> | <%= link_to "Editer", edit_projet_path(projet.id)%> <% if user_signed_in? && current_user.moderator?(:projets) %>
-                                    | <%= link_to "Labélliser", labelize_projet_path(projet.id)%> <% end %></th>
-                              <% end %>
+                  <th><%= link_to "Editer", edit_projet_path(projet.id)%> 
+                      <% if user_signed_in? && current_user.moderator?(:projets) %>
+                        | <%= link_to "Supprimer", projet_path(projet.id), :method => :delete %> | <%= link_to "Labélliser", labelize_projet_path(projet.id)%> 
+                      <% end %></th>
+                  <% end %>
 		      </tr>
 		  <% end %>
 	   </tbody>

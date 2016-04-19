@@ -3,6 +3,7 @@ class ProjetsController < ApplicationController
     
   def show
     @projet = Projet.find(params[:id])
+    @comments = @projet.comments.all
   end
   
   def index
@@ -55,6 +56,14 @@ class ProjetsController < ApplicationController
     redirect_to projets_path, :notice => "Projet supprimé."
   end
     
+  def add_new_comment
+    projet = Projet.find(params[:id])
+    @comment = Comment.new(comment_params)
+    @comment.user_id = current_user.id
+    projet.comments << @comment
+    redirect_to :action => :show, :id => projet
+  end
+    
     
   def list_categories
     Thematique.all.collect do |them|
@@ -62,9 +71,13 @@ class ProjetsController < ApplicationController
     end
   end
     
-  private
-    def projet_params
+private
+  def projet_params
         params.require(:projet).merge(checked_statuts).permit(:titre, :categorie_id, :created_at, :updated_at, :commune, :demarrage, :localisation, :statut, :description, :besoin, :image, :urlsite, :user_id, :labellise)
+  end
+    
+  def comment_params
+      params.require(:comment).permit(:comment, :title, :user_id)
   end
 
   def checked_statuts

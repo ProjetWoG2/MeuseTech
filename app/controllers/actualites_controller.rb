@@ -3,6 +3,7 @@ class ActualitesController < ApplicationController
   def show
     @actualite = Actualite.find(params[:id])
     @actualites = Actualite.order(created_at: :desc)
+    @comments = @actualite.comments.all
   end
     
     
@@ -35,6 +36,14 @@ class ActualitesController < ApplicationController
    
   end
     
+  def add_new_comment
+    actualite = Actualite.find(params[:id])
+    @comment = Comment.new(comment_params)
+    @comment.user_id = current_user.id
+    actualite.comments << @comment
+    redirect_to :action => :show, :id => actualite
+  end
+    
   def last_actu
     if Actualite.last
       @actualite = Actualite.last.id
@@ -54,6 +63,9 @@ class ActualitesController < ApplicationController
   private
   def actualite_params
       params.require(:actualite).permit(:title, :content, :created_at, :updated_at, :user_id)
+  end
+  def comment_params
+      params.require(:comment).permit(:comment, :title, :user_id)
   end
     
 end

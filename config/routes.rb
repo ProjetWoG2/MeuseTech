@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   
   resources 'actualites'
   resources 'projets'
+  resources 'comments' 
   resources 'attempts', :path => "participations"
   resources 'users', only: [:create]
 
@@ -43,6 +44,8 @@ Rails.application.routes.draw do
 
   get 'projets' => 'projets#index'   
   get 'projets/:id/labelize' => 'projets#labelize', as: :labelize_projet
+  match "/projets/add_new_comment" => "projets#add_new_comment", :as => "add_new_comment_to_projets", :via => [:post]
+  match "/actualites/add_new_comment" => "actualites#add_new_comment", :as => "add_new_comment_to_actualites", :via => [:post]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

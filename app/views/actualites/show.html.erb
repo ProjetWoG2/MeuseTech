@@ -12,6 +12,32 @@
     <div class="fr-view">
         <%= raw @actualite.content %>
     </div>
+    
+    <h3>Commentaires</h3>
+    
+    <div>
+        <% @comments.each do |comment| %>
+            <p><%= User.find(comment.user_id).pseudo %> : <%= comment.comment %></p>
+            <p><%= comment.created_at.to_time %></p>
+            
+        <% if user_signed_in? && (current_user == User.find(comment.user_id) || current_user.moderator?(:comments)) %>
+            <%= link_to "Supprimer", comment_path(comment.id), :method => :delete %> | <%= link_to "Editer", edit_comment_path(comment.id) %>
+        <% end %>
+        </br></br>
+
+        <% end %>
+    </div>
+    <% if user_signed_in? %>
+        <div>
+            <%= form_tag "/actualites/add_new_comment" do %>
+            <%= hidden_field_tag "id", @actualite.id %>
+            <%= text_field_tag "comment[comment]", "Votre commentaire" %>
+                <%= submit_tag "Commenter" %>
+            <% end %>
+        </div></br>
+    <% end %>
+    
+    
 
     <h3>Les dernières actualités</h3>
     
