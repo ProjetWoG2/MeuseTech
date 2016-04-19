@@ -26,6 +26,7 @@ gem 'attribute-defaults', '~> 0.7.0'
 # Downgrading coffee script for windows development
 gem 'coffee-script-source', '1.8.0'
 gem 'wysiwyg-rails'
+gem 'acts_as_commentable', '~> 4.0', '>= 4.0.2'
 gem 'devise'
 gem 'devise-i18n'
 gem 'twitter-bootstrap-rails', '~> 3.2', '>= 3.2.2'

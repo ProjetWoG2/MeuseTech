@@ -1,0 +1,19 @@
+<div class="container">
+    <% if user_signed_in? && (current_user == User.find(@comment.user_id) || current_user.moderator?(:comments)) %>
+        <h1>Editer le commentaire</h1>
+
+            <div>
+                <%= form_for @comment, :url =>{:action => "update", :id =>@comment} do |f| %>
+                    <p>
+                        <%= f.label "Commentaire" %><br>
+                        <%= f.text_area :comment %>
+                    </p>
+                    <p>
+                        <%= f.submit 'Editer' %>
+                    </p>
+                <% end %>
+            </div>
+    <% else %>
+        <p>Vous n'avez pas la permission d'éditer ce commentaire.</p>
+    <% end %>
+</div>
