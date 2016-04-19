@@ -1,0 +1,42 @@
+<div class="container">
+    <% if user_signed_in? && (current_user.admin? || current_user.moderator?(:comments)) %>
+        <h1>Liste des Commentaires </h1>
+
+            <table class="table">
+                <thead class="thead-inverse">
+                    <tr>
+                        <th>Pseudo</th>
+                        <th>Commentaire</th>
+                        <th>Contenu commenté</th>
+                        <th>Date de création</th>
+                        <th>Etat</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @comments.each do |comment| %>
+
+                    <tr>
+                        <td><%= User.find(comment.user_id).pseudo %></td>
+                        <td><%= comment.comment %></td>
+                        <td><%= comment.commentable_type %></td>
+                        <td><%= comment.created_at.to_time %></td>
+                        <td><% if User.find(comment.user_id).confiance == false %>
+                                <%= "Non validé" %></td>
+                            <% else %>
+                                <%= "Validé" %></td>
+                            <% end %>
+                        <td><% if User.find(comment.user_id).confiance == false %>
+                                <%= link_to "Valider", validate_user_path(User.find(comment.user_id).id) %> | 
+                            <% end %>
+                            <%= link_to "Supprimer", comment_path(comment.id), :method => :delete %> | <%= link_to "Editer", edit_comment_path(comment.id) %>
+                        </td>
+                    </tr>
+
+                    <% end %>
+                </tbody>
+            </table>
+    <% else %>
+        <p>Vous n'avez pas la permission pour modérer les commentaires.</p>
+    <% end %>
+</div>

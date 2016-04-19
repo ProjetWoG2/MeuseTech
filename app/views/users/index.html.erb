@@ -1,36 +1,38 @@
-<h1>Espace Modération SuperAdministrateur </h1>
+<div class="container">
+    <h1>Liste des Utilisateurs </h1>
 
-<% if current_user %>
-	<% if current_user.admin?  %>
-		<%= link_to 'TheRole Manage Panel', admin_roles_path %>
-	<% end %>
-<% end %>
+        <% if current_user %>
+            <% if current_user.admin?  %>
+                <%= link_to 'TheRole Manage Panel', admin_roles_path %>
+            <% end %>
+        <% end %>
 
-<table class="table">
-	<thead class="thead-inverse">
-		<tr>
-			<th>Nom</th>
-			<th>Prénom</th>
-			<th>Email</th>
-			<th>Rôle</th>		
-		</tr>
-	</thead>
-	<tbody>
-		<% @users.each do |user| %>
-			
-		<tr>
-			<td><%= user.nom %></td>
-			<td><%= user.prenom %></td>
-			<td><%= user.email %></td>
-            <td><% if user.role %>
-				  <%= user.role.name %>
-			        <% if (current_user.admin? || (user.role.name == "contributeur" && current_user.moderator?(:contributeurs)) || current_user.id == user.id) %>
-				        <a href="/users/<%= user.id %>" data-method="delete">Supprimer</a>
-			         <% end %>
+        <table class="table">
+            <thead class="thead-inverse">
+                <tr>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Email</th>
+                    <th>Rôle</th>		
+                </tr>
+            </thead>
+            <tbody>
+                <% @users.each do |user| %>
+
+                <tr>
+                    <td><%= user.nom %></td>
+                    <td><%= user.prenom %></td>
+                    <td><%= user.email %></td>
+                    <td><% if user.role %>
+                          <%= user.role.name %>
+                            <% if (current_user.admin? || (user.role.name == "contributeur" && current_user.moderator?(:contributeurs)) || current_user.id == user.id) %>
+                                <a href="/users/<%= user.id %>" data-method="delete">Supprimer</a>
+                             <% end %>
+                        <% end %>
+                    </td>		
+                </tr>
+
                 <% end %>
-			</td>		
-		</tr>
-			
-		<% end %>
-	</tbody>
-</table>
+            </tbody>
+        </table>
+</div>

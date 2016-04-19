@@ -41,7 +41,15 @@ class ActualitesController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
     actualite.comments << @comment
-    redirect_to :action => :show, :id => actualite
+    if @comment.save
+        if User.find(@comment.user_id).confiance == false
+            flash[:notice] = "C'est votre premier commentaire! Il va être validé par un administrateur avant d'être mis en ligne!"
+            redirect_to :action => :show, :id => actualite
+        else
+            flash[:notice] ="Le commentaire a été mis en ligne."  
+            redirect_to :action => :show, :id => actualite
+        end
+    end
   end
     
   def last_actu

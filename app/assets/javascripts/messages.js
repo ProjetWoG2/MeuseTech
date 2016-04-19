@@ -6,4 +6,4 @@ function masquerAlerte()
           document.getElementById("zonealert").style.visibility='hidden';
       }
     }
- window.setTimeout(masquerAlerte, 2500);
+ window.setTimeout(masquerAlerte, 3000);
