@@ -22,6 +22,11 @@
 			<a href="/users">Liste des Utilisateurs</a>
 		</li>
 	<% end %>
+    <% if current_user.moderator?(:comments) %>
+        <li>
+			<a href="/comments">Liste des Commentaires</a>
+		</li>
+    <% end %>
 		<li>
 			<a href="#">Mes Projets</a>
 		</li>				

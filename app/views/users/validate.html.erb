@@ -1,0 +1,24 @@
+<div class="container">
+
+    <% if user_signed_in? && current_user.moderator?(:users) %>
+
+    <h1>Valider l'utilisateur : <%= @user.pseudo %></h1>
+
+
+        <%= form_for @user, :url =>{:action => "update", :id =>@user} do |f| %>
+
+
+              <p>
+                  <%= f.label :confiance, "Souhaitez-vous valider cet utilisateur? (Ses commentaires seront automatiquement mis en ligne sur le site)" %><br>
+                  <%= f.select :confiance, options_for_select([["Oui", true], ["Non", false]]) %>
+              </p>
+
+              <p>
+                <%= f.submit "Enregistrer" %>
+              </p>
+        <% end %>
+    <% else %>
+          <p>Vous n'avez pas la permission de valider un utilisateur.</p>
+    <% end %>
+    
+</div>

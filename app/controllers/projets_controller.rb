@@ -61,7 +61,15 @@ class ProjetsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
     projet.comments << @comment
-    redirect_to :action => :show, :id => projet
+    if @comment.save
+        if User.find(@comment.user_id).confiance == false
+            flash[:notice] = "C'est votre premier commentaire! Il va être validé par un administrateur avant d'être mis en ligne!"
+            redirect_to :action => :show, :id => projet
+        else
+            flash[:notice] ="Le commentaire a été mis en ligne."  
+            redirect_to :action => :show, :id => projet
+        end
+    end
   end
     
     

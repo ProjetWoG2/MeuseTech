@@ -15,6 +15,7 @@
 			<th>Utilisateur</th>
             <th>Localisation</th>
             <th>Avancement</th>
+            <th>Labellisé</th>
             <% if user_signed_in? %>
                 <th>Actions</th>
             <% end %>
@@ -28,6 +29,11 @@
                   <td><%= User.find(projet.user_id).pseudo %></td>
                   <td><%= projet.localisation %></td>
                   <td><%= projet.statut %></td>
+                  <td><% if projet.labellise == false %>
+                        <%= "Non" %></td>
+                      <% else %>
+                        <%= "Oui" %></td>
+                      <% end %>
                   <% if user_signed_in? && ((current_user == User.find(projet.user_id)) || current_user.moderator?(:projets)) %>
                   <th><%= link_to "Editer", edit_projet_path(projet.id)%> 
                       <% if user_signed_in? && current_user.moderator?(:projets) %>
