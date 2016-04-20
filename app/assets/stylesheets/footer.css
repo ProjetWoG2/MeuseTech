@@ -9,7 +9,7 @@
 }
 
 .footer h1 {
-    font-size: 20px;
+    font-size: 18px;
     text-transform: uppercase;
     font-weight: 400;
     margin-top: 0;
@@ -17,7 +17,7 @@
 }
 
 .footer address a { 
-    color: #48cfad 
+    color: #33B160; 
 }
 
 .tweet-box {
@@ -96,6 +96,12 @@
     transition: all .3s ease;
 }
 
+/*Responsif Fb*/
+.fb_iframe_widget, .fb_iframe_widget span, .fb_iframe_widget span iframe[style] {
+    width: 100% !important;
+}
+/*Fin*/
+
 .copyright {
     color: #fff;
     padding-top: 15px;
@@ -150,4 +156,27 @@ ul.page-footer-list li i {
 .mentions {
     text-align: center;
     color: #fff;
+}
+
+.placeholdernewsletter {
+    margin-top: 4px;
+}
+
+.newsletterbouton {
+    background-color: #1c1c1c;
+    margin-top: 4px;
+    text-decoration: none;
+    -webkit-transition: all ease 0.3s;
+    -moz-transition: all ease 0.3s;
+    -ms-transition: all ease 0.3s;
+    -o-transition: all ease 0.3s;
+    transition: all ease 0.3s;
+    border: 0px;
+}
+
+.newsletterbouton:hover {
+    background: #ec8e2c;
+    color: #ffffff;
+    text-decoration: none;
+    border: 1px solid #ec8e2c;
 }
