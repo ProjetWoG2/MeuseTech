@@ -3,7 +3,8 @@ class ProjetsController < ApplicationController
     
   def show
     @projet = Projet.find(params[:id])
-    @comments = @projet.comments.all
+    @comments = @projet.comments.where(visible: true).where(role: "comments")
+    @likes = @projet.comments.where(role: "likes")
   end
   
   def index
@@ -42,7 +43,6 @@ class ProjetsController < ApplicationController
     
   def update
    @projet = Projet.find(params[:id])
-	
    if @projet.update(projet_params)
        redirect_to projets_path, :notice => "Le projet a été mis à jour."
    else
@@ -60,16 +60,45 @@ class ProjetsController < ApplicationController
     projet = Projet.find(params[:id])
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
+    @comment.role = "comments"
+    if User.find(@comment.user_id).confiance == false
+      @comment.visible=false
+    else
+      @comment.visible=true
+    end
     projet.comments << @comment
     if @comment.save
         if User.find(@comment.user_id).confiance == false
-            flash[:notice] = "C'est votre premier commentaire! Il va être validé par un administrateur avant d'être mis en ligne!"
+            flash[:notice] = "Votre commentaire va être validé par un administrateur avant d'être mis en ligne!"
+            User.all.each do |user|
+                if user.role_id == 2
+                    AdminMailer.nouveau_commentaire(user, @comment).deliver_now
+                end
+            end
             redirect_to :action => :show, :id => projet
         else
             flash[:notice] ="Le commentaire a été mis en ligne."  
             redirect_to :action => :show, :id => projet
         end
     end
+  end
+    
+  def add_new_like
+      projet = Projet.find(params[:id])
+      if projet.comments.where(role: "likes").where(user_id: current_user.id).count == 0
+        @comment = Comment.new
+        @comment.user_id = current_user.id
+        @comment.role = "likes"
+        @comment.visible = true
+        projet.comments << @comment
+        if @comment.save
+            flash[:notice] ="Contenu liké!"  
+            redirect_to :action => :show, :id => projet
+        end
+      else
+          flash[:error] ="Vous avez déjà liké ce contenu!"
+          redirect_to :action => :show, :id => projet
+      end
   end
     
     

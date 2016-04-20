@@ -1,0 +1,8 @@
+    <h1>Un nouveau commentaire a été déposé sur le site de MeuseTech!</h1>
+    <p>
+        L'utilisateur <%= User.find(@comment.user_id).pseudo %> vient de déposer son premier commentaire : "<%= @comment.comment %>", dans la section <%= @comment.commentable_type %><br>
+    </p>
+    <p>
+        Vous devez le valider avant qu'il ne puisse être visible, suivez ce <%= link_to "Lien", comments_path %>.
+    </p>
+    <p>Bonne journée!</p>

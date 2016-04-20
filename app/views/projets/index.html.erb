@@ -16,6 +16,8 @@
             <th>Localisation</th>
             <th>Avancement</th>
             <th>Labellisé</th>
+            <th>Commentaires</th>
+            <th>Likes</th>
             <% if user_signed_in? %>
                 <th>Actions</th>
             <% end %>
@@ -34,11 +36,13 @@
                       <% else %>
                         <%= "Oui" %></td>
                       <% end %>
+                  <td><%= projet.comments.where(visible: true).where(role: "comments").count %></td>
+                  <td><%= projet.comments.where(role: "likes").count %></td>
                   <% if user_signed_in? && ((current_user == User.find(projet.user_id)) || current_user.moderator?(:projets)) %>
-                  <th><%= link_to "Editer", edit_projet_path(projet.id)%> 
+                  <td><%= link_to "Editer", edit_projet_path(projet.id)%> 
                       <% if user_signed_in? && current_user.moderator?(:projets) %>
-                        | <%= link_to "Supprimer", projet_path(projet.id), :method => :delete %> | <%= link_to "Labélliser", labelize_projet_path(projet.id)%> 
-                      <% end %></th>
+                        | <%= link_to "Supprimer", projet_path(projet.id), :method => :delete %> | <%= link_to "Labelliser", labelize_projet_path(projet.id)%> 
+                      <% end %></td>
                   <% end %>
 		      </tr>
 		  <% end %>

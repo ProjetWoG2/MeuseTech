@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   def index
-    @comments = Comment.order(created_at: :desc)
+      @comments = Comment.where(role: "comments").order(created_at: :desc)
   end
     
   def destroy
