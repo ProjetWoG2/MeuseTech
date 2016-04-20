@@ -5,7 +5,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   include TheRole::Api::User
-
   has_one :profile  
   has_many :surveys
 

@@ -42,6 +42,8 @@ Rails.application.routes.draw do
   get 'projets/:id/labelize' => 'projets#labelize', as: :labelize_projet
   match "/projets/add_new_comment" => "projets#add_new_comment", :as => "add_new_comment_to_projets", :via => [:post]
   match "/actualites/add_new_comment" => "actualites#add_new_comment", :as => "add_new_comment_to_actualites", :via => [:post]
+  match "/actualites/add_new_like" => "actualites#add_new_like", :as => "add_new_like_to_actualites", :via => [:post]
+  match "/projets/add_new_like" => "projets#add_new_like", :as => "add_new_like_to_projets", :via => [:post]
   get 'users/:id/validate' => 'users#validate', as: :validate_user
 
   # The priority is based upon order of creation: first created -> highest priority.

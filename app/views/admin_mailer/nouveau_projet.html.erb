@@ -3,6 +3,6 @@
         L'utilisateur <%= User.find(@projet.user_id).pseudo %> vient de déposer le projet : <%= @projet.titre %> <br>
     </p>
     <p>
-        Pour voir ce projet, suivez ce lien : <%= link_to "Lien", projet_path(@projet.id) %>.
+        Pour voir ce projet, suivez ce <%= link_to "Lien", projet_path(@projet.id) %>.
     </p>
     <p>Bonne journée!</p>
