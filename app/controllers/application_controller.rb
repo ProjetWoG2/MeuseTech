@@ -8,7 +8,11 @@ class ApplicationController < ActionController::Base
 	
 
 	def can_administer?
-		current_user.moderator?(:sondages)
+		if current_user
+			current_user.moderator?(:sondages)
+		else 
+			return false
+		end
 	end
 
 	protected

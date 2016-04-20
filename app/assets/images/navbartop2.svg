@@ -10,12 +10,12 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="210mm"
-   height="110mm"
-   viewBox="0 0 744.09445 389.76377"
+   height="105mm"
+   viewBox="0 0 744.09449 372.04725"
    id="svg3"
    version="1.1"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="Logo MeuseTech top.svg">
+   sodipodi:docname="Logo MeuseTech top small.svg">
   <defs
      id="defs4" />
   <sodipodi:namedview
@@ -26,13 +26,13 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.98994949"
-     inkscape:cx="271.64285"
-     inkscape:cy="246.19218"
+     inkscape:cx="280.84806"
+     inkscape:cy="175.49629"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
      units="mm"
-     height="110mm"
+     height="105mm"
      inkscape:window-width="1920"
      inkscape:window-height="1017"
      inkscape:window-x="-8"
@@ -54,11 +54,11 @@
      inkscape:label="Calque 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(0,-662.59853)">
+     transform="translate(0,-680.3152)">
     <g
-       id="layer1-8"
+       id="layer1-365"
        inkscape:label="Calque 1"
-       transform="translate(-3.5714571,691.42854)">
+       transform="translate(-1.8977818,700.6993)">
       <g
          transform="matrix(-1,0,0,1,745.5912,-54.385339)"
          inkscape:label="Calque 1"
@@ -115,11 +115,13 @@
                  d="m 622.602,400.75819 a 180.09126,180.09126 0 0 1 -48.50391,54.17382 l 0,115.69532 A 281.73785,281.73785 0 0 0 710.4809,451.49647 L 622.602,400.75819 Z"
                  id="path6081"
                  inkscape:connector-curvature="0" />
-              <path
+              <a xlink:href="/">
+                <path
                  style="fill:#c0c0c0;fill-opacity:1;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none"
                  d="m 551.68878,480.03409 0,-353.97158 a 181.32838,208.77933 0 0 0 -85.45013,177.06505 181.32838,208.77933 0 0 0 85.45013,176.90653 z"
                  id="path4552"
                  inkscape:connector-curvature="0" />
+              </a>
               <rect
                  transform="scale(1,-1)"
                  style="fill:#7f7f7f;fill-opacity:1;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none"
@@ -130,31 +132,31 @@
                  y="-634.01727" />
               <a xlink:href="/sondages">
                 <path
-                 inkscape:connector-curvature="0"
-                 id="orange"
-                 d="m 625.31268,390.27834 87.8789,50.73828 a 281.73785,281.73785 0 0 0 38.33203,-141.18555 281.73785,281.73785 0 0 0 -0.004,-0.084 l -101.64649,0 a 180.09126,180.09126 0 0 1 0.004,0.084 180.09126,180.09126 0 0 1 -24.56445,90.44727 z"
-                 style="opacity:1;fill:#ec8e2c;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+                   inkscape:connector-curvature="0"
+                   id="orange"
+                   d="m 625.31268,390.27834 87.8789,50.73828 a 281.73785,281.73785 0 0 0 38.33203,-141.18555 281.73785,281.73785 0 0 0 -0.004,-0.084 l -101.64649,0 a 180.09126,180.09126 0 0 1 0.004,0.084 180.09126,180.09126 0 0 1 -24.56445,90.44727 z"
+                   style="opacity:1;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
               </a>
               <a xlink:href="/pourquoi">
                 <path
-                 inkscape:connector-curvature="0"
-                 id="vert"
-                 d="m 622.602,394.4608 a 180.09126,180.09126 0 0 1 -48.50391,54.17382 l 0,115.69532 A 281.73785,281.73785 0 0 0 710.4809,445.19908 L 622.602,394.4608 Z"
-                 style="opacity:1;fill:#33b160;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+                   inkscape:connector-curvature="0"
+                   id="vert"
+                   d="m 622.602,394.4608 a 180.09126,180.09126 0 0 1 -48.50391,54.17382 l 0,115.69532 A 281.73785,281.73785 0 0 0 710.4809,445.19908 L 622.602,394.4608 Z"
+                   style="opacity:1;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
               </a>
               <a xlink:href="/derniere-actualite">
                 <path
-                 inkscape:connector-curvature="0"
-                 id="bleu"
-                 d="m 625.19939,204.6006 a 180.09126,180.09126 0 0 1 24.67383,90.45899 l 101.64649,0 A 281.73785,281.73785 0 0 0 713.18768,153.80177 l -87.98829,50.79883 z"
-                 style="opacity:1;fill:#0173bc;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-              </a>
+                   inkscape:connector-curvature="0"
+                   id="bleu"
+                   d="m 625.19939,204.6006 a 180.09126,180.09126 0 0 1 24.67383,90.45899 l 101.64649,0 A 281.73785,281.73785 0 0 0 713.18768,153.80177 l -87.98829,50.79883 z"
+                   style="opacity:1;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+                </a>
               <a xlink:href="/projets">
                 <path
-                 inkscape:connector-curvature="0"
-                 id="marron"
-                 d="m 574.3743,31.632995 0,115.726555 a 180.09126,180.09126 0 0 1 48.39062,53.83984 l 87.98829,-50.79883 A 281.73785,281.73785 0 0 0 574.3743,31.632995 Z"
-                 style="opacity:1;fill:#662c1e;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+                   inkscape:connector-curvature="0"
+                   id="marron"
+                   d="m 574.3743,31.632995 0,115.726555 a 180.09126,180.09126 0 0 1 48.39062,53.83984 l 87.98829,-50.79883 A 281.73785,281.73785 0 0 0 574.3743,31.632995 Z"
+                   style="opacity:1;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
               </a>
             </g>
           </g>
@@ -166,14 +168,5 @@
         </g>
       </g>
     </g>
-    <a xlink:href="/">
-      <rect
-       style="fill:#008080;fill-opacity:0.49418604;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="retourmenu"
-       width="553.56354"
-       height="140.41119"
-       x="91.923859"
-       y="663.45355" />
-    </a>
   </g>
 </svg>

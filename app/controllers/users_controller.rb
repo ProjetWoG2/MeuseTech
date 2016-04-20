@@ -6,13 +6,13 @@ class UsersController < ApplicationController
   before_action :owner_required, only: [ :edit, :update, :destroy]
 	
 	def edit
-		render :edit    
+		render :edit   
   end
 	
 	def destroy
     #action d'effacement de l'utilisateur
     @user.destroy
-    flash[:notice] ="L'utilisateur a été effacé."   
+    flash[:notice] ="L'utilisateur a été effacé."
     redirect_to action: "index"
   end
 	
@@ -33,7 +33,12 @@ class UsersController < ApplicationController
   end
 
   def show
-    render :show    
+    if exists
+      render :show
+    else 
+      redirect_to action: "index"
+    end
+
   end
 
   private
@@ -44,9 +49,11 @@ class UsersController < ApplicationController
 
   def exists
     if User.exists?(params[:id])
-      @user = User.find(params[:id])    
+      @user = User.find(params[:id])
+      return true    
     else
-      flash[:alert] ="L'utilisateur n'existe pas."      
+      flash[:alert] ="L'utilisateur n'existe pas."
+      return false    
     end
   end
 
