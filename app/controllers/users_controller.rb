@@ -20,12 +20,18 @@ class UsersController < ApplicationController
 	
   def update
       @user = User.find(params[:id])
-	  if @user.update(compte_params)  
+      @comments = Comment.where(user_id: @user.id).where(role: "comments")
+	  if @user.update(compte_params)
+        if @user.confiance
+            @comments.each do |comment|
+              comment.update(visible: true)
+            end
+        end
         flash[:notice] = "L'utilisateur a été mis à jour."
-        redirect_to action: "index"
+        redirect_to :back
       else
         flash[:alert] = "L'utilisateur n'a pas été mis à jour."
-        redirect_to action: "index"
+        redirect_to :back
       end
   end
 	

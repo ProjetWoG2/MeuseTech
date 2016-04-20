@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160419112031) do
+ActiveRecord::Schema.define(version: 20160420110503) do
 
   create_table "actions", force: :cascade do |t|
     t.string "label"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20160419112031) do
     t.string   "role",                        default: "comments"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "visible"
   end
 
   add_index "comments", ["commentable_id"], name: "index_comments_on_commentable_id"
