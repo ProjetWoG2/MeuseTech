@@ -1,9 +1,10 @@
 class ActualitesController < ApplicationController
   
   def show
-    @actualite = Actualite.find(params[:id])
+    @actualite = Actualite.find(params[:id])  
     @actualites = Actualite.order(created_at: :desc)
-    @comments = @actualite.comments.all
+    @comments = @actualite.comments.where(visible: true).where(role: "comments")  
+    @likes = @actualite.comments.where(role: "likes")  
   end
     
     
@@ -36,20 +37,51 @@ class ActualitesController < ApplicationController
    
   end
     
+
+    
   def add_new_comment
     actualite = Actualite.find(params[:id])
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
+    @comment.role = "comments"
+    if User.find(@comment.user_id).confiance == false
+        @comment.visible = false
+    else
+        @comment.visible = true
+    end
     actualite.comments << @comment
     if @comment.save
         if User.find(@comment.user_id).confiance == false
-            flash[:notice] = "C'est votre premier commentaire! Il va être validé par un administrateur avant d'être mis en ligne!"
+            flash[:notice] = "Votre commentaire va être validé par un administrateur avant d'être mis en ligne!"
+            User.all.each do |user|
+                if user.role_id == 2
+                    AdminMailer.nouveau_commentaire(user, @comment).deliver_now
+                end
+            end
             redirect_to :action => :show, :id => actualite
         else
             flash[:notice] ="Le commentaire a été mis en ligne."  
             redirect_to :action => :show, :id => actualite
         end
     end
+  end
+    
+  def add_new_like
+    actualite = Actualite.find(params[:id])
+      if actualite.comments.where(role: "likes").where(user_id: current_user.id).count == 0
+        @comment = Comment.new
+        @comment.user_id = current_user.id
+        @comment.role = "likes"
+        @comment.visible = true
+        actualite.comments << @comment
+        if @comment.save
+            flash[:notice] ="Contenu liké!"  
+            redirect_to :action => :show, :id => actualite
+        end
+      else
+          flash[:error] ="Vous avez déjà liké ce contenu!"
+          redirect_to :action => :show, :id => actualite
+      end
   end
     
   def last_actu

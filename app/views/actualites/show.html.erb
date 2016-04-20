@@ -9,23 +9,21 @@
 
     <h1><%= @actualite.title %></h1>
     <p>créé le <%= @actualite.created_at.to_date %> par <%= User.find(@actualite.user_id).pseudo %></p>
+    
     <div class="fr-view">
         <%= raw @actualite.content %>
     </div>
-    
-    <h3>Commentaires</h3>
+    <h3>Likes (<%= @likes.count %>) </h3>
+    <h3>Commentaires (<%= @comments.count %>)</h3>
     
     <div>
         <% @comments.each do |comment| %>
-            <% if User.find(comment.user_id).confiance == true %>
                 <p><%= User.find(comment.user_id).pseudo %> : <%= comment.comment %></p>
                 <p><%= comment.created_at.to_time %></p>
-
                 <% if user_signed_in? && (current_user == User.find(comment.user_id) || current_user.moderator?(:comments)) %>
                     <%= link_to "Supprimer", comment_path(comment.id), :method => :delete %> | <%= link_to "Editer", edit_comment_path(comment.id) %>
                 <% end %>
                 </br></br>
-            <% end %>
         <% end %>
     </div>
     <% if user_signed_in? %>
@@ -34,6 +32,12 @@
             <%= hidden_field_tag "id", @actualite.id %>
             <%= text_field_tag "comment[comment]", "Votre commentaire" %>
                 <%= submit_tag "Commenter" %>
+            <% end %>
+        </div></br>
+        <div>
+            <%= form_tag "/actualites/add_new_like" do %>
+            <%= hidden_field_tag "id", @actualite.id %>
+            <%= submit_tag "J'aime" %>
             <% end %>
         </div></br>
     <% end %>
@@ -48,6 +52,8 @@
 			<th>Titre</th>
 			<th>Auteur</th>
 			<th>Date de création</th>
+            <th>Commentaires</th>
+            <th>Likes</th>
               <% if user_signed_in? && current_user.moderator?(:actualites) %>
                 <th>Actions</th>
             <% end %>
@@ -56,11 +62,13 @@
 	   <tbody>
           <% @actualites.each do |actualite| %>
 		      <tr>
-                  <td><%= link_to actualite.title, actualite_path(actualite.id)%></td>
+                <td><%= link_to actualite.title, actualite_path(actualite.id)%></td>
                 <td><%= User.find(actualite.user_id).pseudo %></td>
                 <td><%= actualite.created_at.to_date %></td>
-                  <% if user_signed_in? && current_user.moderator?(:actualites) %>
-                  <th><%= link_to "Supprimer", actualite_path(actualite.id), :method => :delete %> | <%= link_to "Editer", edit_actualite_path(actualite.id)%></th>
+                <td><%= actualite.comments.where(visible: true).where(role: "comments").count %></td>
+                <td><%= actualite.comments.where(role: "likes").count %></td>
+                <% if user_signed_in? && current_user.moderator?(:actualites) %>
+                  <td><%= link_to "Supprimer", actualite_path(actualite.id), :method => :delete %> | <%= link_to "Editer", edit_actualite_path(actualite.id)%></td>
                   <% end %>
 		      </tr>
 		  <% end %>

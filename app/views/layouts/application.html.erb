@@ -28,7 +28,9 @@
 		<%= render 'layouts/sidebarConnexion' %>
 	</header>
 
-	<%= yield %>
+	<div class="container">
+		<%= yield %>
+	</div>
 
 	<footer>
 		<%= render 'layouts/footer' %>
@@ -45,10 +47,11 @@
     
     <!-- Appel du js lié à la sidebar // champs de connexion -->
     <%= javascript_include_tag 'sidebar' %>
-	   
-    <%= yield :script %> 
-    
-    <%= javascript_include_tag "https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js" %>
+
+	<%= javascript_include_tag "https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js" %>
+    <%= javascript_include_tag  "application" %>
+
+	<%= yield :script %> 
 	
 </body>
 

@@ -1,0 +1,23 @@
+<h2>
+  Tous les sondages
+  <% if can_administer? %>
+    <%= link_to "Créer un nouveau sondage", new_question_group_path %>
+  <% end %>
+</h2>
+<hr/>
+
+<table>
+  <colgroup>
+    <col>
+    <col width="250">
+  </colgroup>
+  <thead>
+    <tr>
+      <th>Libellé du sondage</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render partial: "question_group", collection: @question_groups %>
+  </tbody>
+</table>

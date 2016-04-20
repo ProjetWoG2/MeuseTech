@@ -19,20 +19,13 @@ Rails.application.routes.draw do
 
 
   TheRoleManagementPanel::Routes.mixin(self)
-
-      
-  scope(:path_names => { :new => "nouveau", :edit => "editer" }) do
-        resources :surveys, :path => "sondages"
-  end
-  
+   
   resources 'actualites'
+
   resources 'projets'
   resources 'comments' 
-  resources 'attempts', :path => "participations"
   resources 'users', only: [:create]
 
-
-  delete 'attempts/:survey_id/:user_id' => 'attempts#delete_user_attempts', as: :delete_user_attempts    
 
   get 'pourquoi' => 'pages#pourquoi'	
   
@@ -42,11 +35,17 @@ Rails.application.routes.draw do
   get 'actualites/update'
   get 'derniere-actualite' => 'actualites#last_actu', as: :last_actu
 
+  mount Rapidfire::Engine => "/sondages"
+
+
   get 'projets' => 'projets#index'   
   get 'projets/:id/labelize' => 'projets#labelize', as: :labelize_projet
   match "/projets/add_new_comment" => "projets#add_new_comment", :as => "add_new_comment_to_projets", :via => [:post]
   match "/actualites/add_new_comment" => "actualites#add_new_comment", :as => "add_new_comment_to_actualites", :via => [:post]
+  match "/actualites/add_new_like" => "actualites#add_new_like", :as => "add_new_like_to_actualites", :via => [:post]
+  match "/projets/add_new_like" => "projets#add_new_like", :as => "add_new_like_to_projets", :via => [:post]
   get 'users/:id/validate' => 'users#validate', as: :validate_user
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
