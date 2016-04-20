@@ -1,6 +1,7 @@
 class UsersController < ApplicationController	
 
   before_action :login_required, except: [ :index, :show ]
+
   before_action only: [:show, :update, :destroy, :edit] do
     :role_required
     :owner_required
@@ -14,7 +15,7 @@ class UsersController < ApplicationController
   def destroy
     #action d'effacement de l'utilisateur
     @user.destroy
-    flash[:notice] ="L'utilisateur a été effacé."   
+    flash[:notice] ="L'utilisateur a été effacé."
     redirect_to action: "index"
   end
 	

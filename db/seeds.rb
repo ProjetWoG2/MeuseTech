@@ -59,7 +59,7 @@ if User.all.empty?
       password_confirmation: "meusetech",
       confirmed_at: DateTime.now,
       unconfirmed_email: "auteur@meusetech.com",
-      pseudo: "L'auteur''",
+      pseudo: "L'auteur'",
       nom: "Auboisdormant",
       prenom: "Abel",
       confiance: false
