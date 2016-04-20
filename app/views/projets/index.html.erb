@@ -1,2 +1,53 @@
-<h1>Projets</h1>
-<a href="/">Retour Accueil</a>
+<div class="container">
+
+    <h1>Je dépose un projet</h1>
+    <% if user_signed_in? %>
+        <a href="projets/new">Déposer un projet</a>
+    <% end %>
+
+    
+<% if Projet.last %>
+    <table class="table">
+	   <thead class="thead-inverse">
+		  <tr>
+			<th>Titre du projet</th>
+			<th>Thème</th>
+			<th>Utilisateur</th>
+            <th>Localisation</th>
+            <th>Avancement</th>
+            <th>Labellisé</th>
+            <% if user_signed_in? %>
+                <th>Actions</th>
+            <% end %>
+		  </tr>
+	   </thead>
+	   <tbody>
+           <% @projets.each do |projet| %>
+		      <tr>
+                  <td><%= link_to projet.titre, projet_path(projet.id)%></td>
+                  <td><%= Thematique.find(projet.categorie_id).categorie %></td>
+                  <td><%= User.find(projet.user_id).pseudo %></td>
+                  <td><%= projet.localisation %></td>
+                  <td><%= projet.statut %></td>
+                  <td><% if projet.labellise == false %>
+                        <%= "Non" %></td>
+                      <% else %>
+                        <%= "Oui" %></td>
+                      <% end %>
+                  <% if user_signed_in? && ((current_user == User.find(projet.user_id)) || current_user.moderator?(:projets)) %>
+                  <th><%= link_to "Editer", edit_projet_path(projet.id)%> 
+                      <% if user_signed_in? && current_user.moderator?(:projets) %>
+                        | <%= link_to "Supprimer", projet_path(projet.id), :method => :delete %> | <%= link_to "Labélliser", labelize_projet_path(projet.id)%> 
+                      <% end %></th>
+                  <% end %>
+		      </tr>
+		  <% end %>
+	   </tbody>
+    </table>
+<% else %>
+    <p>Il n'existe aucun projet actuellement.</p>
+<% end %> 
+
+    
+    
+</div>

@@ -3,6 +3,7 @@ class ActualitesController < ApplicationController
   def show
     @actualite = Actualite.find(params[:id])
     @actualites = Actualite.order(created_at: :desc)
+    @comments = @actualite.comments.all
   end
     
     
@@ -12,7 +13,6 @@ class ActualitesController < ApplicationController
     
   def create
     @actualite = Actualite.new(actualite_params)
-
     @actualite.user_id = current_user.id
     if @actualite.save
       redirect_to @actualite
@@ -36,6 +36,22 @@ class ActualitesController < ApplicationController
    
   end
     
+  def add_new_comment
+    actualite = Actualite.find(params[:id])
+    @comment = Comment.new(comment_params)
+    @comment.user_id = current_user.id
+    actualite.comments << @comment
+    if @comment.save
+        if User.find(@comment.user_id).confiance == false
+            flash[:notice] = "C'est votre premier commentaire! Il va être validé par un administrateur avant d'être mis en ligne!"
+            redirect_to :action => :show, :id => actualite
+        else
+            flash[:notice] ="Le commentaire a été mis en ligne."  
+            redirect_to :action => :show, :id => actualite
+        end
+    end
+  end
+    
   def last_actu
     if Actualite.last
       @actualite = Actualite.last.id
@@ -55,6 +71,9 @@ class ActualitesController < ApplicationController
   private
   def actualite_params
       params.require(:actualite).permit(:title, :content, :created_at, :updated_at, :user_id)
+  end
+  def comment_params
+      params.require(:comment).permit(:comment, :title, :user_id)
   end
     
 end

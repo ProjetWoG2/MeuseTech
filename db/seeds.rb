@@ -22,7 +22,8 @@ if User.all.empty?
       unconfirmed_email: "superadmin@meusetech.com",
       pseudo: "Dieu",
       nom: "Norris",
-      prenom: "Chuck"
+      prenom: "Chuck",
+      confiance: true
     )
 
     User.create(
@@ -34,7 +35,8 @@ if User.all.empty?
       unconfirmed_email: "lorn@meusetech.com",
       pseudo: "Lorn",
       nom: "Caillas",
-      prenom: "Lorraine"
+      prenom: "Lorraine",
+      confiance: true
     )
 
     User.create(
@@ -46,7 +48,8 @@ if User.all.empty?
       unconfirmed_email: "contributeur@meusetech.com",
       pseudo: "Le Contrib'",
       nom: "Aire",
-      prenom: "Axel"
+      prenom: "Axel",
+      confiance: false
     )
 
     User.create(
@@ -58,7 +61,8 @@ if User.all.empty?
       unconfirmed_email: "auteur@meusetech.com",
       pseudo: "L'auteur'",
       nom: "Auboisdormant",
-      prenom: "Abel"
+      prenom: "Abel",
+      confiance: false
     )
 end
 
@@ -72,3 +76,8 @@ if Role.all.empty?
     ) 
 end
 
+if Thematique.all.empty?
+    ['Agriculture', 'Développement durable', 'Économie', 'Emploi/Formation', 'Habitat', 'Services à la population', 'Tourisme/Culture', 'Numérique', 'Santé', 'Autre'].each do |thematique|
+        Thematique.create(categorie: thematique)
+  end
+end

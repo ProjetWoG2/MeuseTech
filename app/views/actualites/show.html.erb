@@ -1,14 +1,44 @@
-
+<% content_for :stylesheet do %>
+<%= stylesheet_link_tag  'editeur' %>
+<% end %>
 
 <div class="container">
-    <% if (current_user && current_user.moderator?(:actualites)) %>
+    <% if (user_signed_in? && current_user.moderator?(:actualites)) %>
         <a href="../actualites/new">Créer une actualité</a>
     <% end %>
 
     <h1><%= @actualite.title %></h1>
     <p>créé le <%= @actualite.created_at.to_date %> par <%= User.find(@actualite.user_id).pseudo %></p>
+    <div class="fr-view">
+        <%= raw @actualite.content %>
+    </div>
+    
+    <h3>Commentaires</h3>
+    
+    <div>
+        <% @comments.each do |comment| %>
+            <% if User.find(comment.user_id).confiance == true %>
+                <p><%= User.find(comment.user_id).pseudo %> : <%= comment.comment %></p>
+                <p><%= comment.created_at.to_time %></p>
 
-    <%= raw @actualite.content %>
+                <% if user_signed_in? && (current_user == User.find(comment.user_id) || current_user.moderator?(:comments)) %>
+                    <%= link_to "Supprimer", comment_path(comment.id), :method => :delete %> | <%= link_to "Editer", edit_comment_path(comment.id) %>
+                <% end %>
+                </br></br>
+            <% end %>
+        <% end %>
+    </div>
+    <% if user_signed_in? %>
+        <div>
+            <%= form_tag "/actualites/add_new_comment" do %>
+            <%= hidden_field_tag "id", @actualite.id %>
+            <%= text_field_tag "comment[comment]", "Votre commentaire" %>
+                <%= submit_tag "Commenter" %>
+            <% end %>
+        </div></br>
+    <% end %>
+    
+    
 
     <h3>Les dernières actualités</h3>
     
@@ -18,7 +48,7 @@
 			<th>Titre</th>
 			<th>Auteur</th>
 			<th>Date de création</th>
-            <% if current_user && current_user.moderator?(:actualites) %>
+              <% if user_signed_in? && current_user.moderator?(:actualites) %>
                 <th>Actions</th>
             <% end %>
 		  </tr>
@@ -29,7 +59,7 @@
                   <td><%= link_to actualite.title, actualite_path(actualite.id)%></td>
                 <td><%= User.find(actualite.user_id).pseudo %></td>
                 <td><%= actualite.created_at.to_date %></td>
-                  <% if current_user && current_user.moderator?(:actualites) %>
+                  <% if user_signed_in? && current_user.moderator?(:actualites) %>
                   <th><%= link_to "Supprimer", actualite_path(actualite.id), :method => :delete %> | <%= link_to "Editer", edit_actualite_path(actualite.id)%></th>
                   <% end %>
 		      </tr>
