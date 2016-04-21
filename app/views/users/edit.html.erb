@@ -16,6 +16,9 @@
     <div><%= f.label :pseudo %><br />
         <%= f.text_field :pseudo %></div>
 
+<div><%= f.label :image %><br />
+    <%= f.file_field :image %></div>
+
     <div><%= f.label :confiance, "Souhaitez-vous valider cet utilisateur? (Ses commentaires seront automatiquement mis en ligne sur le site)" %><br>
         <%= f.select :confiance, options_for_select([["Oui", true], ["Non", false]], @user.confiance) %>
               </div>
