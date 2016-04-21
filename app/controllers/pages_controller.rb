@@ -8,7 +8,7 @@ class PagesController < ApplicationController
     @projets_actifs=Hash.new
     
     @projets.each do |projet|
-        score = ((projet.comments.where(role: "comments").where(visible:true).count)*6)+(projet.comments.where(role: "likes").count)
+        score = ((projet.comments.where(role:"comments").where(visible:true).count)*6)+(projet.comments.where(role: "likes").count)
         @projets_actifs[projet] = score
     end
     @projets_actifs = @projets_actifs.sort_by{|_key, value| value}.reverse.first(3)

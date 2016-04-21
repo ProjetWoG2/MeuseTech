@@ -19,6 +19,8 @@
     <p>Les besoins : <%= @projet.besoin %></p>
 
     <p>Le site web : <%= @projet.urlsite %></p>
+    
+    <p>Image : <%= image_tag @projet.image.url %></p>
 
     <p>Fiche projet créée le <%= @projet.created_at.to_date %> par <%= User.find(@projet.user_id).pseudo %></p>
     
