@@ -12,7 +12,7 @@ class PagesController < ApplicationController
         @projets_actifs[projet] = score
     end
     @projets_actifs = @projets_actifs.sort_by{|_key, value| value}.reverse.first(3)
-    @derniers_commentaires=Comment.last(5)
+    @derniers_commentaires=Comment.where(role: "comments").last(5)
   end
     
   def pourquoi
