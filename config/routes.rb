@@ -24,7 +24,7 @@ Rails.application.routes.draw do
 
   resources 'projets'
   resources 'comments' 
-  resources 'users', only: [:create]
+  resources 'users'
 
 
   get 'pourquoi' => 'pages#pourquoi'	
@@ -45,6 +45,7 @@ Rails.application.routes.draw do
   match "/actualites/add_new_like" => "actualites#add_new_like", :as => "add_new_like_to_actualites", :via => [:post]
   match "/projets/add_new_like" => "projets#add_new_like", :as => "add_new_like_to_projets", :via => [:post]
   get 'users/:id/validate' => 'users#validate', as: :validate_user
+  get 'users/:id/ban' => 'users#ban', as: :ban_user
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
