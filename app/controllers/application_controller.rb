@@ -5,7 +5,15 @@ class ApplicationController < ActionController::Base
 
 	protect_from_forgery with: :exception
 	before_action :configure_permitted_parameters, if: :devise_controller?
-	
+	before_filter :is_ban
+
+    def is_ban
+        if current_user.present? && current_user.is_ban
+            sign_out current_user
+            flash[:error] = "Votre compte a été banni."
+            root_path
+        end
+    end
 
 	def can_administer?
 		if current_user

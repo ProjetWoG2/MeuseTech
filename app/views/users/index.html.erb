@@ -1,9 +1,10 @@
 <div class="container">
+    <% if user_signed_in? && (current_user.admin? || current_user.moderator?(:contributeurs)) %>
     <h1>Liste des Utilisateurs </h1>
 
         <% if current_user %>
             <% if current_user.admin?  %>
-                <%= link_to 'TheRole Manage Panel', admin_roles_path %>
+                <%= link_to 'Panneau de configuration des rôles', admin_roles_path %>
             <% end %>
         <% end %>
 
@@ -13,7 +14,9 @@
                     <th>Nom</th>
                     <th>Prénom</th>
                     <th>Email</th>
-                    <th>Rôle</th>		
+                    <th>Rôle</th>
+                    <th>Statut</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -25,16 +28,26 @@
                     <td><%= user.email %></td>
                     <td><% if user.role %>
                           <%= user.role.name %>
-                            <% if (current_user.admin? || (user.role.name == "contributeur" && current_user.moderator?(:contributeurs)) || current_user.id == user.id) %>
-                                <a href="/users/<%= user.id %>" data-method="delete">Supprimer</a>
-                             <% end %>
+                        <% end%>
+                    </td>
+                    <td><% if user.is_ban %>
+                            <%= "Banni" %>
+                        <% else %>
+                            <%= "Actif" %>
                         <% end %>
-                    </td>		
+                    </td>
+                    <td><% if (current_user.admin? || (user.role.name == "contributeur" && current_user.moderator?(:contributeurs)) || current_user.id == user.id) %>
+                                <a href="/users/<%= user.id %>" data-method="delete">Supprimer</a> | 
+                                <a href="/users/<%= user.id %>/edit">Editer</a> | 
+                                <a href="/users/<%= user.id %>/ban">Bannir</a>
+                        <% end %>
+                    </td>	
                 </tr>
 
                 <% end %>
 
             </tbody>
         </table>
+        <% end %>
 </div>
 

@@ -1,16 +1,31 @@
-<h2>Editer le compte <%= @compte.nom %></h2>
 
 
-<%= form_for(@compte, :url => yield(:url)) do |f| %>
+<% if user_signed_in? && current_user.moderator?(:users) %>
 
-<div><%= f.label :nom %><br />
-	<%= f.text_field :nom %></div>
+<h2>Editer le compte de <%= @user.pseudo %></h2>
 
-	<div><%= f.label :prenom %><br />
-	<%= f.text_field :prenom %></div>
 
-<div><%= f.submit "Editer"%></div>
+    <%= form_for(@user, :url => yield(:url)) do |f| %>
+
+    <div><%= f.label :nom %><br />
+        <%= f.text_field :nom %></div>
+
+        <div><%= f.label :prenom %><br />
+        <%= f.text_field :prenom %></div>
+
+    <div><%= f.label :pseudo %><br />
+        <%= f.text_field :pseudo %></div>
+
+    <div><%= f.label :confiance, "Souhaitez-vous valider cet utilisateur? (Ses commentaires seront automatiquement mis en ligne sur le site)" %><br>
+        <%= f.select :confiance, options_for_select([["Oui", true], ["Non", false]], @user.confiance) %>
+              </div>
+
+
+    <div><%= f.submit "Editer"%></div>
+    <% end %>
+<% else %>
+    <p>Vous n'avez pas cette permission</p>
 <% end %>
 
 
-<a href="/moderation">Retour Espace Modération</a>
+<a href="/users">Retour à la liste des utilisateurs</a>

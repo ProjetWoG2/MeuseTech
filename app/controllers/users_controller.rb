@@ -9,7 +9,12 @@ class UsersController < ApplicationController
     
     
   def edit
+    @user = User.find(params[:id])
     render :edit    
+  end
+    
+  def ban
+    @user = User.find(params[:id])   
   end
 	
   def destroy
@@ -27,6 +32,9 @@ class UsersController < ApplicationController
             @comments.each do |comment|
               comment.update(visible: true)
             end
+        end
+        if @user.is_ban
+            UserMailer.banni(@user, @user.raison_ban).deliver_now
         end
         flash[:notice] = "L'utilisateur a été mis à jour."
         redirect_to :back
@@ -57,7 +65,7 @@ class UsersController < ApplicationController
   private
 
   def compte_params
-      params.require(:user).permit(:confiance)
+      params.require(:user).permit(:confiance, :is_ban, :raison_ban)
   end
 
   def exists

@@ -1,6 +1,4 @@
 class ProjetsController < ApplicationController
-  
-    
   def show
     @projet = Projet.find(params[:id])
     @comments = @projet.comments.where(visible: true).where(role: "comments")
@@ -122,6 +120,4 @@ private
     string_of_values = params.require(:statut).map{ |key, val| key if val == "1" }.compact.join("/")
     {statut: string_of_values}
   end
-    
-    
 end
