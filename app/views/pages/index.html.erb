@@ -1,6 +1,6 @@
 <div class="container">
   
-    <% if @projets_actifs %>
+    <% if @projets_actifs.last %>
       <h3>Les 3 projets les plus actifs</h3>
 
             <table class="table">
@@ -28,7 +28,7 @@
             </table>
     <% end %>
     
-    <% if @derniers_projets %>
+    <% if @derniers_projets.last %>
         <h3>Les 3 derniers projets</h3>
     
             <table class="table">
@@ -56,7 +56,7 @@
     <% end %>
     
     
-    <% if @derniers_commentaires %>
+    <% if @derniers_commentaires.last %>
 	<h3>Les 5 derniers commentaires</h3>
     
     
