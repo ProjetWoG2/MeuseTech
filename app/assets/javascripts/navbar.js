@@ -1,40 +1,49 @@
-$("#txtOrange").css("fill-opacity", "0");
-$("#txtVert").css("fill-opacity", "0");
-$("#txtBleu").css("fill-opacity", "0");
-$("#txtMarron").css("fill-opacity", "0");
+$("#txtprojets").css("fill-opacity", "0");
+$("#txtsondages").css("fill-opacity", "0");
+$("#txtactualites").css("fill-opacity", "0");
+$("#txtpourquoi").css("fill-opacity", "0");
 
-$("#orange").hover(
+$("#projets").hover(
 	function() {
-		$("#txtOrange").css("fill-opacity", "1");
+		$("#txtprojets").css("fill-opacity", "1");
+  	},
+  	function () {  
+		$("#txtprojets").css("fill-opacity", "0");
+  	}
+);
+
+$("#sondages").hover(
+	function() {
+		$("#txtsondages").css("fill-opacity", "1");
 	}, 
 	function() {
-		$("#txtOrange").css("fill-opacity", "0");
+		$("#txtsondages").css("fill-opacity", "0");
 	}
 );
 
-$("#vert").hover(
+$("#actualites").hover(
 	function() {
-		$("#txtVert").css("fill-opacity", "1");
+		$("#txtactualites").css("fill-opacity", "1");
 	}, 
 	function() {
-		$("#txtVert").css("fill-opacity", "0");
+		$("#txtactualites").css("fill-opacity", "0");
 	}
 );
 
-$("#bleu").hover(
+$("#pourquoi").hover(
 	function() {
-		$("#txtBleu").css("fill-opacity", "1");
+		$("#txtpourquoi").css("fill-opacity", "1");
 	}, 
 	function() {
-		$("#txtBleu").css("fill-opacity", "0");
+		$("#txtpourquoi").css("fill-opacity", "0");
 	}
 );
 
-$("#marron").hover(
+$("#retourmenu").hover(
 	function() {
-		$("#txtMarron").css("fill-opacity", "1");
+		$("#title").css("fill", "#22427C");
 	}, 
 	function() {
-		$("#txtMarron").css("fill-opacity", "0");
+		$("#title").css("fill", "#000000");
 	}
 );
