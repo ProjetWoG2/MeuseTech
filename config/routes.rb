@@ -43,7 +43,11 @@ Rails.application.routes.draw do
   match "/projets/add_new_comment" => "projets#add_new_comment", :as => "add_new_comment_to_projets", :via => [:post]
   match "/actualites/add_new_comment" => "actualites#add_new_comment", :as => "add_new_comment_to_actualites", :via => [:post]
   match "/actualites/add_new_like" => "actualites#add_new_like", :as => "add_new_like_to_actualites", :via => [:post]
+  match "/actualites/destroy_like" => "actualites#destroy_like", :as => "destroy_like_from_actualites", :via => [:post]
   match "/projets/add_new_like" => "projets#add_new_like", :as => "add_new_like_to_projets", :via => [:post]
+  match "/projets/add_new_follower" => "projets#add_new_follower", :as => "add_new_follower_to_projets", :via => [:post]
+  match "/projets/destroy_follower" => "projets#destroy_follower", :as => "destroy_follower_from_projets", :via => [:post]
+  match "/projets/destroy_like" => "projets#destroy_like", :as => "destroy_like_from_projets", :via => [:post]
   get 'users/:id/validate' => 'users#validate', as: :validate_user
   get 'users/:id/ban' => 'users#ban', as: :ban_user
 

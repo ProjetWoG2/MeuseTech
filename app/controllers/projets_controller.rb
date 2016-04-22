@@ -3,6 +3,7 @@ class ProjetsController < ApplicationController
     @projet = Projet.find(params[:id])
     @comments = @projet.comments.where(visible: true).where(role: "comments")
     @likes = @projet.comments.where(role: "likes")
+    @followers = @projet.comments.where(role: "follows")
   end
   
   def index
@@ -97,6 +98,42 @@ class ProjetsController < ApplicationController
           flash[:error] ="Vous avez déjà liké ce contenu!"
           redirect_to :action => :show, :id => projet
       end
+  end
+    
+  def destroy_like
+      projet = Projet.find(params[:id])
+      if projet.comments.where(role: "likes").where(user_id: current_user.id).count == 1
+        Comment.destroy(Comment.where(role: "likes").where(user_id: current_user.id))
+      end
+      redirect_to :action => :show, :id => projet
+      flash[:notice] ="Vous n'aimez plus ce contenu!"  
+  end
+    
+  def add_new_follower
+      projet = Projet.find(params[:id])
+      if projet.comments.where(role: "follows").where(user_id: current_user.id).count == 0
+        @comment = Comment.new
+        @comment.user_id = current_user.id
+        @comment.role = "follows"
+        @comment.visible = true
+        projet.comments << @comment
+        if @comment.save
+            flash[:notice] ="Contenu suivi!"  
+            redirect_to :action => :show, :id => projet
+        end
+      else
+          flash[:error] ="Vous suivez déjà ce contenu!"
+          redirect_to :action => :show, :id => projet
+      end
+  end
+    
+  def destroy_follower
+      projet = Projet.find(params[:id])
+      if projet.comments.where(role: "follows").where(user_id: current_user.id).count == 1
+        Comment.destroy(Comment.where(role: "follows").where(user_id: current_user.id))
+      end
+      redirect_to :action => :show, :id => projet
+      flash[:notice] ="Vous ne suivez plus ce contenu!"  
   end
     
     
