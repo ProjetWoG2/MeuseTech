@@ -4,7 +4,8 @@ class ActualitesController < ApplicationController
     @actualite = Actualite.find(params[:id])  
     @actualites = Actualite.order(created_at: :desc)
     @comments = @actualite.comments.where(visible: true).where(role: "comments")  
-    @likes = @actualite.comments.where(role: "likes")  
+    @likes = @actualite.comments.where(role: "likes")
+    @followers = @actualite.comments.where(role: "follows")
   end
     
     
@@ -82,6 +83,15 @@ class ActualitesController < ApplicationController
           flash[:error] ="Vous avez déjà liké ce contenu!"
           redirect_to :action => :show, :id => actualite
       end
+  end
+    
+  def destroy_like
+    actualite = Actualite.find(params[:id])
+      if actualite.comments.where(role: "likes").where(user_id: current_user.id).count == 1
+        Comment.destroy(Comment.where(role: "likes").where(user_id: current_user.id))
+      end
+      flash[:notice] ="Vous n'aimez plus ce contenu!"  
+      redirect_to :action => :show, :id => actualite
   end
     
   def last_actu

@@ -24,6 +24,7 @@
 
     <p>Fiche projet créée le <%= @projet.created_at.to_date %> par <%= User.find(@projet.user_id).pseudo %></p>
     
+    <h3>Followers (<%= @followers.count %>)</h3>
     <h3>Likes (<%= @likes.count %>)</h3>
     <h3>Commentaires (<%= @comments.count %>)</h3>
     
@@ -47,12 +48,38 @@
                 <%= submit_tag "Commenter" %>
             <% end %>
         </div></br>
-        <div>
-            <%= form_tag "/projets/add_new_like" do %>
-            <%= hidden_field_tag "id", @projet.id %>
-            <%= submit_tag "J'aime" %>
-            <% end %>
-        </div></br>
+        <% if @projet.comments.where(role: "likes").where(user_id: current_user.id).count == 0 %>
+            <div>
+                <%= form_tag "/projets/add_new_like" do %>
+                <%= hidden_field_tag "id", @projet.id %>
+                <%= submit_tag "J'aime" %>
+                <% end %>
+            </div></br>
+        <% else %>
+            <div>
+                <%= form_tag "/projets/destroy_like" do %>
+                <%= hidden_field_tag "id", @projet.id %>
+                <%= submit_tag "Je n'aime plus" %>
+                <% end %>
+            </div></br>
+        <% end %>
+
+
+        <% if @projet.comments.where(role: "follows").where(user_id: current_user.id).count == 0 %>
+            <div>
+                <%= form_tag "/projets/add_new_follower" do %>
+                <%= hidden_field_tag "id", @projet.id %>
+                <%= submit_tag "Je suis ce projet" %>
+                <% end %>
+            </div></br>
+        <% else %>
+            <div>
+                <%= form_tag "/projets/destroy_follower" do %>
+                <%= hidden_field_tag "id", @projet.id %>
+                <%= submit_tag "Je ne souhaite plus suivre ce projet" %>
+                <% end %>
+            </div></br>
+        <% end %>
     <% end %>
     
     
