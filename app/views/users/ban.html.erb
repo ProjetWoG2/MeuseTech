@@ -1,0 +1,28 @@
+<div class="container">
+
+    <% if user_signed_in? && current_user.moderator?(:users) %>
+
+    <h1>Bannir l'utilisateur : <%= @user.pseudo %></h1>
+
+
+        <%= form_for @user, :url =>{:action => "update", :id =>@user} do |f| %>
+
+
+              <p>
+                  <%= f.label :is_ban, "Souhaitez-vous bannir cet utilisateur?" %><br>
+                  <%= f.select :is_ban, options_for_select([["Oui", true], ["Non", false]], @user.is_ban) %>
+              </p>
+              <p>
+                  <%= f.label :raison_ban, "Indiquez la raison du bannissement" %><br>
+                  <%= f.text_field :raison_ban %>
+              </p>
+
+              <p>
+                <%= f.submit "Enregistrer" %>
+              </p>
+        <% end %>
+    <% else %>
+          <p>Vous n'avez pas la permission de bannir un utilisateur.</p>
+    <% end %>
+    
+</div>

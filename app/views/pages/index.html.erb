@@ -1,3 +1,85 @@
 <div class="container">
-	<h1>Accueil</h1>
+  
+    <% if @projets_actifs.last %>
+      <h3>Les 3 projets les plus actifs</h3>
+
+            <table class="table">
+               <thead class="thead-inverse">
+                  <tr>
+                    <th>Titre</th>
+                    <th>Auteur</th>
+                    <th>Date de création</th>
+                    <th>Commentaires</th>
+                    <th>Likes</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <% @projets_actifs.each do |projet| %>
+                   <% projet=projet[0] %>
+                      <tr>
+                        <td><%= link_to projet.titre, projet_path(projet.id)%></td>
+                        <td><%= User.find(projet.user_id).pseudo %></td>
+                        <td><%= projet.created_at.to_date %></td>
+                        <td><%= projet.comments.where(visible: true).where(role: "comments").count %></td>
+                        <td><%= projet.comments.where(role: "likes").count %></td>
+                      </tr>
+                  <% end %>
+               </tbody>
+            </table>
+    <% end %>
+    
+    <% if @derniers_projets.last %>
+        <h3>Les 3 derniers projets</h3>
+    
+            <table class="table">
+               <thead class="thead-inverse">
+                  <tr>
+                    <th>Titre</th>
+                    <th>Auteur</th>
+                    <th>Date de création</th>
+                    <th>Commentaires</th>
+                    <th>Likes</th>
+                  </tr>
+               </thead>
+               <tbody>
+                   <% @derniers_projets.each do |projet| %>
+                      <tr>
+                        <td><%= link_to projet.titre, projet_path(projet.id)%></td>
+                        <td><%= User.find(projet.user_id).pseudo %></td>
+                        <td><%= projet.created_at.to_date %></td>
+                        <td><%= projet.comments.where(visible: true).where(role: "comments").count %></td>
+                        <td><%= projet.comments.where(role: "likes").count %></td>
+                      </tr>
+                  <% end %>
+               </tbody>
+            </table>
+    <% end %>
+    
+    
+    <% if @derniers_commentaires.last %>
+	<h3>Les 5 derniers commentaires</h3>
+    
+    
+        <table class="table">
+           <thead class="thead-inverse">
+              <tr>
+                <th>Auteur</th>
+                <th>Commentaire</th>
+                <th>Date de création</th>
+                <th>Section commentée</th>
+              </tr>
+           </thead>
+           <tbody>
+              <% @derniers_commentaires.each do |commentaire| %>
+                  <tr>
+                    <td><%= User.find(commentaire.user_id).pseudo %></td>
+                    <td><%= commentaire.comment %></td>
+                    <td><%= commentaire.created_at.to_date %></td>
+                    <td><%= commentaire.commentable_type %></td>
+                  </tr>
+              <% end %>
+           </tbody>
+        </table>
+    <% end %>
+    
 </div>
