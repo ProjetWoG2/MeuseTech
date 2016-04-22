@@ -1,3 +1,8 @@
+$("#txtOrange").css("fill-opacity", "0");
+$("#txtVert").css("fill-opacity", "0");
+$("#txtBleu").css("fill-opacity", "0");
+$("#txtMarron").css("fill-opacity", "0");
+
 $("#orange").hover(
 	function() {
 		$("#txtOrange").css("fill-opacity", "1");

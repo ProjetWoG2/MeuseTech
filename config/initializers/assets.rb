@@ -23,6 +23,7 @@ Rails.application.config.assets.precompile += %w( the_role_management_panel.css.
 Rails.application.config.assets.precompile += %w( application.js )
 Rails.application.config.assets.precompile += %w( messages.js )
 Rails.application.config.assets.precompile += %w( navbar.js )
+Rails.application.config.assets.precompile += %w( navbartop.js )
 Rails.application.config.assets.precompile += %w( sidebar.js )
 Rails.application.config.assets.precompile += %w( editeur.js )
 Rails.application.config.assets.precompile += %w( bootstrap.js.coffee )
