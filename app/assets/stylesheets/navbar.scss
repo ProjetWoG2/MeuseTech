@@ -5,70 +5,42 @@
 	margin-top:2%;
 }
 
-.divlogo #marron {
+.divlogo #projets {
 	fill:#662c1e;
 	fill-opacity:1;
 }
 
-.divlogo #marron:hover {
-	fill-opacity:0.90;
-}
-
-.divlogo #bleu {
+.divlogo #sondages {
 	fill:#0173bc;
 	fill-opacity:1;
 }
 
-.divlogo #bleu:hover {
-	fill-opacity:0.90;
-}
-
-.divlogo #orange {
+.divlogo #atualites {
 	fill:#ec8e2c;
 	fill-opacity:1;
 }
 
-.divlogo #orange:hover {
-	fill-opacity:0.90;
-}
-
-.divlogo #vert {
+.divlogo #pourquoi {
 	fill:#33b160;
 	fill-opacity:1;
 }
 
-.divlogo #vert:hover {
-	fill-opacity:0.90;
-}
-
-.divlogo #txtOrange {
+#txtsondages {
 	fill-opacity:0;
 }
 
-.divlogo #txtOrange:hover {
-	fill-opacity:1;
-}
-
-.divlogo #txtVert {
+#txtpourquoi {
 	fill-opacity:0;
 }
 
-.divlogo #txtVert:hover {
-	fill-opacity:1;
-}
-
-.divlogo #txtBleu {
+#txtprojets {
 	fill-opacity:0;
 }
 
-.divlogo #txtBleu:hover {
-	fill-opacity:1;
-}
-
-.divlogo #txtMarron {
+#txtactualites {
 	fill-opacity:0;
 }
 
-.divlogo #txtMarron:hover {
-	fill-opacity:1;
+#retourmenu {
+	opacity:0;
 }
