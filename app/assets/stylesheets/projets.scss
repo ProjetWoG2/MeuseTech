@@ -33,13 +33,16 @@
 }
 
 .comment_content {
-	padding: 5px;
+	padding: 10px;
 	background-color: #DFF2FF;
 	border-radius: 25px;
 }
 
+.comment_content_style{
+	text-align: justify;
+}
 .date {
 	font-size: 0.8em;
-	float: right;
-	font-style: italic;
+	text-align: right;
+	font-style: italic;	
 }
