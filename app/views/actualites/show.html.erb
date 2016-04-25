@@ -16,6 +16,7 @@
     <h3>Likes (<%= @likes.count %>) </h3>
     <h3>Commentaires (<%= @comments.count %>)</h3>
     
+
     <div>
         <% @comments.each do |comment| %>
                 <p><%= User.find(comment.user_id).pseudo %> : <%= comment.comment %></p>

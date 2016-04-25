@@ -1,8 +1,8 @@
 class ProjetsController < ApplicationController
   def show
     @projet = Projet.find(params[:id])
-    @comments = @projet.comments.where(visible: true).where(role: "comments")
     @likes = @projet.comments.where(role: "likes")
+    @comments = @projet.comments.where(visible: true).where(role: "comments")
   end
   
   def index
