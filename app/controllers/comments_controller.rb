@@ -2,6 +2,10 @@ class CommentsController < ApplicationController
   def index
       @comments = Comment.where(role: "comments").order(created_at: :desc)
   end
+
+  def show
+    render :show
+  end
     
   def destroy
     @comment = Comment.find(params[:id])

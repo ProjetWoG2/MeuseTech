@@ -1,3 +1,45 @@
 // Place all the styles related to the Projets controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.comment_coin_droit {
+	background-image: url(angledroit50.png);
+	background-repeat: no-repeat;
+	max-width: 22px;
+}
+
+.comment_coin_gauche {
+	background-image: url(anglegauche50.png);
+	background-repeat: no-repeat;
+	margin-left: -25px;	
+}
+
+
+.haut, .bas {	
+	height: 22px;
+}
+
+.bas_fin {
+	height: 1px;
+	margin: 5px;
+}
+
+.comment_line {	
+	background-image: url(horizontale50.png);
+}
+
+.comment__pseudo {
+	color: blue;
+}
+
+.comment_content {
+	padding: 5px;
+	background-color: #DFF2FF;
+	border-radius: 25px;
+}
+
+.date {
+	font-size: 0.8em;
+	float: right;
+	font-style: italic;
+}
