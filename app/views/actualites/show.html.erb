@@ -13,6 +13,7 @@
     <div class="fr-view">
         <%= raw @actualite.content %>
     </div>
+    
     <h3>Likes (<%= @likes.count %>) </h3>
     <h3>Commentaires (<%= @comments.count %>)</h3>
     
@@ -35,12 +36,21 @@
                 <%= submit_tag "Commenter" %>
             <% end %>
         </div></br>
-        <div>
-            <%= form_tag "/actualites/add_new_like" do %>
-            <%= hidden_field_tag "id", @actualite.id %>
-            <%= submit_tag "J'aime" %>
-            <% end %>
-        </div></br>
+        <% if @actualite.comments.where(role: "likes").where(user_id: current_user.id).count == 0 %>
+            <div>
+                <%= form_tag "/actualites/add_new_like" do %>
+                <%= hidden_field_tag "id", @actualite.id %>
+                <%= submit_tag "J'aime" %>
+                <% end %>
+            </div></br>
+        <% else %>
+            <div>
+                <%= form_tag "/actualites/destroy_like" do %>
+                <%= hidden_field_tag "id", @actualite.id %>
+                <%= submit_tag "Je n'aime plus" %>
+                <% end %>
+            </div></br>
+        <% end %>
     <% end %>
     
     
