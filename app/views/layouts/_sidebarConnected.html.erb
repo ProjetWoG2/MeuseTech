@@ -34,7 +34,7 @@
 			<a href="#">Projets Suivis</a>
 		</li>
 		<li>
-			<a href="#">Notifications</a>
+            <a href="/notifications">Notifications (<%= Notification.where(destinataires: current_user.id).count %>)</a>
 		</li>
 	</ul>
 </nav>

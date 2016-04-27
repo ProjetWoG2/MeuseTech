@@ -52,6 +52,7 @@ class ActualitesController < ApplicationController
     end
     actualite.comments << @comment
     if @comment.save
+        add_new_notif("Nouveau Commentaire", "Actualite", actualite.id, User.where(role_id: 2))
         if User.find(@comment.user_id).confiance == false
             flash[:notice] = "Votre commentaire va être validé par un administrateur avant d'être mis en ligne!"
             User.all.each do |user|
@@ -83,6 +84,17 @@ class ActualitesController < ApplicationController
           flash[:error] ="Vous avez déjà liké ce contenu!"
           redirect_to :action => :show, :id => actualite
       end
+  end
+    
+    def add_new_notif(type, section, sujet, destinataires)
+    destinataires.each do |destinataire|
+      @notification = Notification.new
+      @notification.contenu = type
+      @notification.section = section
+      @notification.sujet = sujet 
+      @notification.destinataires = destinataire.id
+      @notification.save
+    end
   end
     
   def destroy_like
