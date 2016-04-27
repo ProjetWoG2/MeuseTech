@@ -36,6 +36,12 @@
 	padding: 10px;
 	background-color: #E0CDA9;
 	border-radius: 25px;
+	-webkit-hyphens: auto;
+	-moz-hyphens: auto;
+	-ms-hyphens: auto;
+	-o-hyphens: auto;
+	hyphens: auto;
+	word-wrap: break-word;
 }
 
 .comment_content_style{
