@@ -1,0 +1,20 @@
+<h1>Notifications</h1>
+
+<% if @notifications %>
+  <ul>
+    <% @notifications.each do |notification| %>
+        <li>Un <%= notification.contenu %> vient d'être créé dans <%= notification.section %>, id: <%= notification.sujet %> 
+            <% if notification.section == "Projet" %>
+                <%= link_to "Voir", projet_path(notification.sujet) %>
+            <% elsif notification.section == "Actualite" %>
+                <%= link_to "Voir", actualite_path(notification.sujet) %>
+            <% elsif notification.section == "User" %>
+                <%= link_to "Voir", user_path(notification.sujet) %>
+            <% end %>
+        </li></br>
+    <% end %>
+  </ul>
+  <% Notification.destroy_all(destinataires: current_user.id) %>
+<% else %>
+    <p>Vous n'avez aucune notification actuellement.</p>
+<% end %> 
