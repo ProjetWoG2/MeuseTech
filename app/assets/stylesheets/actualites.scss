@@ -2,3 +2,79 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.container .actu {
+    background-color: #eeeeee;
+}
+
+.border-right {
+    border-right: 2px solid #dddddd ;
+}
+
+.border-top {
+    border-top: 1px solid #dddddd ;
+}
+
+.border-top p {
+    font-style: italic;
+}
+
+.border-bottom {
+    
+}
+
+.titre {
+    background-color:#dddddd ;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding:8px 10px 10px 30px;
+}
+
+.titre p {
+    font-style: italic;
+}
+
+.contenu {
+    padding:8px 30px 10px 30px;
+}
+
+.actualite {
+    margin-top:20px;
+    background-color: #ffffff;
+    border: 1px solid #dddddd ;
+    border-radius:10px;
+}
+
+.likes {
+    width:40px;
+    height:36px;
+    text-align: center;
+    color:white;
+    font-size:12px;
+    padding-top: 10px;
+    padding-left:1px;
+    background-image:url(likes.png);
+    background-size:auto;
+    background-repeat: no-repeat;
+}
+
+.comment_content {
+	padding: 10px;
+	background-color: #DFF2FF;
+	border-radius: 25px;
+	-webkit-hyphens: auto;
+	-moz-hyphens: auto;
+	-ms-hyphens: auto;
+	-o-hyphens: auto;
+	hyphens: auto;
+	word-wrap: break-word;
+}
+
+.comments-section {
+    padding-top:20px;
+    padding-right:-10px;
+    padding-left:30px;
+    margin-bottom:20px;
+    border-radius:10px;
+    background-color:white;
+    border: 1px solid #dddddd;
+}
