@@ -19,6 +19,7 @@ Rails.application.config.assets.precompile += %w( editeur.css )
 Rails.application.config.assets.precompile += %w( navbartop.scss )
 Rails.application.config.assets.precompile += %w( the_role_management_panel.css.scss )
 Rails.application.config.assets.precompile += %w( projets.css.scss )
+Rails.application.config.assets.precompile += %w( commentaires.scss )
 
 
 Rails.application.config.assets.precompile += %w( application.js )
