@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160421081721) do
+ActiveRecord::Schema.define(version: 20160421112042) do
 
   create_table "actions", force: :cascade do |t|
     t.string "label"
@@ -169,6 +169,7 @@ ActiveRecord::Schema.define(version: 20160421081721) do
     t.boolean  "confiance",              default: false
     t.boolean  "is_ban",                 default: false
     t.text     "raison_ban"
+    t.string   "avatar"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
