@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   
   devise_for :users, path: 'users', skip: [:sessions],
            controllers: {
-               sessions: 'users/sessions'               
+               sessions: 'users/sessions',
+               registrations: 'registrations'
            }
 
   as :user do
@@ -24,6 +25,7 @@ Rails.application.routes.draw do
 
   resources 'projets'
   resources 'comments' 
+  resources 'notifications' 
   resources 'users'
 
 

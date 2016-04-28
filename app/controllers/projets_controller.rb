@@ -24,11 +24,14 @@ class ProjetsController < ApplicationController
     @projet.user_id = current_user.id
     @projet.labellise = false
     if @projet.save
+      destinataires = []
       User.all.each do |user|
           if user.role_id == 2
             AdminMailer.nouveau_projet(user, @projet).deliver_now
+            destinataires.push(user)
           end
       end
+      add_new_notif("Nouveau Projet", "Projet", @projet.id, destinataires)
       redirect_to @projet
     else
       render :new
@@ -47,6 +50,25 @@ class ProjetsController < ApplicationController
   def update
    @projet = Projet.find(params[:id])
    if @projet.update(projet_params)
+        
+        owner = User.find(@projet.user_id)
+        destinataires = []
+        follows = Comment.where(role: "follows").where(commentable_type: "Projet").where(commentable_id: @projet.id)
+        follows.each do |follow|
+            follower = User.find(follow.user_id)
+            if follower != owner
+                destinataires.push(follower)
+            end
+        end
+        admins = User.where(role_id: 2)
+        admins.each do |admin|
+            if admin != owner
+                destinataires.push(admin)
+            end
+        end
+        destinataires.push(owner)
+       
+       add_new_notif("Edition De Projet", "Projet", @projet.id, destinataires)
        redirect_to projets_path, :notice => "Le projet a été mis à jour."
    else
        redirect_to projets_path, :notice => "Le projet n'a pas été mis à jour."
@@ -71,6 +93,25 @@ class ProjetsController < ApplicationController
     end
     projet.comments << @comment
     if @comment.save
+        @owner = User.find(projet.user_id)
+        @destinataires = []
+        follows = Comment.where(role: "follows").where(commentable_type: "Projet").where(commentable_id: projet.id)
+        follows.each do |follow|
+            follower = User.find(follow.user_id)
+            if follower != @owner
+                @destinataires.push(follower)
+            end
+        end
+        admins = User.where(role_id: 2)
+        admins.each do |admin|
+            if admin != @owner
+                @destinataires.push(admin)
+            end
+        end
+        @destinataires.push(@owner)
+        add_new_notif("Nouveau Commentaire", "Projet", projet.id, @destinataires)
+        
+        
         if User.find(@comment.user_id).confiance == false
             flash[:notice] = "Votre commentaire va être validé par un administrateur avant d'être mis en ligne!"
             User.all.each do |user|
@@ -111,6 +152,17 @@ class ProjetsController < ApplicationController
       end
       redirect_to :action => :show, :id => projet
       flash[:notice] ="Vous n'aimez plus ce contenu!"  
+  end
+   
+  def add_new_notif(type, section, sujet, destinataires)
+    destinataires.each do |destinataire|
+        @notification = Notification.new
+        @notification.contenu = type
+        @notification.section = section
+        @notification.sujet = sujet 
+        @notification.destinataires = destinataire.id
+        @notification.save
+    end
   end
     
   def add_new_follower
