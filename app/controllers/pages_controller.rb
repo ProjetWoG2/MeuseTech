@@ -15,7 +15,7 @@ class PagesController < ApplicationController
 
     @derniers_commentaires=Comment.where(role: "comments").where(visible: true).last(5)
 
-    @image_fond = "aviron.jpg"
+    @image_fond = "clouds.png"
 
   end
     

@@ -15,24 +15,23 @@
 </head>
 
 <body>
-	
-	<header>
-		<%= render 'layouts/messages' %>
-		<% if request.fullpath== '/' %>
-			<%= render 'layouts/navbar' %>
-		<% else %>
-			<%= render 'layouts/navbartop' %>
-		<% end %>
-		<%= render 'layouts/sidebarConnected' %>
-		<%= render 'layouts/sidebarConnexion' %>
+	<div class="fond">
+			<%= image_tag (@image_fond) %>
+	</div>
+	<header class="menu">		
+			<%= render 'layouts/messages' %>
+			<% if request.fullpath== '/' %>
+				<%= render 'layouts/navbar' %>
+			<% else %>
+				<%= render 'layouts/navbartop' %>
+			<% end %>
+			<%= render 'layouts/sidebarConnected' %>
+			<%= render 'layouts/sidebarConnexion' %>		
+		
 	</header>
-	<main>
-		<div class="fond">
-			<%= image_tag(@image_fond) %>
-		</div>
-		<div class="container contenu">
-			<%= yield %>
-		</div>
+
+	<main class="container contenu">
+		<%= yield %>		
 
 	</main>
 	<footer>

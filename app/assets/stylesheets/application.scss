@@ -18,35 +18,44 @@
 
 
 header {
-	background: url(clouds.png) no-repeat fixed;
 	position: relative;	
+}
+
+.menu {
+	position: relative;
 	z-index: 4;
 }
 
+
 main {
 	position: relative;
+	margin-top: 20px
 }
  
 .fond img {
-	margin-top: -800px;
+	top: 0;
 	position: fixed;
 	width: 100%;
-	opacity: 0.4;
+	opacity: 0.35;
 }	
 
 .fond {
-	z-index: 2;
+	z-index: 1;
 }
 
 .contenu {
 	position: relative;
-	background-color: white;
+	background-color: #F5F5F5;
 	z-index: 3;
-	margin-top: 15px;
-	margin-bottom: 15px;	
+	margin-top: 55px;
+	margin-bottom: 15px;
+	border-radius: 35px;
+	padding-top: 15px;	
 }
 
 footer {
 	position: relative;
-	z-index: 1
+	z-index: 4;
+	bottom: 0;
+
 }

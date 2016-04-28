@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160421112042) do
+ActiveRecord::Schema.define(version: 20160425164110) do
 
   create_table "actions", force: :cascade do |t|
     t.string "label"
@@ -55,6 +55,13 @@ ActiveRecord::Schema.define(version: 20160421112042) do
     t.string  "type"
     t.integer "article_id"
     t.integer "user_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.string  "contenu"
+    t.integer "sujet"
+    t.string  "destinataires"
+    t.string  "section"
   end
 
   create_table "permissions", force: :cascade do |t|
@@ -169,7 +176,6 @@ ActiveRecord::Schema.define(version: 20160421112042) do
     t.boolean  "confiance",              default: false
     t.boolean  "is_ban",                 default: false
     t.text     "raison_ban"
-    t.string   "avatar"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true

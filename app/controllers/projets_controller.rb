@@ -1,11 +1,26 @@
 class ProjetsController < ApplicationController
+  @@images_fond_show = [
+    "brizeaux.JPG",
+    "eglise_notre-dame_XI_mont-devant-sassey.jpg",
+    "mirabelliers_cotes-de-meuse.jpg",
+    "ordi_nature_01.JPG",
+    "ordi_nature_02.JPG"
+    ]
+
+  @@images_fond_new = [
+    "ordi_chiens_03.JPG",
+    "ordi_ponton_04.JPG",
+    "rdv_affaire_ordi_01.JPG",
+    "barriere_01.JPG"
+    ]
+
   def show
     @projet = Projet.find(params[:id])
     @likes = @projet.comments.where(role: "likes")
     @comments = @projet.comments.where(visible: true).where(role: "comments")
     @followers = @projet.comments.where(role: "follows")
     @liencss = "projet.scss"
-    @image_fond = "paysage_07.jpg"
+    @image_fond = @@images_fond_show[rand(@@images_fond_show.length)]
   end
   
   def index
@@ -17,6 +32,7 @@ class ProjetsController < ApplicationController
   def new
     @projet = Projet.new
     @categories = list_categories
+    @image_fond = @@images_fond_new[rand(@@images_fond_new.length)]
   end
     
   def create
@@ -213,4 +229,6 @@ private
     string_of_values = params.require(:statut).map{ |key, val| key if val == "1" }.compact.join("/")
     {statut: string_of_values}
   end
+
+
 end

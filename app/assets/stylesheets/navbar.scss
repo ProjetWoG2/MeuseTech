@@ -5,22 +5,26 @@
 	margin-top:2%;
 }
 
-.divlogo #projets {
+#navbartop {
+	margin-bottom: -85px;	
+}
+
+.navbar #projets {
 	fill:#662c1e;
 	fill-opacity:1;
 }
 
-.divlogo #sondages {
+.navbar #sondages {
 	fill:#0173bc;
 	fill-opacity:1;
 }
 
-.divlogo #atualites {
+.navbar #atualites {
 	fill:#ec8e2c;
 	fill-opacity:1;
 }
 
-.divlogo #pourquoi {
+.navbar #pourquoi {
 	fill:#33b160;
 	fill-opacity:1;
 }
@@ -43,4 +47,25 @@
 
 #retourmenu {
 	opacity:0;
+}
+
+#bouton_on, #bouton_off {	
+	width: 50px;
+	height: 50px;
+	margin: auto;
+	margin-top: 55px;
+	margin-bottom: -55px;	
+}
+
+#bouton_on span, #bouton_off span{
+	color: black;
+	font-size: 25px;	
+}
+
+#bouton_off {		
+	display: none;	
+}
+
+#bouton_on:hover > span, #bouton_off:hover > span {
+	color: #0000CD;
 }
