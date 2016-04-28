@@ -18,5 +18,35 @@
 
 
 header {
-	background-image: url(clouds.png);	
+	background: url(clouds.png) no-repeat fixed;
+	position: relative;	
+	z-index: 4;
+}
+
+main {
+	position: relative;
+}
+ 
+.fond img {
+	margin-top: -800px;
+	position: fixed;
+	width: 100%;
+	opacity: 0.4;
+}	
+
+.fond {
+	z-index: 2;
+}
+
+.contenu {
+	position: relative;
+	background-color: white;
+	z-index: 3;
+	margin-top: 15px;
+	margin-bottom: 15px;	
+}
+
+footer {
+	position: relative;
+	z-index: 1
 }

@@ -26,11 +26,15 @@
 		<%= render 'layouts/sidebarConnected' %>
 		<%= render 'layouts/sidebarConnexion' %>
 	</header>
+	<main>
+		<div class="fond">
+			<%= image_tag(@image_fond) %>
+		</div>
+		<div class="container contenu">
+			<%= yield %>
+		</div>
 
-	<div class="container">
-		<%= yield %>
-	</div>
-
+	</main>
 	<footer>
 		<%= render 'layouts/footer' %>
 	</footer>

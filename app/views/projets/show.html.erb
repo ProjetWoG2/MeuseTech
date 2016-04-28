@@ -3,126 +3,181 @@
      <%= stylesheet_link_tag 'commentaires' %>
 <% end %>
 
-<div class="container">
-
-    <h1><%= @projet.titre %></h1>
-
-    <p><%= @projet.image %></p>
-
-    <p><%= @projet.description%></p>
-    
-    <p>Thème : <%= Thematique.find(@projet.categorie_id).categorie %></p>
-
-    <p>Date de création : <%= @projet.demarrage %></p>
-
-    <p>Commune : <%= @projet.commune %></p>
-
-    <p>Territoire impacté : <%= @projet.localisation %></p>
-
-    <p>Etat d'avancement : <%= @projet.statut %></p>
-
-    <p>Les besoins : <%= @projet.besoin %></p>
-
-    <p>Le site web : <%= @projet.urlsite %></p>
-    
-    <p>Image : <%= image_tag @projet.image.url %></p>
-
-    <p>Fiche projet créée le <%= @projet.created_at.to_date %> par <%= User.find(@projet.user_id).pseudo %></p>
-    
-    <h3>Followers (<%= @followers.count %>)</h3>
-    <h3>Likes (<%= @likes.count %>)</h3>
-    <h3>Commentaires (<%= @comments.count %>)</h3>
-    
-    <div class="container-fluid">
-        <% @comments.each do |comment| %>
-            <div class="row comment">
-                <div class="col-xs-2">
-                    <div class="row ">
-                        <div class="col-xs-12 haut"></div>
-                        <div class="col-xs-12 comment_author">
-                            <span class="comment__pseudo"><%= User.find(comment.user_id).pseudo %></span> a dit :
-                        </div>
-                        <div class="col-xs-12 bas_fin comment_line">
-                                                 
-                        </div>
-                    </div>
-                </div>
-
-                 <div class="col-xs-8">
-                    <div class="row ">
-                        <div class="col-xs-12 haut"></div>
-                        <div class="col-xs-12 comment_content">
-                            <p class="comment_content_style"><%= comment.comment %></p>
-                        </div>
-                        <div class="col-xs-12 bas comment_coin_gauche">
-                            <p class="date">le <%= comment.created_at.to_s(:custom_datetime) %></p>                    
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-xs-2">
-                    <div class="row ">
-                        <div class="col-xs-12 haut comment_coin_droit"></div>
-                        <div class="col-xs-12"></div>
-                        <div class="col-xs-12 bas">                           
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
-            <% if user_signed_in? && (current_user == User.find(comment.user_id) || current_user.moderator?(:comments)) %>
-                <div class="row">
-                    <%= link_to "Supprimer", comment_path(comment.id), :method => :delete %> | <%= link_to "Editer", edit_comment_path(comment.id) %>
-                </div>
-            <% end %> 
-            <br><br>                       
-        <% end %>
+<div class="row">
+    <div class="col-xs-12">
+        <p class="text-center"><%= image_tag @projet.image.url %></p>
     </div>
+</div>
 
-    <% if user_signed_in? %>
+<div class="row">
+    <div class="col-xs-12">
+        <h1 class="text-center"><%= @projet.titre %></h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-3">
+        <div class="row">
+            <dl class="dl-horizontal">
+                <dt>Commune</dt>
+                <dd><%= @projet.commune %></dd>
+                <dt>Territoire impacté</dt>
+                <dd><%= @projet.localisation %></dd>
+                <dt>Thème</dt>
+                <dd><%= Thematique.find(@projet.categorie_id).categorie %></dd>
+            </dl>                
+        </div>         
+    </div>    
+</div>
+
+<hr>
+
+<div class="row">
+    <div class="col-xs-12">
+        <dl>
+            <dt>Description du projet</dt>
+            <dd class="text-justify"><%= simple_format(@projet.description) %></dd>
+        </dl>        
+    </div>
+</div>
+
+<br>
+
+<div class="row">
+    <div class="col-xs-12">
+        <dl>
+            <dt>Les besoins</dt>
+            <dd class="text-justify"><%= simple_format(@projet.besoin) %></dd> 
+        </dl>       
+    </div>
+</div>
+
+<br >
+
+<% if @projet.urlsite != "" %>
+<div class="row">
+    <div class="col-xs-3">        
+        <p><a href="<%= @projet.urlsite %>">Plus d'informations ici</a></p>
+    </div>
+    <div class="col-xs-offset-6 col-xs-3">
+        <p>Etat d'avancement : <%= @projet.statut %></p>
+    </div>
+</div>
+<% end %>
+
+<hr>
+
+<div class="row">
+    <div class="col-xs-5">
+        <p>Date de démarrage du projet : <span class="projet__date"><%= @projet.demarrage.strftime("%d/%m/%Y") %></span></p>
+    </div>    
+    <div class="col-xs-offset-4 col-xs-3">
+        <p class="text-right">par <%= User.find(@projet.user_id).pseudo %></p>
+    </div>
+</div>
+
+<br><br>
+
+<div class="row">
+    <div class="col-xs-6">
+        <p class="text-center">Followers (<%= @followers.count %>)</p>
+    </div>
+    <div class="col-xs-6">
+        <p class="text-center">Likes (<%= @likes.count %>)</p>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-xs-12">
+        <h3 class="text-left">Commentaires (<%= @comments.count %>)</h3>
+    </div>
+</div>
+
+<% @comments.each do |comment| %>
+    <div class="row comment">
+        <div class="col-xs-2">
+            <div class="row ">
+                <div class="col-xs-12 haut"></div>
+                <div class="col-xs-12 comment_author">
+                    <span class="comment__pseudo"><%= User.find(comment.user_id).pseudo %></span> a dit :
+                </div>
+                <div class="col-xs-12 bas_fin comment_line">
+                                         
+                </div>
+            </div>
+        </div>
+
+         <div class="col-xs-8">
+            <div class="row ">
+                <div class="col-xs-12 haut"></div>
+                <div class="col-xs-12 comment_content">
+                    <p class="comment_content_style"><%= comment.comment %></p>
+                </div>
+                <div class="col-xs-12 bas comment_coin_gauche">
+                    <p class="date"><%= comment.created_at.strftime("le %d/%m/%Y à %H heures") %></p>                    
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-2">
+            <div class="row ">
+                <div class="col-xs-12 haut comment_coin_droit"></div>
+                <div class="col-xs-12">                    
+                </div>
+                <div class="col-xs-12 bas">
+                    <% if user_signed_in? && (current_user == User.find(comment.user_id) || current_user.moderator?(:comments)) %>                     
+                        <p><%= link_to "Supprimer", comment_path(comment.id), :method => :delete %></p>
+                        <p><%= link_to "Editer", edit_comment_path(comment.id) %></p>
+                    <% end %>                           
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    
+    <br><br>                       
+<% end %>
+
+<% if user_signed_in? %>
+    <div>        <%= form_tag "/projets/add_new_comment" do %>
+            <%= hidden_field_tag "id", @projet.id %>
+        <%= text_field_tag "comment[comment]", "Votre commentaire" %>
+            <%= submit_tag "Commenter" %>
+        <% end %>
+    </div></br>
+    <% if @projet.comments.where(role: "likes").where(user_id: current_user.id).count == 0 %>
         <div>
-            <%= form_tag "/projets/add_new_comment" do %>
-                <%= hidden_field_tag "id", @projet.id %>
-            <%= text_field_tag "comment[comment]", "Votre commentaire" %>
-                <%= submit_tag "Commenter" %>
+            <%= form_tag "/projets/add_new_like" do %>
+            <%= hidden_field_tag "id", @projet.id %>
+            <%= submit_tag "J'aime" %>
             <% end %>
         </div></br>
-        <% if @projet.comments.where(role: "likes").where(user_id: current_user.id).count == 0 %>
-            <div>
-                <%= form_tag "/projets/add_new_like" do %>
-                <%= hidden_field_tag "id", @projet.id %>
-                <%= submit_tag "J'aime" %>
-                <% end %>
-            </div></br>
-        <% else %>
-            <div>
-                <%= form_tag "/projets/destroy_like" do %>
-                <%= hidden_field_tag "id", @projet.id %>
-                <%= submit_tag "Je n'aime plus" %>
-                <% end %>
-            </div></br>
-        <% end %>
-
-
-        <% if @projet.comments.where(role: "follows").where(user_id: current_user.id).count == 0 %>
-            <div>
-                <%= form_tag "/projets/add_new_follower" do %>
-                <%= hidden_field_tag "id", @projet.id %>
-                <%= submit_tag "Je suis ce projet" %>
-                <% end %>
-            </div></br>
-        <% else %>
-            <div>
-                <%= form_tag "/projets/destroy_follower" do %>
-                <%= hidden_field_tag "id", @projet.id %>
-                <%= submit_tag "Je ne souhaite plus suivre ce projet" %>
-                <% end %>
-            </div></br>
-        <% end %>
+    <% else %>
+        <div>
+            <%= form_tag "/projets/destroy_like" do %>
+            <%= hidden_field_tag "id", @projet.id %>
+            <%= submit_tag "Je n'aime plus" %>
+            <% end %>
+        </div></br>
     <% end %>
+
+
+    <% if @projet.comments.where(role: "follows").where(user_id: current_user.id).count == 0 %>
+        <div>
+            <%= form_tag "/projets/add_new_follower" do %>
+            <%= hidden_field_tag "id", @projet.id %>
+            <%= submit_tag "Je suis ce projet" %>
+            <% end %>
+        </div></br>
+    <% else %>
+        <div>
+            <%= form_tag "/projets/destroy_follower" do %>
+            <%= hidden_field_tag "id", @projet.id %>
+            <%= submit_tag "Je ne souhaite plus suivre ce projet" %>
+            <% end %>
+        </div></br>
+    <% end %>
+<% end %>
     
-    
-    
-    
-</div>

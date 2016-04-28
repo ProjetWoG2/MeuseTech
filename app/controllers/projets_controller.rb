@@ -4,10 +4,14 @@ class ProjetsController < ApplicationController
     @likes = @projet.comments.where(role: "likes")
     @comments = @projet.comments.where(visible: true).where(role: "comments")
     @followers = @projet.comments.where(role: "follows")
+    @liencss = "projet.scss"
+    @image_fond = "paysage_07.jpg"
   end
   
   def index
     @projets = Projet.order(created_at: :desc)
+    @liencss = "projets.scss"
+    @image_fond = "brizeaux.JPG"
   end
     
   def new
