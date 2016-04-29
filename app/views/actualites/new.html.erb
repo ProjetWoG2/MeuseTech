@@ -1,5 +1,6 @@
 <% content_for :stylesheet do %>
     <%= stylesheet_link_tag  "editeur" %>
+    <%= stylesheet_link_tag  'actualites' %>   
 <% end %>
 
 <% content_for :script do %>
@@ -29,7 +30,7 @@
                     <%= f.text_area :content, id: 'edit' %>
                 </p>
                 <p>
-                    <%= f.submit 'Créer une actualité' %>
+                    <%= f.submit 'Créer une actualité', class: "btn-comment" %>
                 </p>
             <% end %>
         </div>
