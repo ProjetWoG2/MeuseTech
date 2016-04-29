@@ -8,16 +8,11 @@
 	});
 
 	$("#navbartop").slideToggle("slow");
-	$("#bouton_off").hide();
 
-	$("#bouton_on").click(function() {
+	$("#bouton").click(function() {
 		$("#navbartop").slideToggle("slow");
-		$("#bouton_on").hide();
-		$("#bouton_off").show();
+		$(".glyphicon").toggleClass("glyphicon-menu-down");
+		$(".glyphicon").toggleClass("glyphicon-menu-up");
 	});
 
-	$("#bouton_off").click(function() {
-		$("#navbartop").slideToggle("slow");
-		$("#bouton_on").show();
-		$("#bouton_off").hide();
-	});
+

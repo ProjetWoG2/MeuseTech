@@ -43,13 +43,23 @@ main {
 	z-index: 1;
 }
 
+.form_content {
+	-webkit-box-shadow: 10px 10px 45px -5px rgba(0,0,0,0.75);
+	-moz-box-shadow: 10px 10px 45px -5px rgba(0,0,0,0.75);
+	box-shadow: 10px 10px 45px -5px rgba(0,0,0,0.75);
+
+	border-radius: 5px 40px 5px 40px;
+	-moz-border-radius: 5px 40px 5px 40px;
+	-webkit-border-radius: 5px 40px 5px 40px;
+	border: 0px solid #000000;
+}
+
 .contenu {
 	position: relative;
 	background-color: #F5F5F5;
 	z-index: 3;
 	margin-top: 55px;
 	margin-bottom: 15px;
-	border-radius: 35px;
 	padding-top: 15px;	
 }
 
