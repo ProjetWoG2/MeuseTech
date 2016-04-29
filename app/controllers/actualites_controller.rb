@@ -2,7 +2,7 @@ class ActualitesController < ApplicationController
   
   def show
     @actualite = Actualite.find(params[:id])  
-    @actualites = Actualite.order(created_at: :desc)
+    @actualites = Actualite.order(created_at: :desc).last(10)
     @comments = @actualite.comments.where(visible: true).where(role: "comments")  
     @likes = @actualite.comments.where(role: "likes")
     @followers = @actualite.comments.where(role: "follows")

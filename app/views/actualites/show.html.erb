@@ -7,55 +7,98 @@
     <%= javascript_include_tag 'actualites' %>
 <% end %>
 
-<div class="container actu">
-    <div class="row">
-        <div class="col-md-9 border-right"> 
-            <% if (user_signed_in? && current_user.moderator?(:actualites)) %>
-                <a href="../actualites/new">Créer une actualité</a>
-            <% end %>
-    
+    <div class="row actu">
+        <div class="col-md-9 border-right">
+            <% if user_signed_in? && current_user.moderator?(:actualites) %>
+            <div class="actions"><br/><%= link_to "Editer", edit_actualite_path(@actualite.id), class: "btn-comment" %> 
+
+                                <%= link_to "Supprimer", actualite_path(@actualite.id), :method => :delete, class: "btn-comment" %></div>
+            <% end %>    
             <div class="actualite">
                 <div class="titre">
-                    <h1><%= @actualite.title %></h1>
-                    <p>créé le <%= @actualite.created_at.to_s(:custom_datetime) %> par <%= User.find(@actualite.user_id).pseudo %></p>
-                    <div class="likes"><%= @likes.count %></div>
-                </div>
+                    <div class="infos_actu">
+                        <h1><%= @actualite.title %></h1>
+                        
+                        <p>créé le <%= @actualite.created_at.to_s(:custom_datetime) %> par <%= User.find(@actualite.user_id).pseudo %></p>
+                    </div>
+                
+                <!------------------------------BOUTON LIKER----------------------------------->
+                    
+                        <% if user_signed_in? %>
 
-                <div class="contenu">
+                                <% if @actualite.comments.where(role: "likes").where(user_id: current_user.id).count == 0 %>
+                                    
+                                        <%= form_tag "/actualites/add_new_like", class:"likes-form" do %>
+                                        <%= hidden_field_tag "id", @actualite.id %>
+                                        <%= submit_tag @likes.count, class:"likes-count-btn unliked" %>
+                                        <% end %>
+                                    
+                                <% else %>
+                                    
+                                        <%= form_tag "/actualites/destroy_like", class:"likes-form" do %>
+                                        <%= hidden_field_tag "id", @actualite.id %>
+                                        <%= submit_tag @likes.count, class:"likes-count-btn liked" %>
+                                        <% end %>
+                                    
+                                <% end %>
+
+                        <% else %>
+                                    <div class="likes-count"><%= @likes.count %></div>
+                        <% end %>
+                    
+                </div>
+                <!------------------------------------------------------------------------------>
+
+                <div class="actu-content">
                     <div class="fr-view">
                         <%= raw @actualite.content %>
                     </div>
                 </div>
             </div>
-            <br/>
-            <% if user_signed_in? %>
-                        <% if @actualite.comments.where(role: "likes").where(user_id: current_user.id).count == 0 %>
-                            <div>
-                                <%= form_tag "/actualites/add_new_like" do %>
-                                <%= hidden_field_tag "id", @actualite.id %>
-                                <%= submit_tag "J'aime" %>
-                                <% end %>
-                            </div></br>
-                        <% else %>
-                            <div>
-                                <%= form_tag "/actualites/destroy_like" do %>
-                                <%= hidden_field_tag "id", @actualite.id %>
-                                <%= submit_tag "Je n'aime plus" %>
-                                <% end %>
-                            </div></br>
-                        <% end %>
-                    <% end %>
-            <div class="comments-section">
-                <h3>Commentaires (<%= @comments.count %>)</h3>
+            
+            
+            <div class="infos-comments">
                 <% if user_signed_in? %>
-                    <div>
-                        <%= form_tag "/actualites/add_new_comment" do %>
-                        <%= hidden_field_tag "id", @actualite.id %>
-                        <%= text_field_tag "comment[comment]", "Votre commentaire" %>
-                            <%= submit_tag "Commenter" %>
+
+                                <% if @actualite.comments.where(role: "likes").where(user_id: current_user.id).count == 0 %>
+                                    
+                                        <%= form_tag "/actualites/add_new_like", class:"likes-comments-form" do %>
+                                        <%= hidden_field_tag "id", @actualite.id %>
+                                        <%= submit_tag "#{@likes.count}        #{@comments.count}", class:"likes-comments-count-btn unclicked" %>
+                                        <% end %>
+                                    
+                                <% else %>
+                                    
+                                        <%= form_tag "/actualites/destroy_like", class:"likes-comments-form" do %>
+                                        <%= hidden_field_tag "id", @actualite.id %>
+                                        <%= submit_tag "#{@likes.count}        #{@comments.count}", class:"likes-comments-count-btn clicked" %>
+                                        <% end %>
+                                    
+                                <% end %>
+
+                        <% else %>
+                                <div class="likes-comments-count">
+                                    <div class="likes-number"><%= @likes.count %></div>
+                                    <div class="comments-number"><%= @comments.count %></div>
+                                </div>
                         <% end %>
-                    </div></br>
-                <% end %>
+            </div>
+                
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+                    
+            <div class="comments-section">
+                <h4>Commentaires (<%= @comments.count %>)</h4>
+                
                     <div class="container-fluid">
                         <% @comments.each do |comment| %>
                         <div class="row comment">
@@ -100,6 +143,15 @@
                         <br><br>                       
                         <% end %>
                     </div>
+                    <% if user_signed_in? %>
+                    <div>
+                        <%= form_tag "/actualites/add_new_comment" do %>
+                            <%= hidden_field_tag "id", @actualite.id %>
+                            <%= text_field_tag "comment[comment]", "Votre commentaire" %>
+                            <%= submit_tag "Commenter", class: "btn-comment" %>
+                        <% end %>
+                    </div></br>
+                <% end %>
                 </div>
         </div>
         <div class="col-md-3">
@@ -112,5 +164,3 @@
             <% end %>
         </div>
     </div>
-    
-</div>
