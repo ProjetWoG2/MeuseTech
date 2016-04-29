@@ -28,6 +28,19 @@ class ProjetsController < ApplicationController
     @liencss = "projets.scss"
     @image_fond = "brizeaux.JPG"
   end
+
+  def mes_projets
+      @mes_projets = Projet.where(user_id: current_user.id)   
+  end
+    
+  def projets_suivis
+    @follows = Comment.where(user_id: current_user.id).where(role: "follows") 
+    @projets_suivis = []
+      @follows.each do |follow|
+          projet = Projet.where(id: follow.commentable_id)
+          @projets_suivis.push(projet)      
+      end
+  end
     
   def new
     @projet = Projet.new

@@ -1,8 +1,12 @@
+<% content_for :stylesheet do %>
+    <%= stylesheet_link_tag  'actualites' %>
+<% end %>
 
     <h1>Actualités</h1>
-
+    
+    <p>Il n'existe aucune actualité pour le moment.</p>
 
     <% if (user_signed_in? && current_user.moderator?(:actualites)) %>
-        <a href="actualites/new">Créer une actualité</a>
+        <a href="actualites/new" class="btn-comment">Créer une actualité</a>
     <% end %>
 

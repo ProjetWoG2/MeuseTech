@@ -28,10 +28,10 @@
 		</li>
     <% end %>
 		<li>
-			<a href="#">Mes Projets</a>
+			<a href="/mes-projets">Mes Projets</a>
 		</li>				
 		<li>
-			<a href="#">Projets Suivis</a>
+			<a href="/projets-suivis">Projets Suivis</a>
 		</li>
 		<li>
             <a href="/notifications">Notifications (<%= Notification.where(destinataires: current_user.id).count %>)</a>
