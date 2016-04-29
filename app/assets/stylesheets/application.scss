@@ -18,35 +18,54 @@
 
 
 header {
-	background: url(clouds.png) no-repeat fixed;
 	position: relative;	
+}
+
+.menu {
+	position: relative;
 	z-index: 4;
 }
 
+
 main {
 	position: relative;
+	margin-top: 20px
 }
  
 .fond img {
-	margin-top: -800px;
+	top: 0;
 	position: fixed;
 	width: 100%;
-	opacity: 0.4;
+	opacity: 0.35;
 }	
 
 .fond {
-	z-index: 2;
+	z-index: 1;
+}
+
+.form_content {
+	-webkit-box-shadow: 10px 10px 45px -5px rgba(0,0,0,0.75);
+	-moz-box-shadow: 10px 10px 45px -5px rgba(0,0,0,0.75);
+	box-shadow: 10px 10px 45px -5px rgba(0,0,0,0.75);
+
+	border-radius: 5px 40px 5px 40px;
+	-moz-border-radius: 5px 40px 5px 40px;
+	-webkit-border-radius: 5px 40px 5px 40px;
+	border: 0px solid #000000;
 }
 
 .contenu {
 	position: relative;
-	background-color: white;
+	background-color: #F5F5F5;
 	z-index: 3;
-	margin-top: 15px;
-	margin-bottom: 15px;	
+	margin-top: 55px;
+	margin-bottom: 15px;
+	padding-top: 15px;	
 }
 
 footer {
 	position: relative;
-	z-index: 1
+	z-index: 4;
+	bottom: 0;
+
 }

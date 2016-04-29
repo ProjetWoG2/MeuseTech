@@ -28,14 +28,8 @@
 	background-image: url(horizontale50.png);
 }
 
-.comment__pseudo {
-	color: blue;
-}
-
-.comment_content {
-	padding: 10px;
-	background-color: #E0CDA9;
-	border-radius: 25px;
+.comment_content {	
+	padding: 15px;
 	-webkit-hyphens: auto;
 	-moz-hyphens: auto;
 	-ms-hyphens: auto;
@@ -47,8 +41,11 @@
 .comment_content_style{
 	text-align: justify;
 }
+
 .date {
 	font-size: 0.8em;
 	text-align: right;
-	font-style: italic;	
+	font-style: italic;
+
+	margin-top: 15px;	
 }

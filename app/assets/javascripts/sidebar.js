@@ -4,6 +4,15 @@
 	});
 
 	$("#social-collapse").click(function() {
-		$(this).parent().find('ul').toggle();
+		$(this).parent().find('ul').toggle();				
 	});
-	
+
+	$("#navbartop").slideToggle("slow");
+
+	$("#bouton").click(function() {
+		$("#navbartop").slideToggle("slow");
+		$(".glyphicon").toggleClass("glyphicon-menu-down");
+		$(".glyphicon").toggleClass("glyphicon-menu-up");
+	});
+
+

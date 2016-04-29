@@ -6,7 +6,38 @@
 	color: #0000FF;
 }
 
-/*main {
-	background: url(paysage_07.jpg) center center no-repeat fixed;
-	background-size: cover;	
-}*/
+.comment__pseudo {
+	color: #D2691E;
+}
+
+.comment_content {	
+	background-color: #E1CE9A;
+	color: #8B4513;
+}
+
+.form-control {
+	background-color: #8B4513 !important;
+}
+
+.form-control:focus {
+	background-color: #CD853F !important;
+}
+
+.form-control:hover {
+	background-color: #CD853F !important;
+}
+
+.btn-comment {
+	margin-top: 5px;
+	background-color: #E1CE9A;
+
+	-webkit-transition: all .8s ease-in-out;
+    -moz-transition: all .8s ease-in-out;
+    -ms-transition: all .8s ease-in-out;
+    transition: all .8s ease-in-out;
+}
+
+.btn-comment:hover {
+	background-color: #8B4513;
+	color: white;
+}

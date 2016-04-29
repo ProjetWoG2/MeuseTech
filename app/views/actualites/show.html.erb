@@ -7,7 +7,7 @@
     <%= javascript_include_tag 'actualites' %>
 <% end %>
 
-    <div class="row actu">
+    <div class="row">
         <div class="col-md-9 border-right">
             <% if user_signed_in? && current_user.moderator?(:actualites) %>
             <div class="actions"><br/><%= link_to "Editer", edit_actualite_path(@actualite.id), class: "btn-comment" %> 
