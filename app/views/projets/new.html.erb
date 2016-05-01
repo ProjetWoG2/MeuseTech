@@ -1,3 +1,8 @@
+<% content_for :stylesheet do %>
+    <%= stylesheet_link_tag  'forms' %>   
+<% end %>
+
+
 <div class="container">
 
 
@@ -62,7 +67,7 @@
 
 
       <p>
-        <%= f.submit "Enregistrer mon projet" %>
+          <%= f.submit "Enregistrer mon projet", class: "btn-comment" %>
       </p>
     <% end %>
     

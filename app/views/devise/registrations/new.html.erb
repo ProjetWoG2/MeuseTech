@@ -1,3 +1,7 @@
+<% content_for :stylesheet do %> 
+    <%= stylesheet_link_tag  'forms' %>   
+<% end %>
+
 <h2><%= t('.sign_up', :default => "Sign up") %></h2>
 
 	<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
@@ -22,9 +26,9 @@
   <%= f.password_field :password %></div>
 
 <div><%= f.label :password_confirmation, "Confirmation du mot de passe" %><br />
-  <%= f.password_field :password_confirmation %></div>
+  <%= f.password_field :password_confirmation %></div><br/><br/>
 
-<div><%= f.submit t('.sign_up', :default => "Sign up") %></div>
+<div><%= f.submit t('.sign_up', :default => "Sign up"), class: "btn-comment" %></div>
   <% end %>
 
 <%= render "devise/shared/links" %>
