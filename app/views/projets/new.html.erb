@@ -1,74 +1,83 @@
 <% content_for :stylesheet do %>
+
+  <%= stylesheet_link_tag 'projets' %>
+ 
+
     <%= stylesheet_link_tag  'forms' %>   
 <% end %>
 
+<%= form_for :projet, url: projets_path do |f| %>
 
-<div class="container">
+  <div class="row">
+      <div class="container-fluid form_content projet_content">           
 
+          <div class="row projet_titre">
+              <div class="col-xs-12">
+                  <%= f.label :image, "Une image qui illustre votre projet" %><br>
+                  <%= f.file_field :image %>
+              </div>
+              <div class="col-xs-12">
+                  <h1 class="text-center">
+                    <%= f.text_field :titre , placeholder: "Titre de votre projet" %>
+                  </h1>
+              </div>
+              <div class="col-xs-8">
+                  <dl class="dl-horizontal projet-def">
+                      <dt><%= f.label :commune, "Où est localisé votre projet ? (commune)" %></dt>
+                      <dd><%= f.text_field :commune %></dd>
+                      <dt><%= f.label :localisation, "Quel est le territoire impacté par votre projet?" %></dt>
+                      <dd><%= f.text_field :localisation %></dd>
+                      <dt>Thème</dt>
+                      <dd><%= f.select :categorie_id, grouped_options_for_select([["Quel est la thèmatique dominante de votre projet ?", @categories]]) %></dd>
+                  </dl>
+              </div>
+          </div>
+          <div class="col-xs-12">
+              <dl>
+                <br>
+          
+                  <dt class="projet_desc_titre"><%= f.label :description, "Décrire brièvement votre projet" %></dt>
+                  <dd class="text-justify"><%= f.text_area :description, maxlength: 1500, :placeholder => "Limite de 1500 caractères" %></dd>
+              </dl>        
+          </div>
+          <div class="col-xs-12">
+              <hr>
+          </div>
 
-    <h1>Je dépose un projet</h1>
-
-
-    <%= form_for :projet, url: projets_path do |f| %>
-      <p>
-        <%= f.label :titre, "Titre de votre projet" %><br>
-        <%= f.text_field :titre %>
-      </p>
-
-      <p>
-        <%= f.label :categorie_id, "Quel est la thèmatique dominante de votre projet ?" %><br>
-        <%= f.select :categorie_id, options_for_select(@categories) %>
-      </p>
-
-      <p>
-        <%= f.label :commune, "Où est localisé votre projet ? (commune)" %><br>
-        <%= f.text_field :commune %>
-      </p>
-
-      <p>
-        <%= f.label :demarrage, "Date de démarrage du projet" %><br>
-        <%= f.date_select :demarrage %>
-      </p>
-
-      <p>
-          <%= f.label :localisation, "Quel est le territoire impacté par votre projet?" %><br>
-          <%= f.text_field :localisation %>
-      </p>
-
-      <p>
-        <%= f.label :statut, "État d'avancement : quelles étapes ont été réalisées ?" %><br>
+          <div class="col-xs-12">
+          <dl>
+            <dt><%= f.label :besoin, "Quels sont vos besoins ?" %></dt>
+              <dd class="text-justify"><%= f.text_area :besoin, maxlength: 500, :placeholder => "Limite de 500 caractères" %>
+              </dd> 
+          </dl>       
+      </div>
+      
+      <div class="col-xs-3">        
+        <%= f.label :urlsite, "Un lien où il est possible d'en apprendre plus sur votre projet" %><br>
+          <%= f.text_field :urlsite, placeholder: "http://monprojet.com" %>
+      </div>
+      <div class=" col-xs-9">
+          <%= f.label :statut, "État d'avancement : quelles étapes ont été réalisées ?" %><br>
           <%= fields_for :statut do |statut_fields| %>
             <% ["réflexion", "définition", "analyse du marché", "recherche de partenaire", "montage financier", "mise en oeuvre"].each do |etape| %>
                 <%= statut_fields.check_box etape %>
                 <%= statut_fields.label etape %>
             <% end %>
           <% end %>
-      </p>
+      </div>     
+      
+  </div> 
 
-      <p>
-          <%= f.label :description, "Décrire brièvement votre projet" %><br>
-          <%= f.text_area :description, maxlength: 1500, :placeholder => "Limite de 1500 caractères" %>
-      </p>
 
-      <p>
-          <%= f.label :besoin, "Quels sont vos besoins ?" %><br>
-          <%= f.text_area :besoin, maxlength: 500, :placeholder => "Limite de 500 caractères" %>
-      </p>
 
-      <p>
-          <%= f.label :image, "Une image qui illustre votre projet" %><br>
-          <%= f.file_field :image %>
-      </p>
-
-      <p>
-          <%= f.label :urlsite, "Un lien où il est possible d'en apprendre plus sur votre projet" %><br>
-          <%= f.text_field :urlsite, placeholder: "http://monprojet.com" %>
-      </p>
+  <hr>
 
 
       <p>
           <%= f.submit "Enregistrer mon projet", class: "btn-comment" %>
       </p>
-    <% end %>
+    
     
 </div>
+
+<% end %>
