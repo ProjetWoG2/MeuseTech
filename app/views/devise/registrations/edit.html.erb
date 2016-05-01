@@ -1,3 +1,8 @@
+<% content_for :stylesheet do %> 
+    <%= stylesheet_link_tag  'forms' %>   
+<% end %>
+
+
 <h2><%= t('.title', :resource => resource_class.model_name.human , :default => "Edit #{resource_name.to_s.humanize}") %></h2>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
@@ -24,7 +29,7 @@
     <div><%= f.label :image %><br />
     <%= f.file_field :image %></div><br/><br/>
 
-  <div><%= f.submit t('.update', :default => "Update") %></div>
+<div><%= f.submit t('.update', :default => "Update"), class: "btn-comment" %></div>
 <% end %>
 
 <h3><%= t('.cancel_my_account', :default => 'Cancel my account') %></h3>

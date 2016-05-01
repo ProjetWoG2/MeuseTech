@@ -1,5 +1,6 @@
 <% content_for :stylesheet do %>
     <%= stylesheet_link_tag  "editeur" %>
+    <%= stylesheet_link_tag  "forms" %>
 <% end %>
 
 <div class="container">
@@ -17,7 +18,7 @@
                     <%= f.text_area :content, id: 'edition' %>
                 </p>
                 <p>
-                    <%= f.submit 'Editer' %>
+                    <%= f.submit 'Editer', class: "btn-comment" %>
                 </p>
             <% end %>
         </div>

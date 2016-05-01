@@ -1,4 +1,19 @@
 class ActualitesController < ApplicationController
+
+  @@images_fond_show = [
+    "bg1.jpg",
+    "bg2.jpg",
+    ]
+    
+  @@images_fond_new = [
+    "bg1.jpg",
+    "bg2.jpg",
+    ]
+    
+  @@images_fond_edit = [
+    "bg1.jpg",
+    "bg2.jpg",
+    ]
   
   def show
     @actualite = Actualite.find(params[:id])  
@@ -6,11 +21,13 @@ class ActualitesController < ApplicationController
     @comments = @actualite.comments.where(visible: true).where(role: "comments")  
     @likes = @actualite.comments.where(role: "likes")
     @followers = @actualite.comments.where(role: "follows")
+    @image_fond = @@images_fond_show[rand(@@images_fond_show.length)]
   end
     
     
   def new
     @actualite=Actualite.new
+    @image_fond = @@images_fond_new[rand(@@images_fond_new.length)]
   end
     
   def create
@@ -25,6 +42,7 @@ class ActualitesController < ApplicationController
     
   def edit
    @actualite = Actualite.find(params[:id])
+   @image_fond = @@images_fond_edit[rand(@@images_fond_edit.length)]
   end
     
   def update
