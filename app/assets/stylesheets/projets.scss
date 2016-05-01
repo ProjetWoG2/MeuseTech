@@ -2,6 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.actions {
+    text-align:center;   
+    margin-bottom: -40px;
+    padding-bottom: 50px;
+}
+
 .projet__date {
 	color: #0000FF;
 }
@@ -40,4 +46,142 @@
 .btn-comment:hover {
 	background-color: #8B4513;
 	color: white;
+}
+
+.projet_titre {
+	background-color: #dddddd;
+
+	border-radius: 5px 40px 0px 0px;
+
+	margin-top: -5px;
+	margin-left: -10px;
+	margin-right: -10px;
+}
+
+.projet_content {
+	padding:5px 10px 10px 5px;
+	margin-top:15px;
+	margin-left: 15px;
+	margin-right: 15px;
+	margin-bottom: 15px;
+
+	background-color: white;
+}
+
+.projet_desc_titre {
+	margin-top: 15px;
+}
+
+.projet_lien, .projet_lien:hover {
+	text-decoration: none;
+}
+
+.projet_lien > span {
+	padding: 5px 10px 10px 5px;
+}
+
+.projet_lien > span:hover {
+	background-color: #87CEFA;
+	color: #FF7F50;
+}
+
+.likes-count {
+    display:inline-block;
+    float: right;
+    width:53px;
+    height:40px;
+    color:white;
+    font-weight:bold;
+    padding-top: 7px;
+    padding-left: 32px;
+    background-image: url("actu_unliked_button_top.png");
+    margin-top: 70px;
+    margin-right: 20px;    
+}
+
+.likes-count-btn {
+    width:53px;
+    height:40px;
+    padding-bottom:8px;
+    padding-left: 28px;
+    color:white;
+    font-weight:bold;
+    border:none; 
+}
+
+.unliked {
+    background-image: url("actu_unliked_button_top.png");
+}
+
+.unliked:hover {
+    background-image: url("actu_liked_hover_button_top.png");
+}
+
+.liked {
+    background-image: url("actu_liked_button_top.png"); 
+}
+
+.liked:hover {
+    background-image: url("actu_unliked_hover_button_top.png"); 
+}
+
+.likes-form {
+    display:inline-block;
+    width:53px;
+    height:40px;
+    float: right;
+    margin-top: 70px;
+    margin-right: 20px;
+}
+
+.likes-comments-count-btn {
+    background-color: #eeeeee;
+    width:84px;
+    height:40px;
+    padding-left:24px;
+    padding-top:8px;
+    color:white;
+    font-weight:bold;
+    border:none; 
+    margin-left: 30px;
+    margin-bottom: 15px;
+    margin-top: -25px;
+}
+
+.likes-comments-count {
+    width:84px;
+    height:40px;
+    color:white;
+    font-weight:bold;
+    padding-top: 15px;
+    padding-left: 28px;
+    background-image: url("actu_likescomments_unliked.png");
+    margin-left: 30px;
+    margin-bottom: 15px;
+    margin-top: -15px;    
+}
+
+.unclicked {
+    background-image: url("actu_likescomments_unliked.png"); 
+}
+
+.unclicked:hover {
+    background-image: url("actu_likescomments_liked_hover.png"); 
+}
+
+.clicked {
+    background-image: url("actu_likescomments_liked.png");
+}
+
+.clicked:hover {
+    background-image: url("actu_likescomments_unliked_hover.png");
+}
+
+.likes-number {
+    display:inline-block;
+    margin-right:28px;
+}
+
+.comments-number {
+    display:inline-block;
 }

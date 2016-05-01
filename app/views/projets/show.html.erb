@@ -4,120 +4,126 @@
 <% end %>
 
 <div class="row">
-    <div class="col-xs-12">
-        <p class="text-center"><%= image_tag @projet.image.url %></p>
-    </div>
-</div>
+    <div class="container-fluid form_content projet_content">
+        <% if user_signed_in? && (current_user.moderator?(:projets) || current_user == User.find(@projet.user_id))  %>
+            <div class="row projet_titre actions">
+                <%= link_to "Editer", edit_projet_path(@projet.id), class: "btn btn-comment" %> 
+                <%= link_to "Supprimer", actualite_path(@projet.id), :method => :delete, class: "btn btn-comment" %>
+            </div>
+        <% end %>    
+        <div class="row projet_titre">
+            <div class="col-xs-12">
+                <p class="text-center"><%= image_tag @projet.image.url %></p>
+            </div>
+            <div class="col-xs-12">
+                <h1 class="text-center"><%= @projet.titre %></h1>
+            </div>
+            <div class="col-xs-5">
+                <dl class="dl-horizontal">
+                    <dt>Commune</dt>
+                    <dd><%= @projet.commune %></dd>
+                    <dt>Territoire impacté</dt>
+                    <dd><%= @projet.localisation %></dd>
+                    <dt>Thème</dt>
+                    <dd><%= Thematique.find(@projet.categorie_id).categorie %></dd>
+                </dl>
+            </div>
+        
+        <% if user_signed_in? %>
+        <div class="col-xs-7 projet_titre">
 
-<div class="row">
-    <div class="col-xs-12">
-        <h1 class="text-center"><%= @projet.titre %></h1>
-    </div>
-</div>
+            <% if @projet.comments.where(role: "likes").where(user_id: current_user.id).count == 0 %>
+                
+                    <%= form_tag "/projets/add_new_like", class:"likes-form" do %>
+                    <%= hidden_field_tag "id", @projet.id %>
+                    <%= submit_tag @likes.count, class:"likes-count-btn unliked" %>
+                    <% end %>
+                
+            <% else %>
+                
+                    <%= form_tag "/projets/destroy_like", class:"likes-form" do %>
+                    <%= hidden_field_tag "id", @projet.id %>
+                    <%= submit_tag @likes.count, class:"likes-count-btn liked" %>
+                    <% end %>
+                
+            <% end %>
+        </div>
 
-<div class="row">
-    <div class="col-xs-3">
-        <div class="row">
-            <dl class="dl-horizontal">
-                <dt>Commune</dt>
-                <dd><%= @projet.commune %></dd>
-                <dt>Territoire impacté</dt>
-                <dd><%= @projet.localisation %></dd>
-                <dt>Thème</dt>
-                <dd><%= Thematique.find(@projet.categorie_id).categorie %></dd>
-            </dl>                
-        </div>         
-    </div>    
-</div>
+        <% else %>
+        <div class="col-xs-7 likes-count"><%= @likes.count %></div>
+        <% end %>
+        </div>
+        <div class="col-xs-12">
+            <dl>
+                <dt class="projet_desc_titre">Description du projet</dt>
+                <dd class="text-justify"><%= simple_format(@projet.description) %></dd>
+            </dl>        
+        </div>
+        <div class="col-xs-12">
+            <hr>
+        </div>
 
-<hr>
-
-<div class="row">
-    <div class="col-xs-12">
-        <dl>
-            <dt>Description du projet</dt>
-            <dd class="text-justify"><%= simple_format(@projet.description) %></dd>
-        </dl>        
-    </div>
-</div>
-
-<br>
-
-<div class="row">
-    <div class="col-xs-12">
+        <div class="col-xs-12">
         <dl>
             <dt>Les besoins</dt>
             <dd class="text-justify"><%= simple_format(@projet.besoin) %></dd> 
         </dl>       
     </div>
-</div>
-
-<br >
-
-<% if @projet.urlsite != "" %>
-<div class="row">
+    
+    <% if @projet.urlsite != "" %>
     <div class="col-xs-3">        
-        <p><a href="<%= @projet.urlsite %>">Plus d'informations ici</a></p>
+        <a href="<%= @projet.urlsite %>" class="btn btn-info ">Plus d'informations ici</a>
     </div>
     <div class="col-xs-offset-6 col-xs-3">
         <p>Etat d'avancement : <%= @projet.statut %></p>
     </div>
-</div>
-<% end %>
+
+    <% end %>
+    
+</div> 
 
 <hr>
 
-<div class="row">
-    <div class="col-xs-5">
-        <p>Date de démarrage du projet : <span class="projet__date"><%= @projet.demarrage.strftime("%d/%m/%Y") %></span></p>
-    </div>    
-    <div class="col-xs-offset-4 col-xs-3">
-        <p class="text-right">par <%= User.find(@projet.user_id).pseudo %></p>
+<div class="col-xs-12">
+    <div class="container-fluid projet_content">
+        <div class="col-xs-5">
+            Date de démarrage du projet : <span class="projet__date"><%= @projet.demarrage.strftime("%d/%m/%Y") %></span>
+        </div>    
+        <div class="col-xs-offset-4 col-xs-3">
+            porteur du projet :  <%= User.find(@projet.user_id).pseudo %>
+        </div>
     </div>
+    <% if user_signed_in? %>
+
+        <% if @projet.comments.where(role: "likes").where(user_id: current_user.id).count == 0 %>
+            
+            <%= form_tag "/projets/add_new_like", class:"likes-comments-form" do %>
+            <%= hidden_field_tag "id", @projet.id %>
+            <%= submit_tag "#{@likes.count}        #{@comments.count}", class:"likes-comments-count-btn unclicked" %>
+            <% end %>
+            
+        <% else %>
+            
+            <%= form_tag "/projets/destroy_like", class:"likes-comments-form" do %>
+            <%= hidden_field_tag "id", @projet.id %>
+            <%= submit_tag "#{@likes.count}        #{@comments.count}", class:"likes-comments-count-btn clicked" %>
+            <% end %>
+            
+        <% end %>
+
+    <% else %>
+        <div class="likes-comments-count">
+            <div class="likes-number"><%= @likes.count %></div>
+            <div class="comments-number"><%= @comments.count %></div>
+        </div>
+    <% end %>
+    
 </div>
 
 <br><br>
 
-<div class="row">
-    <div class="col-xs-6">
-        <p class="text-center">Followers (<%= @followers.count %>)</p>
-        <% if @projet.comments.where(role: "follows").where(user_id: current_user.id).count == 0 %>
-            <%= form_tag "/projets/add_new_follower" do %>
-                <%= hidden_field_tag "id", @projet.id %>
-                <%= submit_tag "Je suis ce projet" %>
-            <% end %>        
-        <% else %>
-            <%= form_tag "/projets/destroy_follower" do %>
-                <%= hidden_field_tag "id", @projet.id %>
-                <%= submit_tag "Je ne souhaite plus suivre ce projet" %>
-            <% end %>
-        <% end %>
-    </div>
-    <div class="col-xs-6">
-        <p class="text-center">Likes (<%= @likes.count %>)</p>
-        <% if @projet.comments.where(role: "likes").where(user_id: current_user.id).count == 0 %>
-            <%= form_tag "/projets/add_new_like" do %>
-                <%= hidden_field_tag "id", @projet.id %>
-                <%= submit_tag "J'aime" %>
-            <% end %>        
-        <% else %>        
-            <%= form_tag "/projets/destroy_like" do %>
-                <%= hidden_field_tag "id", @projet.id %>
-                <%= submit_tag "Je n'aime plus" %>
-            <% end %>        
-        <% end %>
-    </div>
-</div>
-
-
-<div class="row">
-    <div class="col-xs-12">
-        <h3 class="text-left">Commentaires (<%= @comments.count %>)</h3>        
-    </div>
-</div>
-
 <% @comments.each do |comment| %>
-    <div class="row comment">
+    <div class="col-xs-12 comment">
         <div class="col-xs-2">
             <div class="row ">
                 <div class="col-xs-12 haut"></div>

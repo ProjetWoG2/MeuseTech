@@ -1,6 +1,6 @@
 
-.footer {
-    background: #666666;
+footer {
+    background-color: #666;
     color: #fff;
     padding: 50px 0;
     display: inline-block;
@@ -8,7 +8,7 @@
     font-weight: 300;
 }
 
-.footer h1 {
+footer h1 {
     font-size: 18px;
     text-transform: uppercase;
     font-weight: 400;
@@ -16,7 +16,7 @@
     margin-bottom: 20px;
 }
 
-.footer address a { 
+footer address a { 
     color: #33B160; 
 }
 

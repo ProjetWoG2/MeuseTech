@@ -7,9 +7,7 @@
 		$(this).parent().find('ul').toggle();				
 	});
 
-	$("#navbartop").slideToggle("slow");
-
-	$("#bouton").click(function() {
+		$("#bouton").click(function() {
 		$("#navbartop").slideToggle("slow");
 		$(".glyphicon").toggleClass("glyphicon-menu-down");
 		$(".glyphicon").toggleClass("glyphicon-menu-up");
