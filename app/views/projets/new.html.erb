@@ -1,6 +1,10 @@
 <% content_for :stylesheet do %>
+
   <%= stylesheet_link_tag 'projets' %>
-<% end %>   
+ 
+
+    <%= stylesheet_link_tag  'forms' %>   
+<% end %>
 
 <%= form_for :projet, url: projets_path do |f| %>
 
@@ -68,20 +72,12 @@
 
   <hr>
 
-  <div class="col-xs-12">
-      <div class="container-fluid projet_content">
-          <div class="col-xs-5">
-              <%= f.label :demarrage, "Date de démarrage du projet" %><br>
-              <%= f.date_select :demarrage %>
-          </div>    
-          <div class="col-xs-offset-4 col-xs-3">
-             
-          </div>
-      </div>      
-      
-  </div>
-  <div class="text-center">
-      <%= f.submit "Enregistrer mon projet",  class:"btn btn-info" %>
-  </div>
-  <br>
+
+      <p>
+          <%= f.submit "Enregistrer mon projet", class: "btn-comment" %>
+      </p>
+    
+    
+</div>
+
 <% end %>

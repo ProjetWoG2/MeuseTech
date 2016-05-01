@@ -12,7 +12,6 @@
 
 .actualite {
     background-color:white;
-    border-radius:10px;
 }
 
 .border-right {
@@ -33,9 +32,9 @@
 
 .titre {
     background-color:#dddddd ;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
     padding:5px 10px 10px 30px;
+    border-top-left-radius:5px; 
+    border-top-right-radius:30px; 
     margin-top:15px;
     height:114px;
     
@@ -47,9 +46,7 @@
 
 .actu-content {
     padding:10px 30px 30px 30px;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    border: 1px solid #dddddd;
+    border-bottom-right-radius:5px; 
 }
 
 .infos_actu {
@@ -102,12 +99,12 @@
     width:53px;
     height:40px;
     float: right;
-    margin-top: 70px;
+    margin-top: 69px;
     margin-right: 20px;
 }
 
 .likes-comments-count-btn {
-    background-color: #eeeeee;
+    background-color: rgba(0,0,0,0);
     width:84px;
     height:40px;
     padding-left:24px;
@@ -163,69 +160,47 @@
 }
 
 
-
-
-
-
-
-/*----------------Commentaires propres à actualités------------------------*/
-
-
-.comment_content {
-	padding: 10px;
-	background-color: #DFF2FF;
-	border-radius: 25px;
-	-webkit-hyphens: auto;
-	-moz-hyphens: auto;
-	-ms-hyphens: auto;
-	-o-hyphens: auto;
-	hyphens: auto;
-	word-wrap: break-word;
+.projet__date {
+	color: #0000FF;
 }
 
-.comments-section {
-    padding-top:20px;
-    padding-right:-10px;
-    padding-left:30px;
-    margin-bottom:20px;
-    border-radius:10px;
-    background-color:white;
-    border: 1px solid #dddddd;
+.comment__pseudo {
+	color: #0173bc;
 }
 
-.comments-section input {
-    border-radius:5px;
-    height:30px;
+.comment_content {	
+	background-color: #a6e1f0;
+	color: #0173bc;
+}
+
+.form-control {
+	background-color: #0173bc !important;
+}
+
+.form-control:focus {
+	background-color: #a6e1f0 !important;
+}
+
+.form-control:hover {
+	background-color: #a6e1f0 !important;
 }
 
 .btn-comment {
-  background: #3498db;
-  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
-  background-image: -moz-linear-gradient(top, #3498db, #2980b9);
-  background-image: -ms-linear-gradient(top, #3498db, #2980b9);
-  background-image: -o-linear-gradient(top, #3498db, #2980b9);
-  background-image: linear-gradient(to bottom, #3498db, #2980b9);
-  -webkit-border-radius: 7;
-  -moz-border-radius: 7;
-  border-radius: 7px;
-  -webkit-box-shadow: 0px 1px 3px #666666;
-  -moz-box-shadow: 0px 1px 3px #666666;
-  box-shadow: 0px 1px 3px #666666;
-  font-family: Arial;
-  color: #ffffff;
-  font-size: 15px;
-  padding: 3px 8px 3px 8px;
-  margin-left:5px;
-  text-decoration: none;
+	margin-top: 5px;
+	background-color: #a6e1f0;
+
+	-webkit-transition: all .8s ease-in-out;
+    -moz-transition: all .8s ease-in-out;
+    -ms-transition: all .8s ease-in-out;
+    transition: all .8s ease-in-out;
 }
 
 .btn-comment:hover {
-  background: #3cb0fd;
-  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
-  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
-  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
-  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
-  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
-  text-decoration: none;
-  color: #ffffff;
+	background-color: #01aad4;
+	color: white;
 }
+
+
+
+
+

@@ -1,3 +1,7 @@
+<% content_for :stylesheet do %>
+    <%= stylesheet_link_tag  'forms' %>   
+<% end %>
+
 <div class="container">
     <% if user_signed_in? && (current_user == User.find(@comment.user_id) || current_user.moderator?(:comments)) %>
         <h1>Editer le commentaire</h1>
@@ -9,7 +13,7 @@
                         <%= f.text_area :comment %>
                     </p>
                     <p>
-                        <%= f.submit 'Editer' %>
+                        <%= f.submit 'Editer', class: "btn-comment" %>
                     </p>
                 <% end %>
             </div>
