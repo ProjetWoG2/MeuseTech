@@ -19,7 +19,6 @@ class ProjetsController < ApplicationController
     @likes = @projet.comments.where(role: "likes")
     @comments = @projet.comments.where(visible: true).where(role: "comments")
     @followers = @projet.comments.where(role: "follows")
-    @liencss = "projet.scss"
     @image_fond = @@images_fond_show[rand(@@images_fond_show.length)]
   end
   
