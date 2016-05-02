@@ -102,6 +102,10 @@ footer address a {
 }
 /*Fin*/
 
+.twitter-timeline {
+    width: 340px !important;
+}
+
 .copyright {
     color: #fff;
     padding-top: 15px;
@@ -158,25 +162,47 @@ ul.page-footer-list li i {
     color: #fff;
 }
 
-.placeholdernewsletter {
-    margin-top: 4px;
+.sg-form16603 .sg-form-header {
+    
 }
 
-.newsletterbouton {
+.sg-form16603 .sg-form-footer {
+    text-align: justify;
+    margin-top: 10px;
+}
+
+.sg-form16603 input[type="submit"] {
+    width: 215px;
+    margin-top: 20px;
+    border: 0;
+    height: 40px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align:center;
     background-color: #1c1c1c;
-    margin-top: 4px;
     text-decoration: none;
     -webkit-transition: all ease 0.3s;
     -moz-transition: all ease 0.3s;
     -ms-transition: all ease 0.3s;
     -o-transition: all ease 0.3s;
     transition: all ease 0.3s;
-    border: 0px;
 }
 
-.newsletterbouton:hover {
+.sg-form16603 input[type="submit"]:hover {
     background: #ec8e2c;
     color: #ffffff;
     text-decoration: none;
     border: 1px solid #ec8e2c;
+}
+
+.sg-form16603 input[type="text"],
+.sg-form16603 input[type="email"] {
+    width: 80%;
+    margin-top:15px;
+    height:30px;
+    line-height:30px;
+    padding-left:3px;
+    font-size:16px;
+    margin-bottom:5px;
 }

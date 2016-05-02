@@ -21,8 +21,12 @@
 	color: #8B4513;
 }
 
+.projet-def li {
+    list-style: none;
+}
+
 .form-control {
-	background-color: #8B4513 !important;
+	background-color: #8B4513;
 }
 
 .form-control:focus {
@@ -33,10 +37,14 @@
 	background-color: #CD853F !important;
 }
 
+.form-style {
+    background-color: #E1CE9A !important; 
+}
+
 .btn-comment {
 	margin-top: 5px;
 	background-color: #E1CE9A;
-
+    margin-bottom: 20px;
 	-webkit-transition: all .8s ease-in-out;
     -moz-transition: all .8s ease-in-out;
     -ms-transition: all .8s ease-in-out;
@@ -56,6 +64,14 @@
 	margin-top: -5px;
 	margin-left: -10px;
 	margin-right: -10px;
+    padding-top: 10px;
+}
+
+#projet_titre {
+    width: 80%;
+    margin: auto;
+    margin-top: 25px;
+    margin-bottom: 25px;
 }
 
 .projet_content {
